@@ -1,0 +1,15 @@
+#!/bin/sh
+commit_msg_file=$1
+commit_msg=$(cat "$commit_msg_file")
+
+# Strict Conventional Commit regex:
+pattern="^(feat|fix|docs|style|refactor|perf|test|chore|build|ci)(\([a-z0-9\-]+\))?: [a-z].+"
+
+if ! echo "$commit_msg" | grep -Eq "$pattern"; then
+  echo "❌ Commit message does not follow Conventional Commits:"
+  echo "   https://www.conventionalcommits.org/en/v1.0.0/"
+  echo "   Examples:"
+  echo "     feat(player): add jump animation"
+  echo "     fix(ui-button): handle click state"
+  exit 1
+fi
