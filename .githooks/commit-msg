@@ -1,15 +1,32 @@
-#!/bin/sh
-commit_msg_file=$1
-commit_msg=$(cat "$commit_msg_file")
+regex='^(feat|fix|docs|style|refactor|perf|test|chore|build|ci)(\([a-z0-9\-]+\))?: [a-z0-9].+'
 
-# Strict Conventional Commit regex:
-pattern="^(feat|fix|docs|style|refactor|perf|test|chore|build|ci)(\([a-z0-9\-]+\))?: [a-z0-9].+"
+before_sha="${GITHUB_EVENT_BEFORE:-0000000000000000000000000000000000000000}"
+after_sha="${GITHUB_SHA}"
 
-if ! echo "$commit_msg" | grep -Eq "$pattern"; then
-  echo "❌ Commit message does not follow Conventional Commits:"
-  echo "   https://www.conventionalcommits.org/en/v1.0.0/"
-  echo "   Examples:"
-  echo "     feat(player): add jump animation"
-  echo "     fix(ui-button): handle click state"
+if [ "$before_sha" = "0000000000000000000000000000000000000000" ]; then
+  commits=$(git log -1 --no-merges --format=%s "$after_sha")
+else
+  commits=$(git log --no-merges --format=%s "$before_sha..$after_sha")
+fi
+
+echo "🔎 Checking commit messages..."
+invalid=0
+
+while IFS= read -r commit; do
+  if [ -z "$commit" ] || [[ "$commit" =~ ^Merge\ pull\ request ]] || [[ "$commit" =~ ^Create\ .* ]] || [[ "$commit" =~ ^Auto.* ]]; then
+    echo "⚠️ Skipping commit: $commit"
+    continue
+  fi
+
+  if ! echo "$commit" | grep -Eq "$regex"; then
+    echo "❌ Invalid commit message: '$commit'"
+    echo "   Must follow Conventional Commits: https://www.conventionalcommits.org/"
+    invalid=1
+  else
+    echo "✅ Valid: '$commit'"
+  fi
+done <<< "$commits"
+
+if [ "$invalid" -eq 1 ]; then
   exit 1
 fi
