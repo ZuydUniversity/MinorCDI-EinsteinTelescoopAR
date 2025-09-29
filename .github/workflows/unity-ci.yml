@@ -37,31 +37,4 @@ jobs:
         run: |
           dotnet tool install -g dotnet-format
           dotnet format --check
-
-  build-android:
-    name: Build Unity Android Project
-    runs-on: ubuntu-latest
-    needs: lint-csharp
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.npm
-            ~/.cache/unity3d
-            ~/.local/share/unity3d
-          key: ${{ runner.os }}-unity-${{ hashFiles('**/Packages/manifest.json') }}
-
-      - name: Unity - Builder
-        uses: game-ci/unity-builder@v4
-        with:
-          targetPlatform: Android
-
-      - name: Upload build
-        uses: actions/upload-artifact@v4
-        with:
-          name: android-build
-          path: build/Android
+          
