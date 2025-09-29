@@ -1,0 +1,81 @@
+name: Unity AR CI
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  lint-csharp:
+    name: Lint C# Code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Check for C# files
+        id: check_cs
+        run: |
+          if ls **/*.cs 1> /dev/null 2>&1; then
+            echo "C# files found"
+            echo "found=true" >> $GITHUB_OUTPUT
+          else
+            echo "No C# files found"
+            echo "found=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run C# Linter (dotnet format)
+        if: steps.check_cs.outputs.found == 'true'
+        run: |
+          dotnet tool install -g dotnet-format
+          dotnet format --check
+
+  build-android:
+    name: Build Android Project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            gradle-${{ runner.os }}-
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./gradlew
+
+      - name: Build with Gradle
+        run: ./gradlew build --stacktrace
+
+      - name: Run unit tests
+        run: ./gradlew test
+
+      - name: Assemble Release APK
+        run: ./gradlew assembleRelease
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-apk
+          path: app/build/outputs/apk/release/app-release.apk
