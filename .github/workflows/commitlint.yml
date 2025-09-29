@@ -15,21 +15,23 @@ jobs:
 
       - name: Validate commit messages
         run: |
-          regex='^(feat|fix|docs|style|refactor|perf|test|chore|build|ci)(\([a-z0-9\-]+\))?: [a-z].+'
+          regex='^(feat|fix|docs|style|refactor|perf|test|chore|build|ci)(\([a-z0-9\-]+\))?: [a-z0-9].+'
 
-          # Determine commit range safely
-          if git rev-parse ${{ github.event.before }} >/dev/null 2>&1; then
-            commits=$(git log --no-merges --format=%s ${{ github.event.before }}..${{ github.sha }})
-          else
+          before_sha="${GITHUB_EVENT_BEFORE:-0000000000000000000000000000000000000000}"
+          after_sha="${GITHUB_SHA}"
+
+          # Determine commit range
+          if [ "$before_sha" = "0000000000000000000000000000000000000000" ]; then
             # First commit / new branch
-            commits=$(git log -1 --no-merges --format=%s ${{ github.sha }})
+            commits=$(git log -1 --no-merges --format=%s "$after_sha")
+          else
+            commits=$(git log --no-merges --format=%s "$before_sha..$after_sha")
           fi
 
           echo "🔎 Checking commit messages..."
           invalid=0
-          # Iterate over commits line by line
-          echo "$commits" | while IFS= read -r commit; do
-            # Skip empty, merge, or GitHub automatic commits
+
+          while IFS= read -r commit; do
             if [ -z "$commit" ] || [[ "$commit" =~ ^Merge\ pull\ request ]] || [[ "$commit" =~ ^Create\ .* ]] || [[ "$commit" =~ ^Auto.* ]]; then
               echo "⚠️ Skipping commit: $commit"
               continue
@@ -42,9 +44,9 @@ jobs:
             else
               echo "✅ Valid: '$commit'"
             fi
-          done
+          done <<< "$commits"
 
-          # Fail the job if any invalid commit was found
           if [ "$invalid" -eq 1 ]; then
             exit 1
           fi
+
