@@ -3,7 +3,7 @@ commit_msg_file=$1
 commit_msg=$(cat "$commit_msg_file")
 
 # Strict Conventional Commit regex:
-pattern="^(feat|fix|docs|style|refactor|perf|test|chore|build|ci)(\([a-z0-9\-]+\))?: [a-z].+"
+pattern="^(feat|fix|docs|style|refactor|perf|test|chore|build|ci)(\([a-z0-9\-]+\))?: [a-z0-9].+"
 
 if ! echo "$commit_msg" | grep -Eq "$pattern"; then
   echo "❌ Commit message does not follow Conventional Commits:"
