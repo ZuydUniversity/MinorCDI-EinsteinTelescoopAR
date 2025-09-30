@@ -10,6 +10,10 @@ public class ARStarSpawner : MonoBehaviour
     public float minDistance = 0.4f;
     public float maxDistance = 1.2f;
 
+    public bool animationActive = false;
+    private float timer = 0;
+    public GameObject WaveEmitter;
+
     public void SpawnObject()
     {
         if (prefabToSpawn == null) return;
@@ -34,6 +38,37 @@ public class ARStarSpawner : MonoBehaviour
             GameObject star = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
             float scale = Random.Range(.2f, 1.2f);
             star.transform.localScale *= scale;
+        }
+    }
+
+    public void StartAnimation()
+    {
+        if (animationActive)
+        {
+            Debug.Log("Animation already active");
+            return;
+        }
+        else
+        {
+            animationActive = true;
+            timer = 0;
+        }
+    }
+    public void Update()
+    {
+        if (animationActive)
+        {
+            timer += Time.deltaTime;
+            if(timer < 10)
+            {
+                WaveEmitter.SetActive(true);
+            }
+            else
+            {
+                animationActive = false;
+                WaveEmitter.SetActive(false);
+                SpawnObject();
+            }
         }
     }
 }
