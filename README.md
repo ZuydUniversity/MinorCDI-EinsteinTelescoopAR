@@ -14,7 +14,7 @@ Zorg dat je het volgende op je systeem geinstalleerd hebt:
 1. Clone de repository:
 
 ```bash
-git clone git@github.com:Mineplay5780/EinsteinTelescoopAR.git
+git clone git@github.com:ZuydUniversity/MinorCDI-EinsteinTelescoopAR.git
 ```
 
 2. Ga naar de directory:
