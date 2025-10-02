@@ -28,3 +28,35 @@ cd EinsteinTelescoopAR
 ```bash
 git config core.hooksPath .githooks
 ```
+
+## Build
+
+1. Ga naar de Server folder:
+
+```bash
+cd Server
+```
+
+2. Zet de venv op:
+
+```bash
+python -m venv venv
+```
+
+3. Open venv:
+
+```bash
+venv\Scripts\activate
+```
+
+4. Installer de packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Start de server:
+
+```python
+python server.py
+```
