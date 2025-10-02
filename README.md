@@ -20,7 +20,7 @@ git clone git@github.com:ZuydUniversity/MinorCDI-EinsteinTelescoopAR.git
 2. Ga naar de directory:
 
 ```bash
-cd EinsteinTelescoopAR
+cd MinorCDI-EinsteinTelescoopAR
 ```
 
 3. Voer het volgende commando uit:
