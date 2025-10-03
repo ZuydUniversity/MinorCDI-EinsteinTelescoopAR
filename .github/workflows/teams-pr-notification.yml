@@ -12,7 +12,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Send email using Python
+    - name: Setup Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.x'
@@ -24,23 +24,39 @@ jobs:
       env:
         OUTLOOK_EMAIL: ${{ secrets.OUTLOOK_EMAIL }}
         OUTLOOK_PASSWORD: ${{ secrets.OUTLOOK_PASSWORD }}
+        PR_TITLE: ${{ github.event.pull_request.title }}
+        PR_URL: ${{ github.event.pull_request.html_url }}
+        PR_CREATOR: ${{ github.event.pull_request.user.login }}
       run: |
         python - <<EOF
         import smtplib
         from email.mime.text import MIMEText
         from email.mime.multipart import MIMEMultipart
+        import os
 
-        sender_email = "${{ secrets.OUTLOOK_EMAIL }}"
-        password = "${{ secrets.OUTLOOK_PASSWORD }}"
-        receiver_email = "${{ secrets.OUTLOOK_EMAIL }}"
+        sender_email = os.environ["OUTLOOK_EMAIL"]
+        password = os.environ["OUTLOOK_PASSWORD"]
+        receiver_email = sender_email  # You can change this if sending to someone else
+
+        pr_title = os.environ["PR_TITLE"]
+        pr_url = os.environ["PR_URL"]
+        pr_creator = os.environ["PR_CREATOR"]
 
         message = MIMEMultipart("alternative")
-        message["Subject"] = "GitHub Actions Test Email"
+        message["Subject"] = f"New Pull Request: {pr_title}"
         message["From"] = sender_email
         message["To"] = receiver_email
 
-        text = "Hello, this is a test email sent via GitHub Actions using Outlook."
-        html = "<html><body><p>Hello, this is a <b>test email</b> sent via GitHub Actions using Outlook.</p></body></html>"
+        text = f"New pull request - {pr_title}\nThere is a new pull request made by {pr_creator} that needs to be reviewed. The pull request can be found here {pr_url}."
+        html = f"""
+        <html>
+          <body>
+            <h1>New pull request - {pr_title}</h1>
+            <p>There is a new pull request made by <b>{pr_creator}</b> that needs to be reviewed.</p>
+            <p>The pull request can be found <a href="{pr_url}">here</a>.</p>
+          </body>
+        </html>
+        """
 
         part1 = MIMEText(text, "plain")
         part2 = MIMEText(html, "html")
