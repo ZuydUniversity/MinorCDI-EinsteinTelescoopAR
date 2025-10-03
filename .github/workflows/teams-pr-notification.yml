@@ -14,7 +14,7 @@ jobs:
 
       - name: Send PR notification to Teams via Power Automate
         run: |
-          curl -X POST ${{ secrets.POWER_AUTOMATE_WEBHOOK_URI }} \
+          curl -X POST ${{ secrets.MS_TEAMS_WEBHOOK_URI }} \
             -H "Content-Type: application/json" \
             -d '{
               "title": "New Pull Request Created",
