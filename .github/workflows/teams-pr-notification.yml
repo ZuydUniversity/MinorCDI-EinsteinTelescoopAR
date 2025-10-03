@@ -2,35 +2,54 @@ name: PR Notification to Teams
 
 on:
   pull_request:
-    types: [opened, reopened]
+    types: [opened]
 
 jobs:
   notify:
-    runs-on: ubuntu-latest
-
+    runs-on: windows-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Get OAuth token
-        id: get_token
+      - name: Send Teams Notification
+        shell: pwsh
+        env:
+          TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
         run: |
-          response=$(curl -X POST "https://login.microsoftonline.com/${{ secrets.AZURE_TENANT_ID }}/oauth2/v2.0/token" \
-            -H "Content-Type: application/x-www-form-urlencoded" \
-            -d "client_id=${{ secrets.AZURE_CLIENT_ID }}" \
-            -d "scope=https://graph.microsoft.com/.default" \
-            -d "client_secret=${{ secrets.AZURE_CLIENT_SECRET }}" \
-            -d "grant_type=client_credentials")
-          echo "ACCESS_TOKEN=$(echo $response | jq -r '.access_token')" >> $GITHUB_ENV
+          function Send-Notification {
+              param(
+                  [string]$WebhookURL,
+                  [array]$messageParts
+              )
 
-      - name: Send PR notification to Teams via Power Automate
-        run: |
-          curl -X POST ${{ secrets.MS_TEAMS_WEBHOOK_URI }} \
-            -H "Authorization: Bearer $ACCESS_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d '{
-              "title": "New Pull Request Created",
-              "url": "${{ github.event.pull_request.html_url }}",
-              "author": "${{ github.event.pull_request.user.login }}",
-              "repo": "${{ github.repository }}"
-            }'
+              if ($null -ne $messageParts.Count -and $messageParts.Count -gt 0) {
+                  $message = @{
+                      'text'  = ($messageParts -join "<br /><br />")
+                      'title' = "New Pull Request Notification"
+                  }
+
+                  $messageJson = $message | ConvertTo-Json -Depth 2
+
+                  try {
+                      Invoke-RestMethod -Method Post -Uri $WebhookURL -Body $messageJson -ContentType 'application/json'
+                      Write-Output "Notification sent successfully."
+                  }
+                  catch {
+                      Write-Error "Failed to send Teams notification. Error: $_"
+                  }
+              }
+          }
+
+          # Pull request information from GitHub Actions context
+          $prTitle = "${{ github.event.pull_request.title }}"
+          $prCreator = "${{ github.event.pull_request.user.login }}"
+          $prUrl = "${{ github.event.pull_request.html_url }}"
+
+          # Compose the message
+          $messageParts = @(
+              "There was a new pull request made by **$prCreator** that needs to be reviewed.",
+              "The pull request can be found here: $prUrl"
+          )
+
+          # Send the notification
+          Send-Notification -WebhookURL $env:TEAMS_WEBHOOK_URL -messageParts $messageParts
