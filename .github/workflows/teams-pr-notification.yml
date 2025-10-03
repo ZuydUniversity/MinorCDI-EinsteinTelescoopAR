@@ -14,7 +14,7 @@ jobs:
       - name: Send Teams Notification
         shell: pwsh
         env:
-          TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
+          TEAMS_WEBHOOK_URL: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
         run: |
           function Send-Notification {
               param(
