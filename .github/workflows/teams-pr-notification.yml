@@ -11,45 +11,28 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Send Teams Notification
+      - name: Send PR Notification to Power Automate
         shell: pwsh
         env:
-          TEAMS_WEBHOOK_URL: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          FLOW_WEBHOOK_URL: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
         run: |
-          function Send-Notification {
-              param(
-                  [string]$WebhookURL,
-                  [array]$messageParts
-              )
-
-              if ($null -ne $messageParts.Count -and $messageParts.Count -gt 0) {
-                  $message = @{
-                      'text'  = ($messageParts -join "<br /><br />")
-                      'title' = "New Pull Request Notification"
-                  }
-
-                  $messageJson = $message | ConvertTo-Json -Depth 2
-
-                  try {
-                      Invoke-RestMethod -Method Post -Uri $WebhookURL -Body $messageJson -ContentType 'application/json'
-                      Write-Output "Notification sent successfully."
-                  }
-                  catch {
-                      Write-Error "Failed to send Teams notification. Error: $_"
-                  }
-              }
-          }
-
           # Pull request information from GitHub Actions context
           $prTitle = "${{ github.event.pull_request.title }}"
           $prCreator = "${{ github.event.pull_request.user.login }}"
           $prUrl = "${{ github.event.pull_request.html_url }}"
 
-          # Compose the message
-          $messageParts = @(
-              "There was a new pull request made by **$prCreator** that needs to be reviewed.",
-              "The pull request can be found here: $prUrl"
-          )
+          # Compose the payload for Power Automate
+          $payload = @{
+              title   = $prTitle
+              creator = $prCreator
+              url     = $prUrl
+          } | ConvertTo-Json -Depth 2
 
-          # Send the notification
-          Send-Notification -WebhookURL $env:TEAMS_WEBHOOK_URL -messageParts $messageParts
+          # Send the payload to Power Automate
+          try {
+              Invoke-RestMethod -Method Post -Uri $env:FLOW_WEBHOOK_URL -Body $payload -ContentType 'application/json'
+              Write-Output "Power Automate flow triggered successfully."
+          }
+          catch {
+              Write-Error "Failed to trigger Power Automate flow. Error: $_"
+          }
