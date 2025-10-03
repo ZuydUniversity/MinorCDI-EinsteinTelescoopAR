@@ -21,15 +21,6 @@ public class AnimateModel : MonoBehaviour
 
     private bool isAnimating = false;
 
-    void Start()
-    {
-        originalPosition = transform.position;
-        originalScale = transform.localScale;
-
-        targetPosition = originalPosition - new Vector3(0, targetDownDistance, 0);
-        targetScale = originalScale * targetScaleMultiplier;
-    }
-
     public void StartAnimation()
     {
         if (!isAnimating)
@@ -42,6 +33,12 @@ public class AnimateModel : MonoBehaviour
     {
         isAnimating = true;
         float elapsedTime = 0f;
+
+        originalPosition = transform.position;
+        originalScale = transform.localScale;
+
+        targetPosition = originalPosition - new Vector3(0, targetDownDistance, 0);
+        targetScale = originalScale * targetScaleMultiplier;
 
         while (elapsedTime < animationDuration)
         {
