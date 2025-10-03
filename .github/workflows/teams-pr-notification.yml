@@ -1,4 +1,4 @@
-name: PR Notification to Teams
+name: PR Notification Email
 
 on:
   pull_request:
@@ -11,28 +11,40 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Send PR Notification to Power Automate
+      - name: Send PR Email via SMTP
         shell: pwsh
         env:
-          FLOW_WEBHOOK_URL: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}     
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}          
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}   
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}   
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}             
         run: |
-          # Pull request information from GitHub Actions context
+          # Pull request info
           $prTitle = "${{ github.event.pull_request.title }}"
           $prCreator = "${{ github.event.pull_request.user.login }}"
           $prUrl = "${{ github.event.pull_request.html_url }}"
 
-          # Compose the payload for Power Automate
-          $payload = @{
-              title   = $prTitle
-              creator = $prCreator
-              url     = $prUrl
-          } | ConvertTo-Json -Depth 2
+          # Email content
+          $subject = "New pull request - $prTitle"
+          $body = @"
+          There was a new pull request created by $prCreator which needs to be reviewed.
+          The pull request can be found here: $prUrl
+          "@
 
-          # Send the payload to Power Automate
+          # Send email
           try {
-              Invoke-RestMethod -Method Post -Uri $env:FLOW_WEBHOOK_URL -Body $payload -ContentType 'application/json'
-              Write-Output "Power Automate flow triggered successfully."
+              Send-MailMessage `
+                  -SmtpServer $env:SMTP_SERVER `
+                  -Port $env:SMTP_PORT `
+                  -UseSsl `
+                  -Credential (New-Object System.Management.Automation.PSCredential($env:SMTP_USERNAME, (ConvertTo-SecureString $env:SMTP_PASSWORD -AsPlainText -Force))) `
+                  -From $env:SMTP_USERNAME `
+                  -To $env:EMAIL_TO `
+                  -Subject $subject `
+                  -Body $body
+              Write-Output "Email sent successfully."
           }
           catch {
-              Write-Error "Failed to trigger Power Automate flow. Error: $_"
+              Write-Error "Failed to send email. Error: $_"
           }
