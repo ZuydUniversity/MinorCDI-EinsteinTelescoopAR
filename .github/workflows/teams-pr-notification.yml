@@ -12,12 +12,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Send PR notification to Teams
-        uses: jdcargile/ms-teams-notification@v1.4
-        with:
-          github-token: ${{ github.token }}
-          ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-          notification-summary: 'New Pull Request Created'
-          notification-color: '0078D4'
-          timezone: 'Europe/Amsterdam'
-          verbose-logging: true
+      - name: Send PR notification to Teams via Power Automate
+        run: |
+          curl -X POST ${{ secrets.POWER_AUTOMATE_WEBHOOK_URI }} \
+            -H "Content-Type: application/json" \
+            -d '{
+              "title": "New Pull Request Created",
+              "url": "${{ github.event.pull_request.html_url }}",
+              "author": "${{ github.event.pull_request.user.login }}",
+              "repo": "${{ github.repository }}"
+            }'
