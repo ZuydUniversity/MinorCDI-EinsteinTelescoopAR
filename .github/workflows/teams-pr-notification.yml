@@ -6,45 +6,51 @@ on:
 
 jobs:
   notify:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Send PR Email via SMTP
-        shell: pwsh
-        env:
-          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}     
-          SMTP_PORT: ${{ secrets.SMTP_PORT }}          
-          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}   
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}   
-          EMAIL_TO: ${{ secrets.EMAIL_TO }}             
-        run: |
-          # Pull request info
-          $prTitle = "${{ github.event.pull_request.title }}"
-          $prCreator = "${{ github.event.pull_request.user.login }}"
-          $prUrl = "${{ github.event.pull_request.html_url }}"
+    - name: Send email using Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
 
-          # Email content
-          $subject = "New pull request - $prTitle"
-          $body = @"
-          There was a new pull request created by $prCreator which needs to be reviewed.
-          The pull request can be found here: $prUrl
-          "@
+    - name: Install dependencies
+      run: pip install secure-smtplib email-validator
 
-          # Send email
-          try {
-              Send-MailMessage `
-                  -SmtpServer $env:SMTP_SERVER `
-                  -Port $env:SMTP_PORT `
-                  -UseSsl `
-                  -Credential (New-Object System.Management.Automation.PSCredential($env:SMTP_USERNAME, (ConvertTo-SecureString $env:SMTP_PASSWORD -AsPlainText -Force))) `
-                  -From $env:SMTP_USERNAME `
-                  -To $env:EMAIL_TO `
-                  -Subject $subject `
-                  -Body $body
-              Write-Output "Email sent successfully."
-          }
-          catch {
-              Write-Error "Failed to send email. Error: $_"
-          }
+    - name: Send Email
+      env:
+        OUTLOOK_EMAIL: ${{ secrets.OUTLOOK_EMAIL }}
+        OUTLOOK_PASSWORD: ${{ secrets.OUTLOOK_PASSWORD }}
+      run: |
+        python - <<EOF
+        import smtplib
+        from email.mime.text import MIMEText
+        from email.mime.multipart import MIMEMultipart
+
+        sender_email = "${{ secrets.OUTLOOK_EMAIL }}"
+        password = "${{ secrets.OUTLOOK_PASSWORD }}"
+        receiver_email = "${{ secrets.OUTLOOK_EMAIL }}"
+
+        message = MIMEMultipart("alternative")
+        message["Subject"] = "GitHub Actions Test Email"
+        message["From"] = sender_email
+        message["To"] = receiver_email
+
+        text = "Hello, this is a test email sent via GitHub Actions using Outlook."
+        html = "<html><body><p>Hello, this is a <b>test email</b> sent via GitHub Actions using Outlook.</p></body></html>"
+
+        part1 = MIMEText(text, "plain")
+        part2 = MIMEText(html, "html")
+
+        message.attach(part1)
+        message.attach(part2)
+
+        with smtplib.SMTP("smtp.office365.com", 587) as server:
+            server.starttls()
+            server.login(sender_email, password)
+            server.sendmail(sender_email, receiver_email, message.as_string())
+            print("Email sent successfully!")
+        EOF
