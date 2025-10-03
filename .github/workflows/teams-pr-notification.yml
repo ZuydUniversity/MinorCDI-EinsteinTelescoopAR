@@ -12,61 +12,19 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Setup Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
-
-    - name: Install dependencies
-      run: pip install secure-smtplib email-validator
-
     - name: Send Email
-      env:
-        OUTLOOK_EMAIL: ${{ secrets.OUTLOOK_EMAIL }}
-        OUTLOOK_PASSWORD: ${{ secrets.OUTLOOK_PASSWORD }}
-        PR_TITLE: ${{ github.event.pull_request.title }}
-        PR_URL: ${{ github.event.pull_request.html_url }}
-        PR_CREATOR: ${{ github.event.pull_request.user.login }}
-      run: |
-        python - <<EOF
-        import smtplib
-        from email.mime.text import MIMEText
-        from email.mime.multipart import MIMEMultipart
-        import os
-
-        sender_email = os.environ["OUTLOOK_EMAIL"]
-        password = os.environ["OUTLOOK_PASSWORD"]
-        receiver_email = sender_email  # You can change this if sending to someone else
-
-        pr_title = os.environ["PR_TITLE"]
-        pr_url = os.environ["PR_URL"]
-        pr_creator = os.environ["PR_CREATOR"]
-
-        message = MIMEMultipart("alternative")
-        message["Subject"] = f"New Pull Request: {pr_title}"
-        message["From"] = sender_email
-        message["To"] = receiver_email
-
-        text = f"New pull request - {pr_title}\nThere is a new pull request made by {pr_creator} that needs to be reviewed. The pull request can be found here {pr_url}."
-        html = f"""
-        <html>
-          <body>
-            <h1>New pull request - {pr_title}</h1>
-            <p>There is a new pull request made by <b>{pr_creator}</b> that needs to be reviewed.</p>
-            <p>The pull request can be found <a href="{pr_url}">here</a>.</p>
-          </body>
-        </html>
-        """
-
-        part1 = MIMEText(text, "plain")
-        part2 = MIMEText(html, "html")
-
-        message.attach(part1)
-        message.attach(part2)
-
-        with smtplib.SMTP("smtp.office365.com", 587) as server:
-            server.starttls()
-            server.login(sender_email, password)
-            server.sendmail(sender_email, receiver_email, message.as_string())
-            print("Email sent successfully!")
-        EOF
+      uses: dawidd6/action-send-mail@v6
+      with:
+        server_address: smtp.office365.com
+        server_port: 587
+        username: ${{ secrets.OUTLOOK_EMAIL }}
+        password: ${{ secrets.OUTLOOK_PASSWORD }}
+        subject: "New Pull Request: ${{ github.event.pull_request.title }}"
+        body: |
+          <h1>New pull request - ${{ github.event.pull_request.title }}</h1>
+          <p>There is a new pull request made by <b>${{ github.event.pull_request.user.login }}</b> that needs to be reviewed.</p>
+          <p>The pull request can be found <a href="${{ github.event.pull_request.html_url }}">here</a>.</p>
+        to: ${{ secrets.OUTLOOK_EMAIL }}
+        from: ${{ secrets.OUTLOOK_EMAIL }}
+        secure: true
+        html: true
