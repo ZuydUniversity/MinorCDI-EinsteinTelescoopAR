@@ -1,0 +1,23 @@
+name: PR Notification to Teams
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Send PR notification to Teams
+        uses: jdcargile/ms-teams-notification@v1.4
+        with:
+          github-token: ${{ github.token }}
+          ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          notification-summary: 'New Pull Request Created'
+          notification-color: '0078D4'
+          timezone: 'Europe/Amsterdam'
+          verbose-logging: true
