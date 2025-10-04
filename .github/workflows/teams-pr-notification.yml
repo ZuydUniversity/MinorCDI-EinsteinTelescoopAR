@@ -22,7 +22,7 @@ jobs:
         subject: "New Pull Request: ${{ github.event.pull_request.title }}"
         body: "New pull request - ${{ github.event.pull_request.title }}\nThere is a new pull request made by ${{ github.event.pull_request.user.login }} that needs to be reviewed. The pull request can be found here ${{ github.event.pull_request.html_url }}."
         html_body: |
-          <h1 style="font-size: 28px; font-weight: bold;">New pull request - ${{ github.event.pull_request.title }}</h1>
+          <h1 style="font-size: 22px; font-weight: bold;">New pull request - ${{ github.event.pull_request.title }}</h1>
           <p>There is a new pull request made by <b>${{ github.event.pull_request.user.login }}</b> that needs to be reviewed.</p>
           <p>The pull request can be found <a href="${{ github.event.pull_request.html_url }}">here</a>.</p>
         to: ${{ secrets.SMTP_TO_EMAIL }}
