@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,38 +6,42 @@ using TMPro;
 public class SelectionManager : MonoBehaviour
 {
     public GameObject interaction_Info_UI;
-    TMP_Text interaction_text; 
+    TMP_Text interaction_text;
+
+    private InteractableObject lastClickedObject = null;
 
     private void Start()
     {
         interaction_text = interaction_Info_UI.GetComponent<TMP_Text>();
+        interaction_Info_UI.SetActive(false); 
     }
 
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
+        if (Input.GetMouseButtonDown(0)) 
         {
-            var selectionTransform = hit.transform;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
-            if (selectionTransform.GetComponent<InteractableObject>())
+            if (Physics.Raycast(ray, out hit))
             {
-                interaction_text.text = selectionTransform
-                    .GetComponent<InteractableObject>()
-                    .GetItemName();
+                InteractableObject interactable = hit.transform.GetComponent<InteractableObject>();
 
-                interaction_Info_UI.SetActive(true);
+                if (interactable != null)
+                {
+                    if (lastClickedObject == interactable && interaction_Info_UI.activeSelf)
+                    {
+                        interaction_Info_UI.SetActive(false);
+                        lastClickedObject = null;
+                    }
+                    else
+                    {
+                        interaction_text.text = interactable.GetItemName();
+                        interaction_Info_UI.SetActive(true);
+                        lastClickedObject = interactable;
+                    }
+                }
             }
-            else
-            {
-                interaction_Info_UI.SetActive(false);
-            }
-        }
-        else
-        {
-            interaction_Info_UI.SetActive(false);
         }
     }
 }
