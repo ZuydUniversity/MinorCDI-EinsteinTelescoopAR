@@ -15,18 +15,18 @@ jobs:
     - name: Send Email via OAuth2
       uses: dawidd6/action-send-mail@v3
         with:
-        smtp_server: smtp.office365.com
-        smtp_port: 587
-        smtp_user: ${{ secrets.SMTP_EMAIL }}
-        smtp_pass: ${{ secrets.SMTP_PASSWORD }}
-        from: ${{ secrets.SMTP_EMAIL }}
-        to: ${{ secrets.SMTP_TO_EMAIL }}
-        subject: "New Pull Request: ${{ github.event.pull_request.title }}"
-        body: |
-          New pull request - ${{ github.event.pull_request.title }}
-          There is a new pull request made by ${{ github.event.pull_request.user.login }} that needs to be reviewed.
-          The pull request can be found here: ${{ github.event.pull_request.html_url }}
-        html_body: |
-          <h1>New pull request - ${{ github.event.pull_request.title }}</h1>
-          <p>There is a new pull request made by <b>${{ github.event.pull_request.user.login }}</b> that needs to be reviewed.</p>
-          <p>The pull request can be found <a href="${{ github.event.pull_request.html_url }}">here</a>.</p>
+          smtp_server: smtp.office365.com
+          smtp_port: 587
+          smtp_user: ${{ secrets.SMTP_EMAIL }}
+          smtp_pass: ${{ secrets.SMTP_PASSWORD }}
+          from: ${{ secrets.SMTP_EMAIL }}
+          to: ${{ secrets.SMTP_TO_EMAIL }}
+          subject: "New Pull Request: ${{ github.event.pull_request.title }}"
+          body: |
+            New pull request - ${{ github.event.pull_request.title }}
+            There is a new pull request made by ${{ github.event.pull_request.user.login }} that needs to be reviewed.
+            The pull request can be found here: ${{ github.event.pull_request.html_url }}
+          html_body: |
+            <h1>New pull request - ${{ github.event.pull_request.title }}</h1>
+            <p>There is a new pull request made by <b>${{ github.event.pull_request.user.login }}</b> that needs to be reviewed.</p>
+            <p>The pull request can be found <a href="${{ github.event.pull_request.html_url }}">here</a>.</p>
