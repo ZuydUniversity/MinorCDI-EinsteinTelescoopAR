@@ -27,5 +27,5 @@ jobs:
           <p>The pull request can be found <a href="${{ github.event.pull_request.html_url }}">here</a>.</p>
         to: ${{ secrets.SMTP_EMAIL }}
         from: ${{ secrets.SMTP_PASSWORD }}
-        secure: true
+        secure: false
         ignore_cert: true
