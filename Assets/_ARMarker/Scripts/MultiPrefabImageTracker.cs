@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -50,10 +51,14 @@ public class AnimatedPrefabData
 public class MultiPrefabImageTracker : MonoBehaviour
 {
     [SerializeField] private List<ImagePrefabPair> imagePrefabPairs = new List<ImagePrefabPair>(); // Lijst van alle image prefab koppelingen
+    [SerializeField] private float hideDelay = 10f; // Tijd in seconden voordat prefabs verdwijnen na verlies van tracking
     
     private ARTrackedImageManager trackedImageManager; // Unity's AR component voor image herkenning
     private Dictionary<string, List<ImagePrefabPair>> imageNameToPrefabPairs = new Dictionary<string, List<ImagePrefabPair>>(); // Snelle lookup van prefabs per image
     private Dictionary<ARTrackedImage, List<GameObject>> spawnedPrefabs = new Dictionary<ARTrackedImage, List<GameObject>>(); // Bijhouden welke objecten bij welke image horen
+    private Dictionary<ARTrackedImage, Coroutine> hideCoroutines = new Dictionary<ARTrackedImage, Coroutine>(); // Bijhouden van hide timers
+    private Dictionary<string, ARTrackedImage> activeTrackedImages = new Dictionary<string, ARTrackedImage>(); // Bijhouden van actieve images per naam
+    private Dictionary<string, List<GameObject>> fixedPrefabs = new Dictionary<string, List<GameObject>>(); // Prefabs met vaste posities per image naam
     private List<AnimatedPrefabData> animatedPrefabs = new List<AnimatedPrefabData>(); // Lijst van objecten die geanimeerd worden
 
     // Setup functie die draait voordat de scene start
@@ -90,7 +95,7 @@ public class MultiPrefabImageTracker : MonoBehaviour
     {
         if (trackedImageManager != null)
         {
-            trackedImageManager.trackedImagesChanged += OnImageChanged;
+            trackedImageManager.trackablesChanged.AddListener(OnImageChanged);
         }
     }
 
@@ -99,29 +104,38 @@ public class MultiPrefabImageTracker : MonoBehaviour
     {
         if (trackedImageManager != null)
         {
-            trackedImageManager.trackedImagesChanged -= OnImageChanged;
+            trackedImageManager.trackablesChanged.RemoveListener(OnImageChanged);
         }
     }
 
     // Wordt aangeroepen wanneer er iets verandert met herkende images
-    void OnImageChanged(ARTrackedImagesChangedEventArgs eventArgs)
+    void OnImageChanged(ARTrackablesChangedEventArgs<ARTrackedImage> eventArgs)
     {
+        // Debug logging om te zien wat er gebeurt
+        Debug.Log($"OnImageChanged called - Added: {eventArgs.added.Count}, Updated: {eventArgs.updated.Count}, Removed: {eventArgs.removed.Count}");
+
         // Nieuwe images gevonden - spawn prefabs
-        foreach (ARTrackedImage trackedImage in eventArgs.added)
+        foreach (var trackedImage in eventArgs.added)
         {
+            string imageName = trackedImage.referenceImage != null ? trackedImage.referenceImage.name : "Unknown";
+            Debug.Log($"New tracked image added: {imageName}");
             HandleTrackedImage(trackedImage);
         }
 
         // Bestaande images geupdate - toon/verberg objecten
-        foreach (ARTrackedImage trackedImage in eventArgs.updated)
+        foreach (var trackedImage in eventArgs.updated)
         {
+            string imageName = trackedImage.referenceImage != null ? trackedImage.referenceImage.name : "Unknown";
+            Debug.Log($"Tracked image updated: {imageName}, State: {trackedImage.trackingState}");
             UpdateTrackedImage(trackedImage);
         }
 
         // Images niet meer zichtbaar - verwijder objecten
-        foreach (ARTrackedImage trackedImage in eventArgs.removed)
+        foreach (var kvp in eventArgs.removed)
         {
-            RemoveTrackedImage(trackedImage);
+            string imageName = kvp.Value.referenceImage != null ? kvp.Value.referenceImage.name : "Unknown";
+            Debug.Log($"Tracked image removed: {imageName}");
+            RemoveTrackedImage(kvp.Value);
         }
     }
 
@@ -134,7 +148,7 @@ public class MultiPrefabImageTracker : MonoBehaviour
             return;
         }
         
-        string imageName = trackedImage.referenceImage.name; // Haal de naam van de image op
+        string imageName = trackedImage.referenceImage.name;
         
         if (string.IsNullOrEmpty(imageName))
         {
@@ -142,37 +156,40 @@ public class MultiPrefabImageTracker : MonoBehaviour
             return;
         }
         
-        Debug.Log($"Attempting to handle tracked image: {imageName}");
-        
-        // Kijk of we prefabs hebben voor deze image
-        if (imageNameToPrefabPairs.TryGetValue(imageName, out List<ImagePrefabPair> pairs))
+        // Controleer of er al prefabs bestaan voor deze image naam
+        if (fixedPrefabs.ContainsKey(imageName))
         {
-            List<GameObject> spawnedObjects = new List<GameObject>();
+            Debug.Log($"Fixed prefabs already exist for image: {imageName}, skipping spawn. Fixed prefabs count: {fixedPrefabs[imageName].Count}");
             
-            // Spawn alle prefabs die bij deze image horen
-            foreach (var pair in pairs)
+            // Update alleen de tracking referenties, maar laat prefabs op hun vaste positie
+            activeTrackedImages[imageName] = trackedImage;
+            
+            // Zorg dat de prefabs zichtbaar zijn
+            foreach (var prefab in fixedPrefabs[imageName])
             {
-                GameObject spawnedObject = Instantiate(pair.prefab); // Maak een kopie van de prefab
-                spawnedObject.transform.SetParent(trackedImage.transform, false); // Koppel aan de image
-                
-                // Pas positie, rotatie en grootte aan
-                spawnedObject.transform.localPosition = pair.positionOffset;
-                spawnedObject.transform.localRotation = Quaternion.Euler(pair.rotationOffset);
-                spawnedObject.transform.localScale = pair.scale;
-                
-                spawnedObjects.Add(spawnedObject);
-                
-                // Voeg toe aan animatie lijst als er animaties zijn
-                if (pair.enableBobbing || pair.enableRotation)
+                if (prefab != null)
                 {
-                    AnimatedPrefabData animData = new AnimatedPrefabData(spawnedObject, pair);
-                    animatedPrefabs.Add(animData);
+                    prefab.SetActive(true);
                 }
             }
             
-            spawnedPrefabs[trackedImage] = spawnedObjects;
+            // Stop eventuele hide timer
+            if (hideCoroutines.ContainsKey(trackedImage))
+            {
+                StopCoroutine(hideCoroutines[trackedImage]);
+                hideCoroutines.Remove(trackedImage);
+            }
             
-            Debug.Log($"Spawned {pairs.Count} prefab(s) for image: {imageName}");
+            return;
+        }
+        
+        Debug.Log($"Attempting to handle tracked image: {imageName}");
+        
+        if (imageNameToPrefabPairs.TryGetValue(imageName, out List<ImagePrefabPair> pairs))
+        {
+            // Registreer deze image als actief
+            activeTrackedImages[imageName] = trackedImage;
+            StartCoroutine(SafeInstantiatePrefabs(trackedImage, pairs, imageName));
         }
         else
         {
@@ -180,36 +197,342 @@ public class MultiPrefabImageTracker : MonoBehaviour
         }
     }
 
+    // Veilige instantiatie van prefabs op de main thread
+    private System.Collections.IEnumerator SafeInstantiatePrefabs(ARTrackedImage trackedImage, List<ImagePrefabPair> pairs, string imageName)
+    {
+        yield return null; // Wacht een frame om zeker te zijn dat we op de main thread zijn
+        
+        List<GameObject> spawnedObjects = new List<GameObject>();
+        bool hasError = false;
+        
+        foreach (var pair in pairs)
+        {
+            if (pair.prefab == null)
+            {
+                Debug.LogWarning($"Prefab is null for image: {imageName}");
+                continue;
+            }
+            
+            GameObject spawnedObject = null;
+            
+            try
+            {
+                spawnedObject = Instantiate(pair.prefab);
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError($"Error instantiating prefab for image {imageName}: {ex.Message}");
+                hasError = true;
+                continue;
+            }
+            
+            if (spawnedObject == null)
+            {
+                Debug.LogError($"Failed to instantiate prefab for image: {imageName}");
+                continue;
+            }
+            
+            try
+            {
+                // Zet de prefab op de juiste positie relatief tot de tracked image
+                spawnedObject.transform.SetParent(trackedImage.transform, false);
+                spawnedObject.transform.localPosition = pair.positionOffset;
+                spawnedObject.transform.localRotation = Quaternion.Euler(pair.rotationOffset);
+                spawnedObject.transform.localScale = pair.scale;
+                
+                // Ontkoppel van de tracked image en zet in wereldcoördinaten voor vaste positie
+                Vector3 worldPosition = spawnedObject.transform.position;
+                Quaternion worldRotation = spawnedObject.transform.rotation;
+                Vector3 worldScale = spawnedObject.transform.lossyScale;
+                
+                spawnedObject.transform.SetParent(null); // Ontkoppel van tracked image
+                spawnedObject.transform.position = worldPosition;
+                spawnedObject.transform.rotation = worldRotation;
+                spawnedObject.transform.localScale = worldScale;
+                
+                // Deactiveer Canvas componenten tijdelijk om DPI errors te voorkomen
+                Canvas[] canvases = spawnedObject.GetComponentsInChildren<Canvas>();
+                foreach (var canvas in canvases)
+                {
+                    if (canvas != null)
+                    {
+                        canvas.enabled = false;
+                        StartCoroutine(ReenableCanvasAfterFrame(canvas));
+                    }
+                }
+                
+                spawnedObjects.Add(spawnedObject);
+                
+                if (pair.enableBobbing || pair.enableRotation)
+                {
+                    AnimatedPrefabData animData = new AnimatedPrefabData(spawnedObject, pair);
+                    animatedPrefabs.Add(animData);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError($"Error configuring spawned object for image {imageName}: {ex.Message}");
+                if (spawnedObject != null)
+                {
+                    Destroy(spawnedObject);
+                }
+                hasError = true;
+            }
+            
+            yield return null; // Wacht een frame tussen elke instantiatie
+        }
+        
+        if (hasError)
+        {
+            // Cleanup bij errors
+            foreach (var obj in spawnedObjects)
+            {
+                if (obj != null)
+                {
+                    Destroy(obj);
+                }
+            }
+            Debug.LogError($"Failed to safely instantiate all prefabs for image: {imageName}");
+        }
+        else
+        {
+            spawnedPrefabs[trackedImage] = spawnedObjects;
+            
+            // Voeg ook toe aan fixed prefabs voor vaste posities
+            if (!fixedPrefabs.ContainsKey(imageName))
+            {
+                fixedPrefabs[imageName] = new List<GameObject>();
+            }
+            fixedPrefabs[imageName].AddRange(spawnedObjects);
+            
+            Debug.Log($"Safely spawned {pairs.Count} prefab(s) for image: {imageName} at fixed world positions");
+        }
+    }
+
+    // Heractiveer Canvas na een frame om threading issues te voorkomen
+    private System.Collections.IEnumerator ReenableCanvasAfterFrame(Canvas canvas)
+    {
+        yield return new WaitForEndOfFrame();
+        if (canvas != null)
+        {
+            canvas.enabled = true;
+        }
+    }
+
     // Toon of verberg objecten afhankelijk van of de image nog zichtbaar is
     void UpdateTrackedImage(ARTrackedImage trackedImage)
     {
-        if (spawnedPrefabs.TryGetValue(trackedImage, out List<GameObject> spawnedObjects))
+        string imageName = trackedImage.referenceImage != null ? trackedImage.referenceImage.name : "Unknown";
+        
+        // Gebruik fixed prefabs in plaats van spawned prefabs voor consistentie
+        if (fixedPrefabs.ContainsKey(imageName))
         {
-            bool isTracking = trackedImage.trackingState == TrackingState.Tracking; // Is de image nog zichtbaar?
-            foreach (var spawnedObject in spawnedObjects)
+            bool isTracking = trackedImage.trackingState == TrackingState.Tracking;
+            Debug.Log($"UpdateTrackedImage for {imageName}: isTracking = {isTracking}, fixed prefabs count = {fixedPrefabs[imageName].Count}");
+            
+            if (isTracking)
             {
-                if (spawnedObject != null)
+                // Image wordt getrackt - toon objecten en stop eventuele hide timer
+                foreach (var prefab in fixedPrefabs[imageName])
                 {
-                    spawnedObject.SetActive(isTracking); // Toon/verberg het object
+                    if (prefab != null)
+                    {
+                        prefab.SetActive(true);
+                    }
+                }
+                
+                // Stop de hide coroutine als die loopt
+                if (hideCoroutines.TryGetValue(trackedImage, out Coroutine hideCoroutine))
+                {
+                    if (hideCoroutine != null)
+                    {
+                        StopCoroutine(hideCoroutine);
+                    }
+                    hideCoroutines.Remove(trackedImage);
+                    Debug.Log($"Stopped hide timer for {imageName}");
                 }
             }
+            else
+            {
+                // Image wordt niet meer getrackt - start hide timer als die nog niet loopt
+                if (!hideCoroutines.ContainsKey(trackedImage))
+                {
+                    Debug.Log($"Starting hide timer for {imageName}");
+                    Coroutine hideCoroutine = StartCoroutine(HideFixedObjectsAfterDelay(imageName));
+                    hideCoroutines[trackedImage] = hideCoroutine;
+                }
+            }
+        }
+        else
+        {
+            Debug.Log($"UpdateTrackedImage for {imageName}: No fixed prefabs found for this image");
+            
+            // Controleer of er prefabs zijn voor deze image naam maar met een ander ARTrackedImage object
+            if (activeTrackedImages.ContainsKey(imageName))
+            {
+                Debug.Log($"Found active image {imageName} with different ARTrackedImage object, treating as new detection");
+                HandleTrackedImage(trackedImage);
+            }
+            else
+            {
+                Debug.Log($"No active image found for {imageName}, treating as completely new detection");
+                HandleTrackedImage(trackedImage);
+            }
+        }
+    }
+
+    // Coroutine om objecten te verbergen en verwijderen na een vertraging
+    private IEnumerator HideObjectsAfterDelay(ARTrackedImage trackedImage, List<GameObject> spawnedObjects)
+    {
+        yield return new WaitForSeconds(hideDelay);
+        
+        // Verwijder de objecten definitief na de vertraging
+        foreach (var spawnedObject in spawnedObjects)
+        {
+            if (spawnedObject != null)
+            {
+                // Deactiveer Canvas componenten voor veilige verwijdering
+                Canvas[] canvases = spawnedObject.GetComponentsInChildren<Canvas>();
+                foreach (var canvas in canvases)
+                {
+                    if (canvas != null)
+                    {
+                        canvas.enabled = false;
+                    }
+                }
+                
+                // Verwijder uit animatie lijst
+                animatedPrefabs.RemoveAll(data => data.gameObject == spawnedObject);
+                
+                // Vernietig het object
+                Destroy(spawnedObject);
+            }
+        }
+        
+        // Verwijder de tracked image uit de spawned prefabs dictionary
+        spawnedPrefabs.Remove(trackedImage);
+        
+        // Verwijder de coroutine uit de dictionary
+        hideCoroutines.Remove(trackedImage);
+        
+        // Verwijder uit actieve images zodat nieuwe spawns mogelijk zijn
+        string imageName = trackedImage.referenceImage != null ? trackedImage.referenceImage.name : "Unknown";
+        bool removed = activeTrackedImages.Remove(imageName);
+        
+        Debug.Log($"Objects completely removed after {hideDelay} seconds for tracked image: {imageName}. Removed from active images: {removed}. Active images count: {activeTrackedImages.Count}. Ready for new spawn.");
+    }
+
+    // Coroutine om fixed objects te verbergen en verwijderen na een vertraging
+    private IEnumerator HideFixedObjectsAfterDelay(string imageName)
+    {
+        yield return new WaitForSeconds(hideDelay);
+        
+        if (fixedPrefabs.ContainsKey(imageName))
+        {
+            // Verwijder de fixed objects definitief na de vertraging
+            foreach (var fixedObject in fixedPrefabs[imageName])
+            {
+                if (fixedObject != null)
+                {
+                    // Deactiveer Canvas componenten voor veilige verwijdering
+                    Canvas[] canvases = fixedObject.GetComponentsInChildren<Canvas>();
+                    foreach (var canvas in canvases)
+                    {
+                        if (canvas != null)
+                        {
+                            canvas.enabled = false;
+                        }
+                    }
+                    
+                    // Verwijder uit animatie lijst
+                    animatedPrefabs.RemoveAll(data => data.gameObject == fixedObject);
+                    
+                    // Vernietig het object
+                    Destroy(fixedObject);
+                }
+            }
+            
+            // Verwijder uit fixed prefabs dictionary
+            fixedPrefabs.Remove(imageName);
+            
+            // Verwijder uit actieve images
+            activeTrackedImages.Remove(imageName);
+            
+            // Cleanup hide coroutines
+            var keysToRemove = new List<ARTrackedImage>();
+            foreach (var kvp in hideCoroutines)
+            {
+                string trackingImageName = kvp.Key.referenceImage != null ? kvp.Key.referenceImage.name : "Unknown";
+                if (trackingImageName == imageName)
+                {
+                    keysToRemove.Add(kvp.Key);
+                }
+            }
+            
+            foreach (var key in keysToRemove)
+            {
+                hideCoroutines.Remove(key);
+                if (spawnedPrefabs.ContainsKey(key))
+                {
+                    spawnedPrefabs.Remove(key);
+                }
+            }
+            
+            Debug.Log($"Fixed objects completely removed after {hideDelay} seconds for image: {imageName}. Ready for new spawn.");
         }
     }
 
     // Verwijder alle objecten wanneer een image niet meer herkend wordt
     void RemoveTrackedImage(ARTrackedImage trackedImage)
     {
+        // Stop eventuele hide coroutine
+        if (hideCoroutines.TryGetValue(trackedImage, out Coroutine hideCoroutine))
+        {
+            if (hideCoroutine != null)
+            {
+                StopCoroutine(hideCoroutine);
+            }
+            hideCoroutines.Remove(trackedImage);
+        }
+        
         if (spawnedPrefabs.TryGetValue(trackedImage, out List<GameObject> spawnedObjects))
         {
-            foreach (var spawnedObject in spawnedObjects)
+            try
             {
-                if (spawnedObject != null)
+                foreach (var spawnedObject in spawnedObjects)
                 {
-                    animatedPrefabs.RemoveAll(data => data.gameObject == spawnedObject); // Verwijder uit animatie lijst
-                    Destroy(spawnedObject); // Verwijder het object uit de scene
+                    if (spawnedObject != null)
+                    {
+                        // Deactiveer Canvas componenten voor veilige verwijdering
+                        Canvas[] canvases = spawnedObject.GetComponentsInChildren<Canvas>();
+                        foreach (var canvas in canvases)
+                        {
+                            if (canvas != null)
+                            {
+                                canvas.enabled = false;
+                            }
+                        }
+                        
+                        animatedPrefabs.RemoveAll(data => data.gameObject == spawnedObject);
+                        Destroy(spawnedObject);
+                    }
+                }
+                spawnedPrefabs.Remove(trackedImage);
+                
+                // Verwijder ook uit actieve images en fixed prefabs
+                string imageName = trackedImage.referenceImage != null ? trackedImage.referenceImage.name : "Unknown";
+                activeTrackedImages.Remove(imageName);
+                
+                // Cleanup fixed prefabs als ze bestaan
+                if (fixedPrefabs.ContainsKey(imageName))
+                {
+                    fixedPrefabs.Remove(imageName);
                 }
             }
-            spawnedPrefabs.Remove(trackedImage); // Vergeet deze image
+            catch (System.Exception ex)
+            {
+                Debug.LogError($"Error removing tracked image objects: {ex.Message}");
+            }
         }
     }
 
