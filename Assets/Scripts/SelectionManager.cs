@@ -11,33 +11,49 @@ public class SelectionManager : MonoBehaviour
 {
     public GameObject canvasPrefab;
     public Camera mainCamera;
-    public GameObject lastClickedObject = null;
+    public GameObject lastClickedObject;
 
-    private void Start()
+    void Start()
     {
-
+        lastClickedObject = null;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        Vector2 touchPos;
+
+        //  Check mobiele touchscreen
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
         {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
+        }
+        // Fallback voor Editor testing
+        else if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            touchPos = Mouse.current.position.ReadValue();
+        }
+        else
+        {
+            return;
+        }
+
+        Ray ray = mainCamera.ScreenPointToRay(touchPos);
+        Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 2f);
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            GameObject clicked = hit.collider.gameObject;
+
+            if (lastClickedObject != clicked)
             {
-                GameObject clicked = hit.collider.gameObject;
-
-                if (lastClickedObject != clicked)
-                {
-                    if (lastClickedObject != null)
-                        DeleteText(lastClickedObject);
-
-                    lastClickedObject = clicked;
-                    SummonText(clicked);
-                }
+                if (lastClickedObject != null) DeleteText(lastClickedObject);
+                lastClickedObject = clicked;
+                SummonText(clicked);
             }
         }
+        
     }
+
     void SummonText(GameObject gameObject)
     {
         GameObject canvasInstance = Instantiate(canvasPrefab, gameObject.transform);
