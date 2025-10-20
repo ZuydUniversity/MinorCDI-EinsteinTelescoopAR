@@ -40,7 +40,10 @@ public class MovementManager : MonoBehaviour
         euler.y = mainCamera.transform.eulerAngles.y;
         xrOrigin.transform.eulerAngles = euler;
     }
-
+    /// <summary>
+    /// Beweegt speler naar een movementpoint (dit wordt opgeroepen wanneer je op een pijltje klikt)
+    /// </summary>
+    /// <param name="newPoint"></param>
     public void MoveToPoint(MovementPoint newPoint)
     {
         currentPoint = newPoint;
@@ -52,7 +55,10 @@ public class MovementManager : MonoBehaviour
             Destroy(arrow);
         }
     }
-
+    /// <summary>
+    /// maakt nieuwe pijltjes om op te klikken op basis van de connected movementpoints
+    /// </summary>
+    /// <param name="target"></param>
     private void CreateArrowTo(MovementPoint target)
     {
         var arrow = Instantiate(arrowButtonPrefab, target.transform.position, Quaternion.identity);
@@ -74,7 +80,13 @@ public class MovementManager : MonoBehaviour
             }
         }
     }
-    
+    /// <summary>
+    /// zorgt dat je wat geleidelijker beweegt. Mooie overgang ipv teleport
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <param name="newPoint"></param>
+    /// <param name="duration"></param>
+    /// <returns></returns>
     private IEnumerator SmoothMove(Transform obj, MovementPoint newPoint, float duration)
         {
             Vector3 startPos = obj.position;

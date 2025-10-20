@@ -9,11 +9,7 @@ public class MovementPoint : MonoBehaviour
 
     private void Start()
     {
-        Canvas canvas = GetComponent<Canvas>();
-        if (canvas.renderMode == RenderMode.WorldSpace || canvas.renderMode == RenderMode.ScreenSpaceCamera)
-        {
-            canvas.worldCamera = Camera.main;
-        }
+
     }
 
 }
