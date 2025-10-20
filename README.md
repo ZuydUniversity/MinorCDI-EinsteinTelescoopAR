@@ -1,6 +1,9 @@
 # MinorCDI-EinsteinTelescoopAR
 
-Een AR applicatie die uitleg geeft over wat de einstein telescoop is, zijn werking en de invloed die deze heeft.
+De Einstein Telescoop AR-omgeving is ontwikkelt tijdens de minor CDI samen met lectoraat Data Intelligence.
+
+Het project richt zich op het creëren van een AR-ervaring in Unity, waarmee gebruikers op een toegankelijke manier kunnen ontdekken wat de Einstein Telescoop is, hoe deze werkt en waarom de mogelijke bouw in Limburg van groot belang is.
+
 
 ## Benodigheden
 
