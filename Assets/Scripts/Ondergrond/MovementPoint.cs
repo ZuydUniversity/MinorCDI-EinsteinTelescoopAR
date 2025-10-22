@@ -7,10 +7,5 @@ public class MovementPoint : MonoBehaviour
     public List<MovementPoint> connectedPoints = new List<MovementPoint>();
 
 
-    private void Start()
-    {
-
-    }
-
 }
 
