@@ -6,73 +6,66 @@ public class ARObjectSceneSwitcher : MonoBehaviour
 {
     [SerializeField] private string targetSceneName = "LiftSceneUI";
     [SerializeField] private float maxRaycastDistance = 50f;
-    
+    [SerializeField] private Collider targetCollider;
+
     private Camera mainCamera;
-    private Collider objectCollider;
-    
-    void Start()
+
+    void Awake()
     {
         mainCamera = Camera.main;
-        objectCollider = GetComponent<Collider>();
-        
-        if (objectCollider == null)
+
+        // If not assigned, try to use a collider on this object only (NOT children/siblings)
+        if (targetCollider == null)
         {
-            BoxCollider collider = gameObject.AddComponent<BoxCollider>();
-            
-            Renderer[] renderers = GetComponentsInChildren<Renderer>();
-            if (renderers.Length > 0)
+            if (!TryGetComponent(out targetCollider))
             {
-                Bounds bounds = renderers[0].bounds;
-                for (int i = 1; i < renderers.Length; i++)
+                // Add a BoxCollider sized to THIS object's own renderer(s), not all children in the prefab.
+                var box = gameObject.AddComponent<BoxCollider>();
+                var renderers = GetComponents<Renderer>(); // <- note: not InChildren
+                if (renderers.Length > 0)
                 {
-                    bounds.Encapsulate(renderers[i].bounds);
+                    Bounds b = renderers[0].bounds;
+                    for (int i = 1; i < renderers.Length; i++) b.Encapsulate(renderers[i].bounds);
+                    box.center = transform.InverseTransformPoint(b.center);
+                    box.size = transform.InverseTransformVector(b.size);
                 }
-                
-                collider.center = transform.InverseTransformPoint(bounds.center);
-                collider.size = bounds.size;
+                targetCollider = box;
             }
-            
-            objectCollider = collider;
         }
     }
-    
+
     void Update()
     {
         if (mainCamera == null)
+        {
             mainCamera = Camera.main;
-            
+        }
+
         if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
         {
-            Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
-            CheckTouch(touchPosition);
+            CheckTouch(Touchscreen.current.primaryTouch.position.ReadValue());
         }
-        
-        #if UNITY_EDITOR
+
+    #if UNITY_EDITOR
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
-            Vector2 mousePosition = Mouse.current.position.ReadValue();
-            CheckTouch(mousePosition);
+            CheckTouch(Mouse.current.position.ReadValue());
         }
-        #endif
+    #endif
     }
-    
-    void CheckTouch(Vector2 screenPosition)
+
+    void CheckTouch(Vector2 screenPos)
     {
-        if (mainCamera == null)
-            return;
-        
-        Ray ray = mainCamera.ScreenPointToRay(screenPosition);
-        RaycastHit hit;
-        
-        if (Physics.Raycast(ray, out hit, maxRaycastDistance))
+        if (mainCamera != null && targetCollider != null)
         {
-            if (hit.collider == objectCollider || hit.collider.transform.IsChildOf(transform))
+            Ray ray = mainCamera.ScreenPointToRay(screenPos);
+            if (Physics.Raycast(ray, out var hit, maxRaycastDistance) && hit.collider == targetCollider)
             {
                 LoadTargetScene();
             }
         }
     }
-    
+
     void LoadTargetScene()
     {
         if (!string.IsNullOrEmpty(targetSceneName))
