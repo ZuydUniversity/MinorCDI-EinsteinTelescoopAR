@@ -4,24 +4,37 @@ using UnityEngine.InputSystem;
 
 public class ARObjectSceneSwitcher : MonoBehaviour
 {
-    [SerializeField] private string targetSceneName = "LiftSceneUI";
+    /// <summary>
+    /// The name of the scene that is loaded
+    /// </summary>
+    [SerializeField] private string targetSceneName = "BovengrondScene";
+    /// <summary>
+    /// The maximum distance at which a raycast can be performed
+    /// </summary>
     [SerializeField] private float maxRaycastDistance = 50f;
+    /// <summary>
+    /// The collider that is linked to the object for touch interaction
+    /// </summary>
     [SerializeField] private Collider targetCollider;
 
+    /// <summary>
+    /// AR Camera used for raycasting
+    /// </summary>
     private Camera mainCamera;
 
+    /// <summary>
+    /// Initializes camera and creates a BoxCollider for the specific prefab
+    /// </summary>
     void Awake()
     {
         mainCamera = Camera.main;
 
-        // If not assigned, try to use a collider on this object only (NOT children/siblings)
         if (targetCollider == null)
         {
             if (!TryGetComponent(out targetCollider))
             {
-                // Add a BoxCollider sized to THIS object's own renderer(s), not all children in the prefab.
                 var box = gameObject.AddComponent<BoxCollider>();
-                var renderers = GetComponents<Renderer>(); // <- note: not InChildren
+                var renderers = GetComponents<Renderer>();
                 if (renderers.Length > 0)
                 {
                     Bounds b = renderers[0].bounds;
@@ -34,6 +47,9 @@ public class ARObjectSceneSwitcher : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Check if it runs on phone/tablet or in Unity Editor and use the appropriate touch
+    /// </summary>
     void Update()
     {
         if (mainCamera == null)
@@ -54,6 +70,9 @@ public class ARObjectSceneSwitcher : MonoBehaviour
     #endif
     }
 
+    /// <summary>
+    /// Checks whether the touch/raycast hits a Collider that is set
+    /// </summary>
     void CheckTouch(Vector2 screenPos)
     {
         if (mainCamera != null && targetCollider != null)
@@ -66,6 +85,9 @@ public class ARObjectSceneSwitcher : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Load the targetScene that has been set
+    /// </summary>
     void LoadTargetScene()
     {
         if (!string.IsNullOrEmpty(targetSceneName))
