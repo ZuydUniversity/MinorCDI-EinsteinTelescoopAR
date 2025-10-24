@@ -23,6 +23,11 @@ public class ARObjectSceneSwitcher : MonoBehaviour
     private Camera mainCamera;
 
     /// <summary>
+    /// The name of the main scene that may not be unloaded.
+    /// </summary>
+    public string mainSceneName = "ElevatorScene";
+
+    /// <summary>
     /// Initializes camera and creates a BoxCollider for the specific prefab
     /// </summary>
     void Awake()
@@ -92,7 +97,16 @@ public class ARObjectSceneSwitcher : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(targetSceneName))
         {
-            SceneManager.LoadScene(targetSceneName);
+            for (int i = 0; i < SceneManager.sceneCount; i++) 
+            {
+                Scene scene = SceneManager.GetSceneAt(i);
+                if (scene.name != mainSceneName) 
+                {
+                    SceneManager.UnloadSceneAsync(scene);
+                }
+            }
+
+            SceneManager.LoadSceneAsync(targetSceneName, LoadSceneMode.Additive);
         }
     }
 }
