@@ -6,17 +6,78 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.SceneManagement;
 
 public class SelectionManager : MonoBehaviour
 {
     public GameObject canvasPrefab;
     public Camera mainCamera;
     public GameObject lastClickedObject;
+    public GameObject einsteinModel;
 
     void Start()
     {
         lastClickedObject = null;
     }
+
+    /// <summary>
+    /// Find the einstein telescope once the scene has loaded 
+    /// </summary>
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+   private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Above Ground")
+        {
+            Debug.Log("Above Ground scene loaded — waiting to find EinsteinTelescoop...");
+            StartCoroutine(FindEinsteinWhenReady());
+        }
+    }
+
+    private IEnumerator FindEinsteinWhenReady()
+    {
+        float timer = 0f;
+
+        while (einsteinModel == null && timer < 3f)
+        {
+            for (int i = 0; i < SceneManager.sceneCount; i++)
+            {
+                Scene s = SceneManager.GetSceneAt(i);
+                if (s.name == "Above Ground")
+                {
+                    foreach (GameObject rootObj in s.GetRootGameObjects())
+                    {
+                        if (rootObj.name == "EinsteinTelescoop")
+                        {
+                            einsteinModel = rootObj;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (einsteinModel != null)
+            {
+                einsteinModel.SetActive(false);
+                Debug.Log("✅ EinsteinTelescoop found and linked automatically (via additive scene search)!");
+                yield break;
+            }
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        Debug.LogWarning("⚠️ EinsteinTelescoop still not found after waiting!");
+    }
+
     /// <summary>
     /// Checkt elke frame of er geklikt wordt op het scherm
     /// </summary>
@@ -47,6 +108,7 @@ public class SelectionManager : MonoBehaviour
             if (clicked.GetComponent<ClickableObject>().isLever)
             {
                 clicked.GetComponent<ClickableObject>().ToggleLever();
+                ShowEinsteinModel();
             }
             else
             {
@@ -103,9 +165,35 @@ public class SelectionManager : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Toggle the Einstein telescope on/off when the lever is clicked.
+    /// </summary>
+    void ShowEinsteinModel()
+    {
+        if (einsteinModel != null)
+        {
+            bool newState = !einsteinModel.activeSelf; // invert current state
+            einsteinModel.SetActive(newState);
+
+            if (newState)
+            {
+                Debug.Log("EinsteinTelescoop activated!");
+            }
+            else
+            {
+                Debug.Log("EinsteinTelescoop deactivated!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Einstein model reference is missing in SelectionManager!");
+        }
+    }
+
     /// <summary>
     /// is uitleg echt nodig??
-    /// </summary>
+    /// </summary>  
     /// <param name="gameObject"></param>
     void DeleteText(GameObject gameObject)
     {
