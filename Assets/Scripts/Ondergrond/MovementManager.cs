@@ -7,14 +7,33 @@ using UnityEngine.XR.ARFoundation;
 
 public class MovementManager : MonoBehaviour
 {
+    /// <summary>
+    /// player, gets moved
+    /// </summary>
     public GameObject xrOrigin; 
+    /// <summary>
+    /// maincamera used for raytracing tap detection
+    /// </summary>
     public Camera mainCamera;
+    /// <summary>
+    /// prefab for spawning arrows indication where you can move
+    /// </summary>
     public GameObject arrowButtonPrefab;
-
+    /// <summary>
+    /// used to check where player can move to
+    /// </summary>
     private Dictionary<string, MovementPoint> movementPoints = new();
+    /// <summary>
+    /// current movement point the user is at
+    /// </summary>
     private MovementPoint currentPoint;
+    /// <summary>
+    /// fixed position used to move player, movement is disabled 
+    /// </summary>
     private Vector3 fixedPosition;
-
+    /// <summary>
+    /// Unity start function, sets xrOrigin if null, fills movementPoints Dictionary, moves player to the start
+    /// </summary>
     void Start()
     {
         if (xrOrigin == null)
@@ -32,6 +51,9 @@ public class MovementManager : MonoBehaviour
             MoveToPoint(start);
         }
     }
+    /// <summary>
+    /// Unity Lateupdate function, makes sure the xrOrigin rotates with the main camera
+    /// </summary>
     private void LateUpdate()
     {
         xrOrigin.transform.localPosition = fixedPosition;
@@ -41,7 +63,7 @@ public class MovementManager : MonoBehaviour
         xrOrigin.transform.eulerAngles = euler;
     }
     /// <summary>
-    /// Beweegt speler naar een movementpoint (dit wordt opgeroepen wanneer je op een pijltje klikt)
+    /// Moves the player to a movementpoint (called when a movementarrow is tapped)
     /// </summary>
     /// <param name="newPoint"></param>
     public void MoveToPoint(MovementPoint newPoint)
@@ -56,7 +78,7 @@ public class MovementManager : MonoBehaviour
         }
     }
     /// <summary>
-    /// maakt nieuwe pijltjes om op te klikken op basis van de connected movementpoints
+    /// summmon movementarrows based on possible movement directions
     /// </summary>
     /// <param name="target"></param>
     private void CreateArrowTo(MovementPoint target)
@@ -65,7 +87,7 @@ public class MovementManager : MonoBehaviour
         arrow.tag = "MoveArrow";
         arrow.GetComponent<Canvas>().worldCamera = Camera.main;
 
-        // zodat de pijl altijd naar de camera kijkt
+        // arrow pointed away from user
         Vector3 cameraPosition = mainCamera.transform.position;
         cameraPosition.y = arrow.transform.position.y; 
         arrow.transform.LookAt(cameraPosition);
@@ -81,7 +103,7 @@ public class MovementManager : MonoBehaviour
         }
     }
     /// <summary>
-    /// zorgt dat je wat geleidelijker beweegt. Mooie overgang ipv teleport
+    /// makes the player move more smoothly instead of teleporting
     /// </summary>
     /// <param name="obj"></param>
     /// <param name="newPoint"></param>
@@ -100,7 +122,7 @@ public class MovementManager : MonoBehaviour
 
             fixedPosition = newPoint.transform.position;
 
-            // Nieuwe pijlen
+            // New arrows
             foreach (var target in newPoint.connectedPoints)
             {
                 CreateArrowTo(target);
