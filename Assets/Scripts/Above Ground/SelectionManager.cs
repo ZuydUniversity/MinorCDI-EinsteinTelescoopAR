@@ -33,7 +33,7 @@ public class SelectionManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-   private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "Above Ground")
         {
@@ -42,6 +42,12 @@ public class SelectionManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Waits until the "Above Ground" scene has fully loaded and searches for 
+    /// the EinsteinTelescoop object within it. 
+    /// This ensures the telescope model is properly found even when the scene 
+    /// is loaded additively and objects are not immediately available.
+    /// </summary>
     private IEnumerator FindEinsteinWhenReady()
     {
         float timer = 0f;
@@ -79,18 +85,18 @@ public class SelectionManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Checkt elke frame of er geklikt wordt op het scherm
+    /// Checks if screen is tapped
     /// </summary>
     void Update()
     {
         Vector2 touchPos;
 
-        //  Check mobiele touchscreen
+        //  Check mobile touchscreen
         if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
         {
             touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
         }
-        // Fallback voor Editor testing
+        // Fallback for Editor testing
         else if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
             touchPos = Mouse.current.position.ReadValue();
@@ -125,7 +131,7 @@ public class SelectionManager : MonoBehaviour
 
     }
     /// <summary>
-    /// spawnt tekst wanneer op een clickable object geklikt wordt dat geen lever is
+    /// spawns text when a clickable object is tapped (and its not a lever)
     /// </summary>
     /// <param name="gameObject"></param>
     void SummonText(GameObject gameObject)
@@ -192,8 +198,8 @@ public class SelectionManager : MonoBehaviour
     }
 
     /// <summary>
-    /// is uitleg echt nodig??
-    /// </summary>  
+    /// Deletes text canvas
+    /// </summary>
     /// <param name="gameObject"></param>
     void DeleteText(GameObject gameObject)
     {
@@ -207,7 +213,7 @@ public class SelectionManager : MonoBehaviour
     }
 }
 /// <summary>
-/// past text size aan zodat het altijd binnen de lijntjes past
+/// Autofits text in text canvas
 /// </summary>
 public static class TextResizer
 {
