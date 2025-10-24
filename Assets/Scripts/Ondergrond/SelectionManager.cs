@@ -9,27 +9,44 @@ using UnityEngine.XR.ARSubsystems;
 
 public class SelectionManager : MonoBehaviour
 {
+    /// <summary>
+    /// Canvas in which the text will be placed
+    /// </summary>
     public GameObject canvasPrefab;
+    /// <summary>
+    /// maincamera used for raycasting for tap detection
+    /// </summary>
     public Camera mainCamera;
+    /// <summary>
+    /// object last clicked used for keeping open the text canvas
+    /// </summary>
     public GameObject lastClickedObject;
-
+    /// <summary>
+    /// unity start function, sets lastclickedobject to null
+    /// </summary>
     void Start()
     {
         lastClickedObject = null;
     }
     /// <summary>
-    /// Checkt elke frame of er geklikt wordt op het scherm
+    /// Checks each frame if the screen is tapped
     /// </summary>
     void Update()
     {
+        CheckScreenTap();
+    }
+    /// <summary>
+    /// Checks if screen is tapped
+    /// </summary>
+    void CheckScreenTap()
+    {
         Vector2 touchPos;
-
-        //  Check mobiele touchscreen
+        //  Check for touchscreen
         if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
         {
             touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
         }
-        // Fallback voor Editor testing
+        // Fallback for Editor testing
         else if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
             touchPos = Mouse.current.position.ReadValue();
@@ -53,18 +70,15 @@ public class SelectionManager : MonoBehaviour
             {
                 if (lastClickedObject != clicked)
                 {
-                    if (lastClickedObject != null) DeleteText(lastClickedObject);
+                    if (lastClickedObject != null) { DeleteText(lastClickedObject); }
                     lastClickedObject = clicked;
                     SummonText(clicked);
                 }
             }
-
-
         }
-
     }
     /// <summary>
-    /// spawnt tekst wanneer op een clickable object geklikt wordt dat geen lever is
+    /// spawns text when a clickable object is tapped (and its not a lever)
     /// </summary>
     /// <param name="gameObject"></param>
     void SummonText(GameObject gameObject)
@@ -105,7 +119,7 @@ public class SelectionManager : MonoBehaviour
         }
     }
     /// <summary>
-    /// is uitleg echt nodig??
+    /// Deletes text canvas
     /// </summary>
     /// <param name="gameObject"></param>
     void DeleteText(GameObject gameObject)
@@ -120,16 +134,14 @@ public class SelectionManager : MonoBehaviour
     }
 }
 /// <summary>
-/// past text size aan zodat het altijd binnen de lijntjes past
+/// Autofits text in text canvas
 /// </summary>
 public static class TextResizer
 {
     public static void FitText(Text textComponent, int maxFontSize = 300, int minFontSize = 100)
     {
         RectTransform rect = textComponent.GetComponent<RectTransform>();
-        if (rect == null) return;
-
-        // Start van max grootte naar beneden werken tot het past
+        if (rect == null) { return; }
         textComponent.resizeTextForBestFit = true;
         textComponent.resizeTextMaxSize = maxFontSize;
         textComponent.resizeTextMinSize = minFontSize;
