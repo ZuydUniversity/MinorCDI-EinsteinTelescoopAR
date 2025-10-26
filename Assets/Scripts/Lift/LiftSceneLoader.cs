@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Handles the loading of the scenes and centers them around the lift.
+/// </summary>
 public class LiftSceneLoader : MonoBehaviour
 {
     /// <summary>
@@ -31,6 +34,7 @@ public class LiftSceneLoader : MonoBehaviour
 
     /// <summary>
     /// Executes when scene is being loaded.
+    /// Centers newly loaded scene around lift.
     /// </summary>
     /// <param name="scene">The scene that is being loaded</param>
     /// <param name="mode">The mode that the scene is being loaded with</param>
