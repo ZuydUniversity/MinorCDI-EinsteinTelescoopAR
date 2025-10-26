@@ -9,7 +9,7 @@ public class StarSpawner : MonoBehaviour
 {
 
     /// <summary>
-    /// The start object to spawn.
+    /// The star object to spawn.
     /// </summary>
     public GameObject star;
     /// <summary>
