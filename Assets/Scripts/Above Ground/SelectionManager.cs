@@ -10,11 +10,25 @@ using UnityEngine.SceneManagement;
 
 public class SelectionManager : MonoBehaviour
 {
-    public GameObject canvasPrefab;
-    public Camera mainCamera;
-    public GameObject lastClickedObject;
+    /// <summary>
+    /// GameObject of the telescope model. used to toggle xray on or off
+    /// </summary>
     public GameObject einsteinModel;
-
+    /// <summary>
+    /// Canvas in which the text will be placed
+    /// </summary>
+    public GameObject canvasPrefab;
+    /// <summary>
+    /// maincamera used for raycasting for tap detection
+    /// </summary>
+    public Camera mainCamera;
+    /// <summary>
+    /// object last clicked used for keeping open the text canvas
+    /// </summary>
+    public GameObject lastClickedObject;
+    /// <summary>
+    /// unity start function, sets lastclickedobject to null
+    /// </summary>
     void Start()
     {
         lastClickedObject = null;
@@ -85,13 +99,20 @@ public class SelectionManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Checks if screen is tapped
+    /// Checks each frame if the screen is tapped
     /// </summary>
     void Update()
     {
-        Vector2 touchPos;
+        CheckScreenTap();
+    }
 
-        //  Check mobile touchscreen
+    /// <summary>
+    /// Checks if screen is tapped
+    /// </summary>
+    void CheckScreenTap()
+    {
+        Vector2 touchPos;
+        //  Check for touchscreen
         if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
         {
             touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
@@ -125,10 +146,7 @@ public class SelectionManager : MonoBehaviour
                     SummonText(clicked);
                 }
             }
-
-
         }
-
     }
     /// <summary>
     /// spawns text when a clickable object is tapped (and its not a lever)
@@ -222,7 +240,6 @@ public static class TextResizer
         RectTransform rect = textComponent.GetComponent<RectTransform>();
         if (rect == null) return;
 
-        // Start van max grootte naar beneden werken tot het past
         textComponent.resizeTextForBestFit = true;
         textComponent.resizeTextMaxSize = maxFontSize;
         textComponent.resizeTextMinSize = minFontSize;
