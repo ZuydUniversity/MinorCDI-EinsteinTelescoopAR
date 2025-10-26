@@ -134,6 +134,14 @@ extern void MultiPrefabImageTracker_HandleTrackedImage_m831A01576125DF37625EC11E
 extern void MultiPrefabImageTracker_SpawnPrefabs_m07CD2F20515E1D9D2ECA794C7D73BA0E6EF0020E (void);
 extern void MultiPrefabImageTracker_Update_m8CB8F838F46358A9EBFC522267F4C3CED1068995 (void);
 extern void MultiPrefabImageTracker__ctor_m59394AC22F450B148BEF2D73E0305DA939000743 (void);
+extern void MovablePoint_Update_m35593189EA3E293B26BB539CB10545EE9064493D (void);
+extern void MovablePoint_OnDrawGizmos_m6F7CEBE2F240ADC1FB83DBE9EA0996B6B1F6656D (void);
+extern void MovablePoint_OnCameraEnter_m2BC0355A25B2AE439C530A5D13CC1CE458ABDAD4 (void);
+extern void MovablePoint_OnCameraLeave_m0927E608B420C4A17A843E222D8DB2FA22EAAC56 (void);
+extern void MovablePoint__ctor_m8DF6B4B34EA574F90B5E42145F44FC45B7757C96 (void);
+extern void MoveArrow_Start_m93D44F7A9AFBD7F5DA36866DC7545B9762054FEE (void);
+extern void MoveArrow_OnTapped_mA6846A89E38A413B5FA626FD46B32F8DAF604325 (void);
+extern void MoveArrow__ctor_m119B5FE202D8574156B619BEF26CD1D9813DDCD4 (void);
 extern void SceneTemplate_RotateCube_Update_mAF2FB34B99E325443A80D60A7EB73DC092EAE9A6 (void);
 extern void SceneTemplate_RotateCube__ctor_mC7E11C05D25FFF6F8D7EA06AAE5598B497365CD2 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (void);
@@ -141,7 +149,7 @@ extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA1
 extern void CutoutMaskUI_get_materialForRendering_m1E481305FA17C6A7AC2A91C9A8BC62CBA40EB21A (void);
 extern void CutoutMaskUI__ctor_m6E3A5D1ED0A30B06735B45E13EE7641085EADE2D (void);
 extern void CutoutMaskUI__cctor_m3FA8526EBAB8E0DFA5881AEBA12CDA8F6533303B (void);
-static Il2CppMethodPointer s_methodPointers[137] = 
+static Il2CppMethodPointer s_methodPointers[145] = 
 {
 	ARTemplateMenuManager_get_createButton_mF094F0AC7A89F9C92C57D8517519509825A145E4,
 	ARTemplateMenuManager_set_createButton_mD65905DD827D87E747095FDAF9CE38892C4340EB,
@@ -273,6 +281,14 @@ static Il2CppMethodPointer s_methodPointers[137] =
 	MultiPrefabImageTracker_SpawnPrefabs_m07CD2F20515E1D9D2ECA794C7D73BA0E6EF0020E,
 	MultiPrefabImageTracker_Update_m8CB8F838F46358A9EBFC522267F4C3CED1068995,
 	MultiPrefabImageTracker__ctor_m59394AC22F450B148BEF2D73E0305DA939000743,
+	MovablePoint_Update_m35593189EA3E293B26BB539CB10545EE9064493D,
+	MovablePoint_OnDrawGizmos_m6F7CEBE2F240ADC1FB83DBE9EA0996B6B1F6656D,
+	MovablePoint_OnCameraEnter_m2BC0355A25B2AE439C530A5D13CC1CE458ABDAD4,
+	MovablePoint_OnCameraLeave_m0927E608B420C4A17A843E222D8DB2FA22EAAC56,
+	MovablePoint__ctor_m8DF6B4B34EA574F90B5E42145F44FC45B7757C96,
+	MoveArrow_Start_m93D44F7A9AFBD7F5DA36866DC7545B9762054FEE,
+	MoveArrow_OnTapped_mA6846A89E38A413B5FA626FD46B32F8DAF604325,
+	MoveArrow__ctor_m119B5FE202D8574156B619BEF26CD1D9813DDCD4,
 	SceneTemplate_RotateCube_Update_mAF2FB34B99E325443A80D60A7EB73DC092EAE9A6,
 	SceneTemplate_RotateCube__ctor_mC7E11C05D25FFF6F8D7EA06AAE5598B497365CD2,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
@@ -286,7 +302,7 @@ static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] =
 {
 	{ 0x0600002E, Goal__ctor_m1545B6E40E910D8B0648797BF96520F84FF2FF40_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[137] = 
+static const int32_t s_InvokerIndices[145] = 
 {
 	15129,
 	11631,
@@ -420,6 +436,14 @@ static const int32_t s_InvokerIndices[137] =
 	15324,
 	15324,
 	15324,
+	15324,
+	15324,
+	15324,
+	15324,
+	15324,
+	15324,
+	15324,
+	15324,
 	26427,
 	15324,
 	15129,
@@ -430,7 +454,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	137,
+	145,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,

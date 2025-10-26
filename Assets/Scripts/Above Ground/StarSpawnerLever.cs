@@ -8,14 +8,14 @@ public class StarSpawnerLever : Lever
     /// <summary>
     /// The telescope to hide/show.
     /// </summary>
-    public StarSpawner Spawner;
+    public StarSpawner spawner;
 
     /// <summary>
     /// Hides telescope when activated.
     /// </summary>
     public override void OnActivate()
     {
-        Spawner.StartAnimation();
+        spawner.StartAnimation();
     }
 
     /// <summary>
