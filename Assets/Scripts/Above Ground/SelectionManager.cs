@@ -10,19 +10,26 @@ using UnityEngine.SceneManagement;
 
 public class SelectionManager : MonoBehaviour
 {
-    public GameObject canvasPrefab;
+    /// <summary>
+    /// maincamera used for raycasting for tap detection
+    /// </summary>
     public Camera mainCamera;
-    public GameObject lastClickedObject;
-    public GameObject einsteinModel;
+
+    /// <summary>
+    /// Checks each frame if the screen is tapped
+    /// </summary>
+    void Update()
+    {
+        CheckScreenTap();
+    }
 
     /// <summary>
     /// Checks if screen is tapped
     /// </summary>
-    void Update()
+    void CheckScreenTap()
     {
         Vector2 touchPos;
-
-        //  Check mobile touchscreen
+        //  Check for touchscreen
         if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
         {
             touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
