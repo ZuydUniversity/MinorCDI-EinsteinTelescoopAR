@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class DescriptionObject : MonoBehaviour, ITappable
 {
@@ -96,6 +97,7 @@ public class DescriptionObject : MonoBehaviour, ITappable
     private void ShowDescription() 
     {
         descriptionBoxInstance = Instantiate(descriptionBoxPrefab, gameObject.transform);
+        descriptionBoxInstance.transform.SetParent(gameObject.transform, false);
         descriptionBoxInstance.transform.position += offset;
 
         Transform descriptionBoxTitle = descriptionBoxInstance.transform.Find(titleName);
@@ -119,6 +121,8 @@ public class DescriptionObject : MonoBehaviour, ITappable
                 FitText(descriptionTextComponent);
             }
         }
+        // NEW CODE
+        StartCoroutine(SlideIn(descriptionBoxInstance.transform, 10, AnimationCurve.EaseInOut(0, 0, 1, 1)));
     }
 
     /// <summary>
@@ -142,5 +146,35 @@ public class DescriptionObject : MonoBehaviour, ITappable
         {
             textComponent.resizeTextForBestFit = true;
         }
+    }
+
+    private IEnumerator SlideIn(Transform canvasTf, float duration, AnimationCurve ease)
+    {
+        CanvasGroup cg = canvasTf.GetComponent<CanvasGroup>();
+        if (cg == null)
+        {
+            cg = canvasTf.gameObject.AddComponent<CanvasGroup>();
+        }
+
+        cg.alpha = 0f;
+        float fadeDuration = 0.65f;
+        float elapsed = 0f;
+
+
+        while (elapsed < Mathf.Max(duration, fadeDuration))
+        {
+            elapsed += Time.deltaTime;
+
+            float slideK = duration > 0f ? Mathf.Clamp01(elapsed / duration) : 1f;
+            float k = ease.Evaluate(slideK);
+
+            float fadeK = fadeDuration > 0f ? Mathf.Clamp01(elapsed / fadeDuration) : 1f;
+            cg.alpha = fadeK;
+
+            yield return null;
+        }
+
+        cg.alpha = 1f;
+
     }
 }
