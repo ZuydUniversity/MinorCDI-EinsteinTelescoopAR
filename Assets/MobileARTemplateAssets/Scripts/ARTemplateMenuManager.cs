@@ -216,7 +216,6 @@ public class ARTemplateMenuManager : MonoBehaviour
     bool m_InitializingDebugMenu;
     Vector2 m_ObjectButtonOffset = Vector2.zero;
     Vector2 m_ObjectMenuOffset = Vector2.zero;
-    readonly List<ARFeatheredPlaneMeshVisualizerCompanion> featheredPlaneMeshVisualizerCompanions = new List<ARFeatheredPlaneMeshVisualizerCompanion>();
 
     /// <summary>
     /// See <see cref="MonoBehaviour"/>.
@@ -226,7 +225,6 @@ public class ARTemplateMenuManager : MonoBehaviour
         m_CreateButton.onClick.AddListener(ShowMenu);
         m_CancelButton.onClick.AddListener(HideMenu);
         m_DeleteButton.onClick.AddListener(DeleteFocusedObject);
-        m_PlaneManager.trackablesChanged.AddListener(OnPlaneChanged);
     }
 
     /// <summary>
@@ -238,7 +236,6 @@ public class ARTemplateMenuManager : MonoBehaviour
         m_CreateButton.onClick.RemoveListener(ShowMenu);
         m_CancelButton.onClick.RemoveListener(HideMenu);
         m_DeleteButton.onClick.RemoveListener(DeleteFocusedObject);
-        m_PlaneManager.trackablesChanged.RemoveListener(OnPlaneChanged);
     }
 
     /// <summary>
@@ -364,12 +361,10 @@ public class ARTemplateMenuManager : MonoBehaviour
         if (m_DebugPlaneSlider.value == 1)
         {
             m_DebugPlaneSlider.value = 0;
-            ChangePlaneVisibility(false);
         }
         else
         {
             m_DebugPlaneSlider.value = 1;
-            ChangePlaneVisibility(true);
         }
     }
 
@@ -410,15 +405,6 @@ public class ARTemplateMenuManager : MonoBehaviour
         m_ObjectMenuAnimator.SetBool("Show", false);
         m_ShowObjectMenu = false;
         AdjustARDebugMenuPosition();
-    }
-
-    void ChangePlaneVisibility(bool setVisible)
-    {
-        var count = featheredPlaneMeshVisualizerCompanions.Count;
-        for (int i = 0; i < count; ++i)
-        {
-            featheredPlaneMeshVisualizerCompanions[i].visualizeSurfaces = setVisible;
-        }
     }
 
     void DeleteFocusedObject()
@@ -501,44 +487,6 @@ public class ARTemplateMenuManager : MonoBehaviour
                 debugOptionsMenuRect.anchorMax = new Vector2(0.5f, 0);
                 debugOptionsMenuRect.pivot = new Vector2(0.5f, 0);
                 debugOptionsMenuRect.anchoredPosition = new Vector2(0, 150) + menuOffset;
-            }
-        }
-    }
-
-    void OnPlaneChanged(ARTrackablesChangedEventArgs<ARPlane> eventArgs)
-    {
-        if (eventArgs.added.Count > 0)
-        {
-            foreach (var plane in eventArgs.added)
-            {
-                if (plane.TryGetComponent<ARFeatheredPlaneMeshVisualizerCompanion>(out var visualizer))
-                {
-                    featheredPlaneMeshVisualizerCompanions.Add(visualizer);
-                    visualizer.visualizeSurfaces = (m_DebugPlaneSlider.value != 0);
-                }
-            }
-        }
-
-        if (eventArgs.removed.Count > 0)
-        {
-            foreach (var plane in eventArgs.removed)
-            {
-                if (plane.Value != null && plane.Value.TryGetComponent<ARFeatheredPlaneMeshVisualizerCompanion>(out var visualizer))
-                    featheredPlaneMeshVisualizerCompanions.Remove(visualizer);
-            }
-        }
-
-        // Fallback if the counts do not match after an update
-        if (m_PlaneManager.trackables.count != featheredPlaneMeshVisualizerCompanions.Count)
-        {
-            featheredPlaneMeshVisualizerCompanions.Clear();
-            foreach (var trackable in m_PlaneManager.trackables)
-            {
-                if (trackable.TryGetComponent<ARFeatheredPlaneMeshVisualizerCompanion>(out var visualizer))
-                {
-                    featheredPlaneMeshVisualizerCompanions.Add(visualizer);
-                    visualizer.visualizeSurfaces = (m_DebugPlaneSlider.value != 0);
-                }
             }
         }
     }
