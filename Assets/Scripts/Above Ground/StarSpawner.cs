@@ -77,9 +77,9 @@ public class StarSpawner : MonoBehaviour
 
     /// <summary>
     /// Starts playing the animation if it is not already
-    /// playing.
+    /// playing and spawns the celestial bodies (stars and blackholes).
     /// </summary>
-    public void StartAnimation() 
+    public void StartSpawner() 
     {
         if (!playing)
         { 
@@ -95,25 +95,39 @@ public class StarSpawner : MonoBehaviour
             waveParticles.Play();
 
             playing = true;
-            Invoke(nameof(StopAnimation), duration); // Waits specified duration before stopping animation
+            Invoke(nameof(ShowCelestialBodies), duration); // Waits specified duration before stopping animation
+        }
+    }
+
+    /// <summary>
+    /// Spawns celestial bodies (stars and blackholes). 
+    /// </summary>
+    public void ShowCelestialBodies() 
+    {
+        for (int index = 0; index < count; index++)
+        {
+            SpawnObject();
         }
     }
 
     /// <summary>
     /// Stops playing the animation if it is already playing
-    /// and spawns the stars and blackholes.
+    /// and removes spawned objects.
     /// </summary>
-    public void StopAnimation()
+    public void StopSpawner()
     {
         if (playing) 
         {
             waveParticles.Stop();
-            for (int index = 0; index < count; index++)
-            {
-                SpawnObject();
-            }
-
             playing = false;
+        }
+
+        foreach (GameObject spawnedObject in spawnedObjects)
+        {
+            if (spawnedObject)
+            {
+                Destroy(spawnedObject);
+            }
         }
     }
 
