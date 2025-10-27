@@ -4,9 +4,19 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
+/// <summary>
+/// The alignment mode to spawn the prefabs with.
+/// </summary>
+public enum SpawnAlignmentMode
+{
+    GroundAligned,   // Upright in world space
+    MarkerSurface    // Matches the image’s plane orientation
+}
+
 [System.Serializable]
 public class ImagePrefabPair
 {
+    [Header("Marker Settings")]
     /// <summary>
     /// The name of the AR image that should be tracked
     /// </summary>
@@ -28,8 +38,14 @@ public class ImagePrefabPair
     /// </summary>
     [SerializeField] public Vector3 scale = Vector3.one;
 
-    [Header("Animation Settings")]
+    [Header("Spawn Alignment")]
     /// <summary>
+    /// The alignment setting of the prefab.
+    /// </summary>
+    [SerializeField] public SpawnAlignmentMode alignmentMode = SpawnAlignmentMode.GroundAligned;
+
+    [Header("Animation Settings")]
+     /// <summary>
     /// Enable bobbing animation for the spawned object
     /// </summary>
     [SerializeField] public bool enableBobbing = false;
@@ -87,6 +103,7 @@ public class AnimatedPrefabData
     }
 }
 
+[RequireComponent(typeof(ARTrackedImageManager))]
 public class MultiPrefabImageTracker : MonoBehaviour
 {
     /// <summary>
@@ -99,12 +116,14 @@ public class MultiPrefabImageTracker : MonoBehaviour
     /// </summary>
     private ARTrackedImageManager trackedImageManager;
     /// <summary>
+    /// Used for anchoring the spawned prefabs.
+    /// </summary>
+    private ARAnchorManager anchorManager;
+    /// <summary>
     /// Fast lookup dictionary mapping image names to their prefab configurations
     /// </summary>
     private Dictionary<string, List<ImagePrefabPair>> imageNameToPrefabPairs = new Dictionary<string, List<ImagePrefabPair>>();
-    /// <summary>
-    /// Set of image names that have already been spawned to prevent duplicates
-    /// </summary>
+    
     private HashSet<string> spawnedImages = new HashSet<string>();
     /// <summary>
     /// List of spawned prefabs that require animation updates
@@ -117,6 +136,7 @@ public class MultiPrefabImageTracker : MonoBehaviour
     void Awake()
     {
         trackedImageManager = GetComponent<ARTrackedImageManager>();
+        anchorManager = FindObjectOfType<ARAnchorManager>();
 
         foreach (var pair in imagePrefabPairs)
         {
@@ -180,7 +200,6 @@ public class MultiPrefabImageTracker : MonoBehaviour
         }
 
         string imageName = trackedImage.referenceImage.name;
-
         if (string.IsNullOrEmpty(imageName) || spawnedImages.Contains(imageName))
         {
             return;
@@ -206,24 +225,63 @@ public class MultiPrefabImageTracker : MonoBehaviour
             }
 
             GameObject spawnedObject = Instantiate(pair.prefab);
-            
-            spawnedObject.transform.SetParent(trackedImage.transform, false);
-            spawnedObject.transform.localPosition = pair.positionOffset;
-            spawnedObject.transform.localRotation = Quaternion.Euler(pair.rotationOffset);
+
+            Vector3 position = trackedImage.transform.position + trackedImage.transform.TransformVector(pair.positionOffset);
+            Quaternion rotation;
+
+            if (pair.alignmentMode == SpawnAlignmentMode.MarkerSurface)
+            {
+                rotation = trackedImage.transform.rotation * Quaternion.Euler(pair.rotationOffset);
+            }
+            else
+            {
+                Vector3 euler = trackedImage.transform.rotation.eulerAngles;
+                euler.x = 0f;
+                euler.z = 0f;
+                rotation = Quaternion.Euler(euler) * Quaternion.Euler(pair.rotationOffset);
+            }
+
+            spawnedObject.transform.position = position;
+            spawnedObject.transform.rotation = rotation;
             spawnedObject.transform.localScale = pair.scale;
 
-            Vector3 worldPosition = spawnedObject.transform.position;
-            Quaternion worldRotation = spawnedObject.transform.rotation;
-            Vector3 worldScale = spawnedObject.transform.lossyScale;
+            if (anchorManager != null)
+            {
+                ARAnchor anchor = null;
 
-            spawnedObject.transform.SetParent(null);
-            spawnedObject.transform.position = worldPosition;
-            spawnedObject.transform.rotation = worldRotation;
-            spawnedObject.transform.localScale = worldScale;
+                if (trackedImage != null)
+                {
+                    anchor = trackedImage.gameObject.GetComponent<ARAnchor>();
+                    if (anchor == null)
+                    {
+                        anchor = trackedImage.gameObject.AddComponent<ARAnchor>();
+                    }
+                }
+
+                
+                if (anchor == null) // If for some reason trackedImage is null, create a standalone world anchor
+                {
+                    GameObject anchorGO = new GameObject($"Anchor_{imageName}");
+                    anchorGO.transform.position = position;
+                    anchorGO.transform.rotation = rotation;
+                    anchor = anchorGO.AddComponent<ARAnchor>();
+                }
+
+                if (anchor != null)
+                {
+                    spawnedObject.transform.SetParent(anchor.transform);
+                }
+            }
+            else
+            {
+                spawnedObject.transform.SetParent(null);
+            }
 
             if (pair.enableBobbing || pair.enableRotation)
             {
-                animatedPrefabs.Add(new AnimatedPrefabData(spawnedObject, pair));
+                var animData = new AnimatedPrefabData(spawnedObject, pair);
+                animData.originalPosition = spawnedObject.transform.position;
+                animatedPrefabs.Add(animData);
             }
         }
     }
@@ -236,7 +294,6 @@ public class MultiPrefabImageTracker : MonoBehaviour
         for (int i = animatedPrefabs.Count - 1; i >= 0; i--)
         {
             var animData = animatedPrefabs[i];
-
             if (animData.gameObject == null)
             {
                 animatedPrefabs.RemoveAt(i);
@@ -248,23 +305,23 @@ public class MultiPrefabImageTracker : MonoBehaviour
                 continue;
             }
 
-            var config = animData.config;
-            var transform = animData.gameObject.transform;
+            var cfg = animData.config;
+            var t = animData.gameObject.transform;
 
-            if (config.enableBobbing)
+            if (cfg.enableBobbing)
             {
                 Vector3 bobOffset = new Vector3(
-                    Mathf.Sin(Time.time * config.bobbingSpeed + animData.bobbingOffsets.x) * config.bobbingAmplitude.x,
-                    Mathf.Sin(Time.time * config.bobbingSpeed + animData.bobbingOffsets.y) * config.bobbingAmplitude.y,
-                    Mathf.Sin(Time.time * config.bobbingSpeed + animData.bobbingOffsets.z) * config.bobbingAmplitude.z
+                    Mathf.Sin(Time.time * cfg.bobbingSpeed + animData.bobbingOffsets.x) * cfg.bobbingAmplitude.x,
+                    Mathf.Sin(Time.time * cfg.bobbingSpeed + animData.bobbingOffsets.y) * cfg.bobbingAmplitude.y,
+                    Mathf.Sin(Time.time * cfg.bobbingSpeed + animData.bobbingOffsets.z) * cfg.bobbingAmplitude.z
                 );
-                transform.position = animData.originalPosition + bobOffset;
+                t.position = animData.originalPosition + bobOffset;
             }
 
-            if (config.enableRotation)
+            if (cfg.enableRotation)
             {
-                Vector3 rotationDelta = config.rotationSpeed * Time.deltaTime;
-                transform.Rotate(rotationDelta, Space.Self);
+                Vector3 rotationDelta = cfg.rotationSpeed * Time.deltaTime;
+                t.Rotate(rotationDelta, Space.Self);
             }
         }
     }
