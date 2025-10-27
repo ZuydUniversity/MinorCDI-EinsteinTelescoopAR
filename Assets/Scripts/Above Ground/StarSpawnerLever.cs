@@ -15,11 +15,14 @@ public class StarSpawnerLever : Lever
     /// </summary>
     public override void OnActivate()
     {
-        spawner.StartAnimation();
+        spawner.StartSpawner();
     }
 
     /// <summary>
     /// Shows telescope when activated.
     /// </summary>
-    public override void OnDeactivate() {}
+    public override void OnDeactivate() 
+    {
+        spawner.StopSpawner();
+    }
 }

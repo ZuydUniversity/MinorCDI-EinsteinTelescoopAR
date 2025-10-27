@@ -57,13 +57,13 @@ public abstract class Lever : MonoBehaviour, ITappable
             if (isOn) 
             {
                 animator.Play(turnOffAnimationName);
-                animationIsPlaying = true;
             }
             else 
             {
                 animator.Play(turnOnAnimationName);
-                animationIsPlaying = true;
             }
+            
+            animationIsPlaying = true;
 
             AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
             yield return new WaitForSeconds(state.length / animator.speed); // Waits till end of animation
@@ -72,18 +72,22 @@ public abstract class Lever : MonoBehaviour, ITappable
         }
     }
 
+    /// <summary>
+    /// When the animation is finished swiches isOn and calls
+    /// abstract functions.
+    /// <summary>
     private void OnAnimationFinished() 
     {
         isOn = !isOn;
         if (isOn)
         {
             OnActivate();
-            animationIsPlaying = false;
         }
         else 
         {
             OnDeactivate();
-            animationIsPlaying = false;
         }
+
+        animationIsPlaying = false;
     }
 }
