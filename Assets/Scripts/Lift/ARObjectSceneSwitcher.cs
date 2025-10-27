@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class ARObjectSceneSwitcher : MonoBehaviour
 {
     /// <summary>
     /// The name of the scene that is loaded
     /// </summary>
-    [SerializeField] private string targetSceneName = "BovengrondScene";
+    [SerializeField] private string targetSceneName = "Above Ground";
     /// <summary>
     /// The maximum distance at which a raycast can be performed
     /// </summary>
@@ -16,6 +17,14 @@ public class ARObjectSceneSwitcher : MonoBehaviour
     /// The collider that is linked to the object for touch interaction
     /// </summary>
     [SerializeField] private Collider targetCollider;
+    /// <summary>
+    /// Reference to the ElevatorController to play animations before scene transition
+    /// </summary>
+    [SerializeField] private ElevatorController elevatorController;
+    /// <summary>
+    /// Reference to the MovementManager to check current player position (found dynamically)
+    /// </summary>
+    private MovementManager movementManager;
 
     /// <summary>
     /// AR Camera used for raycasting
@@ -33,6 +42,16 @@ public class ARObjectSceneSwitcher : MonoBehaviour
     void Awake()
     {
         mainCamera = Camera.main;
+
+        if (elevatorController == null)
+        {
+            elevatorController = GetComponentInParent<ElevatorController>();
+        }
+        
+        if (movementManager == null)
+        {
+            movementManager = FindFirstObjectByType<MovementManager>();
+        }
 
         if (targetCollider == null)
         {
@@ -67,12 +86,12 @@ public class ARObjectSceneSwitcher : MonoBehaviour
             CheckTouch(Touchscreen.current.primaryTouch.position.ReadValue());
         }
 
-    #if UNITY_EDITOR
+        #if UNITY_EDITOR
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
             CheckTouch(Mouse.current.position.ReadValue());
         }
-    #endif
+        #endif
     }
 
     /// <summary>
@@ -85,11 +104,67 @@ public class ARObjectSceneSwitcher : MonoBehaviour
             Ray ray = mainCamera.ScreenPointToRay(screenPos);
             if (Physics.Raycast(ray, out var hit, maxRaycastDistance) && hit.collider == targetCollider)
             {
-                LoadTargetScene();
+                // Only respond to touch if not at MovementPoint2
+                if (movementManager != null)
+                {
+                    var currentPoint = movementManager.GetCurrentPoint();
+                    if (currentPoint != null && currentPoint.pointID == "2")
+                    {
+                        return;
+                    }
+                }
+                
+                // Register this switcher as the last clicked one
+                MovementManager.RegisterLastClickedSwitcher(this);
+                StartElevatorSequence();
             }
         }
     }
 
+    /// <summary>
+    /// Starts the elevator animation sequence and then loads the target scene
+    /// </summary>
+    void StartElevatorSequence()
+    {
+        if (elevatorController != null)
+        {
+            // First open doors, then check position and close doors before scene load
+            elevatorController.StartElevatorSequence(CheckPositionCloseDoorsAndLoadScene);
+        }
+        else
+        {
+            CheckPositionCloseDoorsAndLoadScene();
+        }
+    }
+
+    /// <summary>
+    /// Checks position, closes doors if at MovementPoint2, then loads scene
+    /// </summary>
+    public void CheckPositionCloseDoorsAndLoadScene()
+    {
+        if (movementManager != null)
+        {
+            var currentPoint = movementManager.GetCurrentPoint();
+            if (currentPoint == null || currentPoint.pointID != "2")
+            {
+                return;
+            }
+        }
+        
+        // At MovementPoint2, close doors and load scene
+        if (elevatorController != null)
+        {
+            elevatorController.CloseDoors();
+            // Wait for doors to close and load scene
+            StartCoroutine(WaitForDoorsToCloseAndLoadScene());
+        }
+        else
+        {
+            LoadTargetScene();
+        }
+    }
+    
+    
     /// <summary>
     /// Load the targetScene that has been set
     /// </summary>
@@ -97,16 +172,60 @@ public class ARObjectSceneSwitcher : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(targetSceneName))
         {
-            for (int i = 0; i < SceneManager.sceneCount; i++) 
+            for (int i = 0; i < SceneManager.sceneCount; i++)
             {
                 Scene scene = SceneManager.GetSceneAt(i);
-                if (scene.name != mainSceneName) 
+                if (scene.name != mainSceneName)
                 {
                     SceneManager.UnloadSceneAsync(scene);
                 }
             }
 
             SceneManager.LoadSceneAsync(targetSceneName, LoadSceneMode.Additive);
+            
+            
+            // Use fixed 2 second delay for door opening after scene load
+            Invoke(nameof(OpenElevatorDoorsDelayed), 2f);
         }
     }
+    
+    /// <summary>
+    /// Waits for elevator doors to close and loads the target scene
+    /// </summary>
+    private System.Collections.IEnumerator WaitForDoorsToCloseAndLoadScene()
+    {
+        // Wait for doors to start closing
+        yield return new WaitForSeconds(0.1f);
+        
+        // Wait until doors are closed
+        while (elevatorController != null && 
+               (elevatorController.currentState == ElevatorController.ElevatorState.Closing ||
+                elevatorController.currentState == ElevatorController.ElevatorState.Open))
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        
+        LoadTargetScene();
+    }
+    
+    
+    /// <summary>
+    /// Simple delayed door opening method called via Invoke
+    /// </summary>
+    private void OpenElevatorDoorsDelayed()
+    {
+        if (elevatorController != null)
+        {
+            elevatorController.OpenDoorsOnArrival();
+        }
+    }
+    
+    /// <summary>
+    /// Gets the target scene name for this ARObjectSceneSwitcher
+    /// </summary>
+    public string GetTargetSceneName()
+    {
+        return targetSceneName;
+    }
+    
 }
