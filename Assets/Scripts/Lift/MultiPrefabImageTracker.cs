@@ -30,6 +30,14 @@ public class ImagePrefabPair
     /// </summary>
     [SerializeField] public Vector3 positionOffset = Vector3.zero;
     /// <summary>
+    /// Gives the model an offset relative to the axis it is looking at.
+    /// </summary>
+    [SerializeField] public float forwardOffset = 0f;
+    /// <summary>
+    /// Gives the model an offset relative to the axis on it's right side.
+    /// </summary>
+    [SerializeField] public float rightOffset = 0f;
+    /// <summary>
     /// Rotation offset applied to the spawned object
     /// </summary>
     [SerializeField] public Vector3 rotationOffset = Vector3.zero;
@@ -283,6 +291,9 @@ public class MultiPrefabImageTracker : MonoBehaviour
                 animData.originalPosition = spawnedObject.transform.position;
                 animatedPrefabs.Add(animData);
             }
+
+            spawnedObject.transform.position += spawnedObject.transform.right * pair.rightOffset;
+            spawnedObject.transform.position += spawnedObject.transform.forward * pair.forwardOffset;
         }
     }
 
