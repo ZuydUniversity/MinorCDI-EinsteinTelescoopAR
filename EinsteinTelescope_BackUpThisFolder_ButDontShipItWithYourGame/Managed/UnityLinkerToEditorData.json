@@ -12,6 +12,7 @@
             "name": "AnimationClip",
             "scenes": [
               "Assets/Scenes/AboveGroundScene.unity",
+              "Assets/Scenes/OndergrondScene.unity",
               "Assets/Scenes/TutorialScene.unity"
             ],
             "dependencyType": 0,
@@ -21,6 +22,7 @@
             "name": "Animator",
             "scenes": [
               "Assets/Scenes/AboveGroundScene.unity",
+              "Assets/Scenes/OndergrondScene.unity",
               "Assets/Scenes/TutorialScene.unity"
             ],
             "dependencyType": 0,
@@ -30,6 +32,7 @@
             "name": "AnimatorController",
             "scenes": [
               "Assets/Scenes/AboveGroundScene.unity",
+              "Assets/Scenes/OndergrondScene.unity",
               "Assets/Scenes/TutorialScene.unity"
             ],
             "dependencyType": 1,
@@ -294,6 +297,7 @@
             "scenes": [
               "Assets/Scenes/AboveGroundScene.unity",
               "Assets/Scenes/MainScene.unity",
+              "Assets/Scenes/OndergrondScene.unity",
               "Assets/Scenes/TutorialScene.unity"
             ],
             "dependencyType": 0,
@@ -303,7 +307,8 @@
             "name": "MeshFilter",
             "scenes": [
               "Assets/Scenes/AboveGroundScene.unity",
-              "Assets/Scenes/MainScene.unity"
+              "Assets/Scenes/MainScene.unity",
+              "Assets/Scenes/OndergrondScene.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -312,7 +317,8 @@
             "name": "MeshRenderer",
             "scenes": [
               "Assets/Scenes/AboveGroundScene.unity",
-              "Assets/Scenes/MainScene.unity"
+              "Assets/Scenes/MainScene.unity",
+              "Assets/Scenes/OndergrondScene.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -390,7 +396,8 @@
             "name": "RectTransform",
             "scenes": [
               "Assets/Scenes/AboveGroundScene.unity",
-              "Assets/Scenes/MainScene.unity"
+              "Assets/Scenes/MainScene.unity",
+              "Assets/Scenes/OndergrondScene.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -953,7 +960,8 @@
           {
             "name": "ParticleSystem",
             "scenes": [
-              "Assets/Scenes/AboveGroundScene.unity"
+              "Assets/Scenes/AboveGroundScene.unity",
+              "Assets/Scenes/OndergrondScene.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -961,7 +969,8 @@
           {
             "name": "ParticleSystemRenderer",
             "scenes": [
-              "Assets/Scenes/AboveGroundScene.unity"
+              "Assets/Scenes/AboveGroundScene.unity",
+              "Assets/Scenes/OndergrondScene.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -975,7 +984,8 @@
             "name": "BoxCollider",
             "scenes": [
               "Assets/Scenes/AboveGroundScene.unity",
-              "Assets/Scenes/MainScene.unity"
+              "Assets/Scenes/MainScene.unity",
+              "Assets/Scenes/OndergrondScene.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -1000,7 +1010,10 @@
           },
           {
             "name": "MeshCollider",
-            "scenes": [],
+            "scenes": [
+              "Assets/Scenes/AboveGroundScene.unity",
+              "Assets/Scenes/OndergrondScene.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
@@ -1019,7 +1032,8 @@
           {
             "name": "SphereCollider",
             "scenes": [
-              "Assets/Scenes/AboveGroundScene.unity"
+              "Assets/Scenes/AboveGroundScene.unity",
+              "Assets/Scenes/OndergrondScene.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -1390,7 +1404,8 @@
             "name": "Font",
             "scenes": [
               "Assets/Scenes/AboveGroundScene.unity",
-              "Assets/Scenes/MainScene.unity"
+              "Assets/Scenes/MainScene.unity",
+              "Assets/Scenes/OndergrondScene.unity"
             ],
             "dependencyType": 0,
             "icon": null

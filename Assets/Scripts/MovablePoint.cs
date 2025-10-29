@@ -79,6 +79,7 @@ public class MovablePoint : MonoBehaviour
         foreach (MovablePoint movablePoint in movablePoints)
         {
             MoveArrow newArrow = Instantiate(arrowPrefab, gameObject.transform.position, Quaternion.identity);
+            newArrow.transform.SetParent(gameObject.transform);
             newArrow.transform.LookAt(movablePoint.transform);
             
             Vector3 offsetDirection = newArrow.transform.forward;
