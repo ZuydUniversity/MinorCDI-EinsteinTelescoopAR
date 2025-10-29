@@ -11,6 +11,7 @@ public abstract class Lever : MonoBehaviour, ITappable
     /// Current state of lever.
     /// </summary>
     public bool isOn = false;
+    public AudioSource audioSource;
 
     /// <summary>
     /// Animator used to play animations.
@@ -42,9 +43,11 @@ public abstract class Lever : MonoBehaviour, ITappable
     /// <summary>
     /// Gets executed when tapped on object.
     /// </summary>
-    public void OnTapped() 
+    public void OnTapped()
     {
         StartCoroutine(StartAnimation());
+        
+        audioSource.Play();
     }
 
     /// <summary>
