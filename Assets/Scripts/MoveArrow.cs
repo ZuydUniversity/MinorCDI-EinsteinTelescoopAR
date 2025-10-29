@@ -10,6 +10,12 @@ public class MoveArrow : MonoBehaviour, ITappable
     public MovablePoint endpoint;
 
     /// <summary>
+    /// Tells movable point not to delete this arrow as it
+    /// is still moving the camera into the right position.
+    /// </summary>
+    public bool moving = false;
+
+    /// <summary>
     /// The xrOrigin in the scene to move.
     /// </summary>
     private XROrigin xrOrigin;
@@ -32,34 +38,37 @@ public class MoveArrow : MonoBehaviour, ITappable
     public void OnTapped()
     {
         if (xrOrigin == null || endpoint == null)
+        {
             return;
+        }
 
         // Bereken doelpositie relatief aan camera
         Vector3 offset = endpoint.transform.position - Camera.main.transform.position;
         offset.y = 0;
 
-        Vector3 targetPos = xrOrigin.transform.position + offset;
+        Vector3 targetPosition = xrOrigin.transform.position + offset;
 
+        moving = true;
         // Start smooth move
-        StartCoroutine(SmoothMove(xrOrigin.transform, targetPos, moveDuration));
+        StartCoroutine(SmoothMove(xrOrigin.transform, targetPosition, moveDuration));
     }
 
     /// <summary>
     /// Smoothly moves an object to a target position.
     /// </summary>
-    private IEnumerator SmoothMove(Transform obj, Vector3 targetPos, float duration)
+    private IEnumerator SmoothMove(Transform obj, Vector3 targetPosition, float duration)
     {
-        Vector3 startPos = obj.position;
-        Quaternion startRot = obj.rotation;
-        float t = 0f;
+        Vector3 startPosition = obj.position;
+        float normalizedTime = 0f;
 
-        while (t < 1f)
+        while (normalizedTime < 1f)
         {
-            t += Time.deltaTime / duration;
-            obj.position = Vector3.Lerp(startPos, targetPos, t);
+            normalizedTime += Time.deltaTime / duration;
+            obj.position = Vector3.Lerp(startPosition, targetPosition, normalizedTime);
             yield return null;
         }
 
-        obj.position = targetPos;
+        obj.position = targetPosition;
+        Destroy(gameObject);
     }
 }

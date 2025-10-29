@@ -107,7 +107,10 @@ public class MovablePoint : MonoBehaviour
     {
         foreach (MoveArrow arrow in arrows) 
         {
-            Destroy(arrow.gameObject);
+            if (!arrow.moving) 
+            {
+                Destroy(arrow.gameObject);
+            }
         }
 
         arrows.Clear();
