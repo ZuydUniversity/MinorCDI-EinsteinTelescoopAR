@@ -40,12 +40,33 @@ public abstract class Lever : MonoBehaviour, ITappable
     public abstract void OnDeactivate();
 
     /// <summary>
+    /// Gets a audioclip
+    /// </summary>
+    /// <returns></returns>
+    public AudioClip audioClip;
+
+    /// <summary>
+    /// The audio source containing the audio.
+    /// </summary>
+    private AudioSource audioSource;
+
+    /// <summary>
+    /// Loads audioclip
+    /// </summary>
+    void Start()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = audioClip;
+    }
+
+    /// <summary>
     /// Gets executed when tapped on object.
     /// </summary>
     public void OnTapped() 
     {
         StartCoroutine(StartAnimation());
     }
+
 
     /// <summary>
     /// Plays animation on tap.
@@ -62,7 +83,8 @@ public abstract class Lever : MonoBehaviour, ITappable
             {
                 animator.Play(turnOnAnimationName);
             }
-            
+
+            audioSource.Play();
             animationIsPlaying = true;
 
             AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);

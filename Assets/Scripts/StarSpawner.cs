@@ -63,8 +63,13 @@ public class StarSpawner : MonoBehaviour
     private ParticleSystem waveParticles;
 
     /// <summary>
+    /// Audio source of the particles
+    /// </summary>
+    private AudioSource waveParticalAudio;
+
+    /// <summary>
     /// Runs before the first update call after this script is created.
-    /// Creates the wave particals at the position of the spawner.
+    /// Creates the wave particals at the position of the spawner and gets audiosource of particles.
     /// </summary>
     public void Start()
     {
@@ -72,11 +77,12 @@ public class StarSpawner : MonoBehaviour
         {
             waveParticles = Instantiate(waveParticlesPrefab, gameObject.transform.position, Quaternion.identity);
             waveParticles.transform.rotation = waveParticlesPrefab.transform.rotation;
+            waveParticalAudio = waveParticles.GetComponent<AudioSource>();
         }
     }
 
     /// <summary>
-    /// Starts playing the animation if it is not already
+    /// Starts playing the animation and audio if it is not already
     /// playing and spawns the celestial bodies (stars and blackholes).
     /// </summary>
     public void StartSpawner() 
@@ -93,6 +99,7 @@ public class StarSpawner : MonoBehaviour
 
             spawnedObjects.Clear();
             waveParticles.Play();
+            waveParticalAudio.Play();
 
             playing = true;
             Invoke(nameof(ShowCelestialBodies), duration); // Waits specified duration before stopping animation
@@ -111,7 +118,7 @@ public class StarSpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// Stops playing the animation if it is already playing
+    /// Stops playing the animation and audio if it is already playing
     /// and removes spawned objects.
     /// </summary>
     public void StopSpawner()
@@ -119,6 +126,7 @@ public class StarSpawner : MonoBehaviour
         if (playing) 
         {
             waveParticles.Stop();
+            waveParticalAudio.Stop();
             playing = false;
         }
 
