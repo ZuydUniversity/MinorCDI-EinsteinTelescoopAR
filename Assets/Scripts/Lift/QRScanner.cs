@@ -32,13 +32,30 @@ public class QRScanner : MonoBehaviour
     /// </summary>
     public float fadeDuration = 0.5f;
 
+    private RectTransform canvasRect;
+
     /// <summary>
-    /// When enabled it resets all elements used by the scanner.
+    /// Gets canvasRect and sets size of box frame and checkmark.
     /// </summary>
-    void OnEnable() {
-        boxFrame.gameObject.SetActive(true);
-        scanLine.gameObject.SetActive(true);
-        checkmark.gameObject.SetActive(false);
+    void Start() 
+    {
+        canvasRect = gameObject.GetComponent<RectTransform>();
+
+        float frameBoxSize = 1f;
+        if (canvasRect.rect.height > canvasRect.rect.width) 
+        {
+            frameBoxSize = canvasRect.rect.width / 4;
+        }
+        else 
+        {
+            frameBoxSize = canvasRect.rect.height / 4;
+        }
+
+        RectTransform frameBoxRect = boxFrame.GetComponent<RectTransform>();
+        frameBoxRect.sizeDelta = new Vector2(frameBoxSize, frameBoxSize);
+
+        RectTransform checkmarkRect = checkmark.GetComponent<RectTransform>();
+        checkmarkRect.sizeDelta = new Vector2(frameBoxSize, frameBoxSize);
     }
 
     /// <summary>
@@ -46,9 +63,17 @@ public class QRScanner : MonoBehaviour
     /// </summary>
     void Update()
     {
-        RectTransform canvasRect = gameObject.GetComponent<RectTransform>();    
         float scanPosition = Mathf.PingPong(Time.time * scanSpeed, 1f);
         scanLine.transform.position = new Vector2(0, Mathf.Lerp(0, canvasRect.rect.height, scanPosition));
+    }
+
+    /// <summary>
+    /// When enabled it resets all elements used by the scanner.
+    /// </summary>
+    void OnEnable() {
+        boxFrame.gameObject.SetActive(true);
+        scanLine.gameObject.SetActive(true);
+        checkmark.gameObject.SetActive(false);
     }
 
     /// <summary>
