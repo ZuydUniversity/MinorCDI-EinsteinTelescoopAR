@@ -13,6 +13,10 @@ public class StarSpawner : MonoBehaviour
     /// </summary>
     public GameObject star;
     /// <summary>
+    /// The dwarf star object to spawn.
+    /// </summary>
+    public GameObject dwarfStar;
+    /// <summary>
     /// The blackhole object to spawn.
     /// </summary>
     public GameObject blackhole;
@@ -154,13 +158,26 @@ public class StarSpawner : MonoBehaviour
             randomizedSpawnPosition.z += Random.Range(minSpawnOffset, maxSpawnOffset);
 
             GameObject prefabToSpawn;
-            if (Random.Range(0, 2) == 1) 
+
+            /// randomized star spawning for show waves, switch calculates the position
+            float spawnSelection = Random.Range(0, 3);
+            switch (spawnSelection) 
             {
-                prefabToSpawn = star;
-            } 
-            else 
-            {
-                prefabToSpawn = blackhole;
+                case 0:
+                    prefabToSpawn = dwarfStar;
+                    break;
+
+                case 1:
+                    prefabToSpawn = star;
+                    break;
+
+                case 2:
+                    prefabToSpawn = blackhole;
+                    break;
+
+                default:
+                    prefabToSpawn = null;
+                    break;
             }
 
             GameObject newObject = Instantiate(prefabToSpawn, randomizedSpawnPosition, Quaternion.identity);
