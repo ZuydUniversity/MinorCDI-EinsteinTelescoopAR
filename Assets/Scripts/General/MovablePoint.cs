@@ -135,24 +135,24 @@ public class MovablePoint : MonoBehaviour
     /// <summary>
     /// Checks if camera is on plane.
     /// </summary>
-    void Update() 
+    void Update()
     {
         if (Camera.main != null)
         {
             Vector3 cameraPosition = Camera.main.transform.position;
             Vector3 planePosition = gameObject.transform.position;
-        
-            bool currentlyInside = 
+
+            bool currentlyInside =
                 cameraPosition.x >= planePosition.x - planeSize.x / 2 &&
                 cameraPosition.x <= planePosition.x + planeSize.x / 2 &&
                 cameraPosition.z >= planePosition.z - planeSize.z / 2 &&
                 cameraPosition.z <= planePosition.z + planeSize.z / 2;
 
-            if (currentlyInside && !onPlane) 
+            if (currentlyInside && !onPlane)
             {
                 OnCameraEnter();
-            } 
-            else if (!currentlyInside && onPlane) 
+            }
+            else if (!currentlyInside && onPlane)
             {
                 OnCameraLeave();
             }
@@ -172,10 +172,10 @@ public class MovablePoint : MonoBehaviour
     /// Creates all arrows on entering the movable point.
     /// </summary>
     private void OnCameraEnter()
-    {    
+    {
         // Always update currentPoint for position tracking
         currentPoint = this;
-        
+
         // Only trigger movement effects if reached via arrow movement
         if (reachedViaMovement)
         {
@@ -200,7 +200,6 @@ public class MovablePoint : MonoBehaviour
             offsetDirection.z *= arrowOffset + (planeSize.z / 2);
             newArrow.transform.position += offsetDirection;
 
-
             newArrow.endpoint = movablePoint;
             arrows.Add(newArrow);
         }
@@ -213,9 +212,9 @@ public class MovablePoint : MonoBehaviour
     /// </summary>
     private void OnCameraLeave()
     {
-        foreach (MoveArrow arrow in arrows) 
+        foreach (MoveArrow arrow in arrows)
         {
-            if (!arrow.moving) 
+            if (!arrow.moving)
             {
                 Destroy(arrow.gameObject);
             }
@@ -257,24 +256,24 @@ public class MovablePoint : MonoBehaviour
         Vector3 cameraWorldPosition = Camera.main.transform.position;
         Vector3 startRotation = xrOrigin.transform.eulerAngles;
         Vector3 targetRotation = startRotation + new Vector3(0, rotationDegrees, 0);
-        
+
         float t = 0;
         while (t < 1)
         {
             t += Time.deltaTime / rotationDuration;
-            
+
             Vector3 currentRotation = Vector3.Lerp(startRotation, targetRotation, t);
             xrOrigin.transform.eulerAngles = currentRotation;
-            
+
             Vector3 newCameraPosition = Camera.main.transform.position;
             Vector3 positionDrift = cameraWorldPosition - newCameraPosition;
             xrOrigin.transform.position += positionDrift;
-            
+
             yield return null;
         }
-        
+
         xrOrigin.transform.eulerAngles = targetRotation;
-        
+
         Vector3 finalCameraPosition = Camera.main.transform.position;
         Vector3 finalDrift = cameraWorldPosition - finalCameraPosition;
         xrOrigin.transform.position += finalDrift;
@@ -286,7 +285,7 @@ public class MovablePoint : MonoBehaviour
     private IEnumerator CloseElevatorDoorsDelayed()
     {
         yield return new WaitForSeconds(elevatorCloseDelay);
-        
+
         var elevatorController = FindActiveElevatorController();
         if (elevatorController != null && elevatorController.gameObject.activeInHierarchy)
         {
@@ -300,7 +299,7 @@ public class MovablePoint : MonoBehaviour
     private IEnumerator StartAutomaticSceneTransition()
     {
         yield return new WaitForSeconds(sceneTransitionDelay);
-        
+
         if (lastClickedSwitcher != null)
         {
             lastClickedSwitcher.CheckPositionCloseDoorsAndLoadScene();
@@ -313,7 +312,7 @@ public class MovablePoint : MonoBehaviour
     private ElevatorController FindActiveElevatorController()
     {
         var allElevatorControllers = FindObjectsByType<ElevatorController>(FindObjectsSortMode.None);
-        
+
         foreach (var controller in allElevatorControllers)
         {
             if (controller.gameObject.activeInHierarchy)
@@ -321,7 +320,7 @@ public class MovablePoint : MonoBehaviour
                 return controller;
             }
         }
-        
+
         return null;
     }
 }
