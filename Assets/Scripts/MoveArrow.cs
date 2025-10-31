@@ -30,7 +30,7 @@ public class MoveArrow : MonoBehaviour, ITappable
         offset.x -= Camera.main.transform.position.x;
         offset.y = 0;
         offset.z -= Camera.main.transform.position.z;
-
+        endpoint.MarkAsReachedViaMovement();
         xrOrigin.transform.position += offset;
     }
 }

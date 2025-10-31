@@ -1,25 +1,25 @@
 using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Controls elevator door animations and state management
+/// </summary>
 public class ElevatorController : MonoBehaviour
 {
     /// <summary>
     /// The Animator component that controls the door animations
     /// </summary>
-    [Header("Animation Settings")]
     [SerializeField] private Animator doorAnimator;
+    
     /// <summary>
-    /// The animator bool parameter name to control door animations
+    /// Possible states of the elevator doors
     /// </summary>
-    [Header("Door Animation Parameter")]
-    [SerializeField] private string doorsOpenBool = "DoorsOpen";
+    public enum ElevatorState { Closed, Open, Animating }
     
-    [Header("Timing Configuration")]
-    [SerializeField] private float doorOpenDuration = 2.1f;
-    [SerializeField] private float doorCloseDuration = 2.1f;
-    
-    public enum ElevatorState { Idle, Opening, Open, Closing, Moving }
-    public ElevatorState currentState = ElevatorState.Idle;
+    /// <summary>
+    /// Current state of the elevator doors
+    /// </summary>
+    public ElevatorState currentState = ElevatorState.Closed;
     
     /// <summary>
     /// Initialize the door animator component if not assigned in the inspector
@@ -37,253 +37,180 @@ public class ElevatorController : MonoBehaviour
     /// </summary>
     void Start()
     {
-        StartCoroutine(InitializeElevatorState());
+        currentState = ElevatorState.Closed;
+        if (doorAnimator != null)
+            doorAnimator.SetBool("DoorsOpen", false);
     }
     
     /// <summary>
-    /// Initialize elevator state after a short delay to avoid conflicts
-    /// </summary>
-    private IEnumerator InitializeElevatorState()
-    {
-        yield return new WaitForSeconds(0.1f);
-        
-        if (currentState == ElevatorState.Idle || currentState == ElevatorState.Open || currentState == ElevatorState.Moving)
-        {
-            ResetElevatorState();
-        }
-    }
-    
-    /// <summary>
-    /// Opens doors and transitions to Open state
+    /// Opens the elevator doors if they are currently closed
     /// </summary>
     public void OpenDoors()
     {
-        if (IsAnimatorValid() && currentState == ElevatorState.Idle)
+        if (doorAnimator != null && currentState == ElevatorState.Closed)
         {
-            StartCoroutine(OpenDoorsCoroutine());
+            StartCoroutine(AnimateDoors(true, null));
         }
     }
 
     /// <summary>
-    /// Closes doors and transitions to Idle state
+    /// Closes the elevator doors if they are currently open
     /// </summary>
     public void CloseDoors()
     {
-        if (IsAnimatorValid())
+        if (doorAnimator != null && currentState == ElevatorState.Open)
         {
-            if (currentState == ElevatorState.Open)
-            {
-                StartCoroutine(CloseDoorsCoroutine());
-            }
-            else if (currentState == ElevatorState.Opening)
-            {
-                StartCoroutine(CloseDoorsAfterOpening());
-            }
+            StartCoroutine(AnimateDoors(false, null));
         }
     }
     
     /// <summary>
-    /// Coroutine that transitions from Idle to Opening to Open state
+    /// Starts the elevator sequence by opening doors and executing callback when complete
     /// </summary>
-    private IEnumerator OpenDoorsCoroutine()
-    {
-        yield return StartCoroutine(AnimateDoors(true, doorOpenDuration, ElevatorState.Opening, ElevatorState.Open));
-    }
-    
-    /// <summary>
-    /// Coroutine that transitions from Open to Closing to Idle state
-    /// </summary>
-    private IEnumerator CloseDoorsCoroutine()
-    {
-        currentState = ElevatorState.Closing;
-        doorAnimator.SetBool(doorsOpenBool, false);
-        yield return new WaitForSeconds(doorCloseDuration);
-        currentState = ElevatorState.Idle;
-    }
-    
-    /// <summary>
-    /// Waits for Opening state to complete, then closes doors
-    /// </summary>
-    private IEnumerator CloseDoorsAfterOpening()
-    {
-        while (currentState == ElevatorState.Opening)
-        {
-            yield return new WaitForSeconds(0.1f);
-        }
-        
-        if (currentState == ElevatorState.Open)
-        {
-            StartCoroutine(CloseDoorsCoroutine());
-        }
-    }
-    
-    /// <summary>
-    /// Starts the elevator sequence: open doors and execute callback
-    /// </summary>
+    /// <param name="onSequenceComplete">Callback to execute when doors are fully open</param>
     public void StartElevatorSequence(System.Action onSequenceComplete = null)
     {
-        if (!gameObject.activeInHierarchy)
+        if (!gameObject.activeInHierarchy || doorAnimator == null)
         {
             onSequenceComplete?.Invoke();
             return;
         }
         
-        if (!IsAnimatorValid())
-        {
-            onSequenceComplete?.Invoke();
-            return;
-        }
-        
-        // If doors are already open, execute callback immediately
         if (currentState == ElevatorState.Open)
         {
             onSequenceComplete?.Invoke();
             return;
         }
         
-        // If doors are closing, wait for them to close then start sequence
-        if (currentState == ElevatorState.Closing)
+        if (currentState == ElevatorState.Animating)
         {
-            StartCoroutine(WaitForClosingThenStartSequence(onSequenceComplete));
+            StartCoroutine(WaitForAnimationThenCallback(onSequenceComplete));
             return;
         }
         
-        // If doors are opening, wait for them to open then execute callback
-        if (currentState == ElevatorState.Opening)
-        {
-            StartCoroutine(WaitForOpeningThenExecuteCallback(onSequenceComplete));
-            return;
-        }
-        
-        // Reset state if needed
-        if (currentState == ElevatorState.Moving)
-        {
-            currentState = ElevatorState.Idle;
-        }
-        
-        if (currentState == ElevatorState.Idle)
-        {
-            StartCoroutine(ElevatorSequenceCoroutine(onSequenceComplete));
-        }
-        else
-        {
-            onSequenceComplete?.Invoke();
-        }
+        StartCoroutine(AnimateDoors(true, onSequenceComplete));
     }
     
     /// <summary>
-    /// Opens doors and executes callback when reaching Open state
-    /// </summary>
-    private IEnumerator ElevatorSequenceCoroutine(System.Action onSequenceComplete)
-    {
-        yield return StartCoroutine(AnimateDoors(true, doorOpenDuration, ElevatorState.Opening, ElevatorState.Open));
-        onSequenceComplete?.Invoke();
-    }
-    
-    /// <summary>
-    /// Opens doors when arriving at a new scene (called when scene loads)
+    /// Opens doors when arriving at a new scene with delay and button reset
     /// </summary>
     public void OpenDoorsOnArrival()
     {
-        if (IsAnimatorValid())
+        if (doorAnimator == null)
         {
-            if (gameObject.activeInHierarchy)
-            {
-                StartCoroutine(OpenDoorsOnArrivalCoroutine());
-            }
-            else
-            {
-                SetDoorState(true, ElevatorState.Open);
-            }
+            return;
+        }
+        
+        if (gameObject.activeInHierarchy)
+        {
+            StartCoroutine(OpenDoorsOnArrivalCoroutine());
+        }
+        else
+        {
+            currentState = ElevatorState.Open;
+            doorAnimator.SetBool("DoorsOpen", true);
         }
     }
     
     /// <summary>
-    /// Opens doors with delay when arriving at new scene
+    /// Opens doors with delay when arriving at new scene and resets button states
     /// </summary>
     private IEnumerator OpenDoorsOnArrivalCoroutine()
     {
         yield return new WaitForSeconds(0.5f);
-        yield return StartCoroutine(AnimateDoors(true, doorOpenDuration, ElevatorState.Opening, ElevatorState.Open));
+        yield return StartCoroutine(AnimateDoors(true, null));
+        
+        if (ButtonEmissionManager.Instance != null)
+        {
+            ButtonEmissionManager.Instance.ResetAllButtons();
+        }
     }
     
     /// <summary>
-    /// Waits for doors to finish closing and starts the elevator sequence
+    /// Waits for current animation to complete then executes callback or opens doors
     /// </summary>
-    private IEnumerator WaitForClosingThenStartSequence(System.Action onSequenceComplete)
+    /// <param name="onComplete">Callback to execute when animation is complete</param>
+    private IEnumerator WaitForAnimationThenCallback(System.Action onComplete)
     {
-        yield return StartCoroutine(WaitForState(ElevatorState.Closing, () => {
-            if (currentState == ElevatorState.Idle)
-            {
-                StartCoroutine(ElevatorSequenceCoroutine(onSequenceComplete));
-            }
-            else
-            {
-                onSequenceComplete?.Invoke();
-            }
-        }));
+        while (currentState == ElevatorState.Animating)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        
+        if (currentState == ElevatorState.Closed)
+        {
+            yield return StartCoroutine(AnimateDoors(true, onComplete));
+        }
+        else
+        {
+            onComplete?.Invoke();
+        }
     }
     
     /// <summary>
-    /// Waits for doors to finish opening and executes callback
+    /// Animates doors opening or closing with optional callback when complete
     /// </summary>
-    private IEnumerator WaitForOpeningThenExecuteCallback(System.Action onSequenceComplete)
+    /// <param name="open">True to open doors, false to close them</param>
+    /// <param name="onComplete">Callback to execute when animation is complete</param>
+    private IEnumerator AnimateDoors(bool open, System.Action onComplete)
     {
-        yield return StartCoroutine(WaitForState(ElevatorState.Opening, () => onSequenceComplete?.Invoke()));
+        currentState = ElevatorState.Animating;
+        
+        if (open)
+        {
+            doorAnimator.SetBool("DoorsOpen", true);
+            yield return new WaitForSeconds(2.1f);
+        }
+        else
+        {
+            yield return StartCoroutine(SmoothCloseDoors());
+        }
+        
+        currentState = open ? ElevatorState.Open : ElevatorState.Closed;
+        onComplete?.Invoke();
     }
     
     /// <summary>
-    /// Resets elevator to initial state (idle) with doors closed
+    /// Smoothly closes doors by playing the opening animation in reverse
+    /// </summary>
+    private IEnumerator SmoothCloseDoors()
+    {
+        doorAnimator.SetBool("DoorsOpen", true);
+        yield return new WaitForEndOfFrame();
+        
+        float duration = 2.1f;
+        float elapsedTime = 0f;
+        
+        while (elapsedTime < duration)
+        {
+            float normalizedTime = 1.0f - (elapsedTime / duration);
+            
+            for (int layer = 0; layer < doorAnimator.layerCount; layer++)
+            {
+                AnimatorStateInfo stateInfo = doorAnimator.GetCurrentAnimatorStateInfo(layer);
+                if (stateInfo.IsName("Door01Open") || stateInfo.IsName("Door02Open"))
+                {
+                    doorAnimator.Play(stateInfo.fullPathHash, layer, normalizedTime);
+                }
+            }
+            
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        
+        doorAnimator.SetBool("DoorsOpen", false);
+    }
+    
+    /// <summary>
+    /// Resets elevator to initial state with doors closed
     /// </summary>
     [ContextMenu("Reset Elevator State")]
     public void ResetElevatorState()
     {
-        var previousState = currentState;
-        currentState = ElevatorState.Idle;
-        
-        if (IsAnimatorValid() && previousState != ElevatorState.Opening && previousState != ElevatorState.Closing)
+        currentState = ElevatorState.Closed;
+        if (doorAnimator != null)
         {
-            doorAnimator.SetBool(doorsOpenBool, false);
+            doorAnimator.SetBool("DoorsOpen", false);
         }
-    }
-    
-    /// <summary>
-    /// Checks if the door animator is valid
-    /// </summary>
-    private bool IsAnimatorValid()
-    {
-        return doorAnimator != null && doorAnimator.runtimeAnimatorController != null;
-    }
-    
-    /// <summary>
-    /// Sets elevator state and animator parameter
-    /// </summary>
-    private void SetDoorState(bool open, ElevatorState state)
-    {
-        currentState = state;
-        doorAnimator.SetBool(doorsOpenBool, open);
-    }
-    
-    /// <summary>
-    /// Animates doors through state transitions
-    /// </summary>
-    private IEnumerator AnimateDoors(bool open, float duration, ElevatorState duringState, ElevatorState endState)
-    {
-        currentState = duringState;
-        doorAnimator.SetBool(doorsOpenBool, open);
-        yield return new WaitForSeconds(duration);
-        currentState = endState;
-    }
-    
-    /// <summary>
-    /// Waits for the elevator to reach the target state
-    /// </summary>
-    private IEnumerator WaitForState(ElevatorState targetState, System.Action onComplete)
-    {
-        while (currentState == targetState)
-        {
-            yield return new WaitForSeconds(0.1f);
-        }
-        onComplete?.Invoke();
     }
 }
