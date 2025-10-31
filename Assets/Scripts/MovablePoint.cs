@@ -81,12 +81,17 @@ public class MovablePoint : MonoBehaviour
             MoveArrow newArrow = Instantiate(arrowPrefab, gameObject.transform.position, Quaternion.identity);
             newArrow.transform.SetParent(gameObject.transform);
             newArrow.transform.LookAt(movablePoint.transform);
-            
+
+            Vector3 currentRotation = newArrow.transform.eulerAngles;
+            currentRotation.x = -30f;
+            newArrow.transform.eulerAngles = currentRotation;
+
             Vector3 offsetDirection = newArrow.transform.forward;
             offsetDirection.x *= arrowOffset + (planeSize.x / 2);
-            offsetDirection.y = 0;
+            offsetDirection.y = 0.4f;
             offsetDirection.z *= arrowOffset + (planeSize.z / 2);
             newArrow.transform.position += offsetDirection;
+
 
             newArrow.endpoint = movablePoint;
             arrows.Add(newArrow);
@@ -102,7 +107,10 @@ public class MovablePoint : MonoBehaviour
     {
         foreach (MoveArrow arrow in arrows) 
         {
-            Destroy(arrow.gameObject);
+            if (!arrow.moving) 
+            {
+                Destroy(arrow.gameObject);
+            }
         }
 
         arrows.Clear();
