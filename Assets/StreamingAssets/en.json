@@ -13,8 +13,12 @@
       "value": "The ground gets tested"
     },
     {
-      "key": "Maquette_Info_Screens_Activeer-Telescoop",
-      "value": "Show gravity waves which the telescope receives and a universe will appear."
+      "key": "Maquette_Info_MazeVaals",
+      "value": "Maze Labyrinth Vaals"
+    },
+    {
+      "key": "Maquette_Info_Screens_Activate-Telescope",
+      "value": "Show gravity waves the telescope will receive and a universe will appear"
     },
     {
       "key": "Maquette_Info_Screens_X-Ray-View",
@@ -26,7 +30,7 @@
     },
     {
       "key": "Maquette_Info_BuildUpTelescope-3",
-      "value": "The telescope gets built"
+      "value": "The telescope gets build"
     },
     {
       "key": "ControlPanelActivateTelescope",
@@ -37,28 +41,16 @@
       "value": "Activate Laser"
     },
     {
-      "key": "Maquette_InfoboardWithText",
-      "value": "Information point Pathfinder"
+      "key": "Maquette_Infoboard_Pathfinder",
+      "value": "Informationpoint Pathfinder"
     },
     {
       "key": "Maquette_InfoboardLaser",
-      "value": "Observe how the laser works."
+      "value": "See inside the laser!"
     },
     {
       "key": "Maquette_InfoboardTelescope",
-      "value": "Show how the telescope receives waves and reveals the universe."
-    },
-    {
-      "key": "Maquette_InfoboardWithText (1)",
-      "value": "----->   Go this way to go inside the laser"
-    },
-    {
-      "key": "Maquette_InfoboardWithText (2)",
-      "value": "<-----   Go this way to go inside the laser"
-    },
-    {
-      "key": "Maquette_InfoboardWithText (3)",
-      "value": "Walk around in the laser. Go left or right, both are possible!"
+      "value": "Observe how the telescope receives waves"
     }
   ]
 }
