@@ -8,6 +8,8 @@ public class MoveArrow : MonoBehaviour, ITappable
     /// </summary>
     public MovablePoint endpoint;
 
+    public AudioSource audioSource;
+
     /// <summary>
     /// The xrOrigin in the scene to move.
     /// </summary>
@@ -16,7 +18,7 @@ public class MoveArrow : MonoBehaviour, ITappable
     /// <summary>
     /// Gets current XROrigin.
     /// </summary>
-    void Start() 
+    void Start()
     {
         xrOrigin = FindObjectOfType<XROrigin>();
     }
@@ -24,13 +26,16 @@ public class MoveArrow : MonoBehaviour, ITappable
     /// <summary>
     /// Moves to point when tapped.
     /// </summary>
-    public void OnTapped() 
+    public void OnTapped()
     {
+        audioSource.Play();
         Vector3 offset = endpoint.transform.position;
         offset.x -= Camera.main.transform.position.x;
         offset.y = 0;
         offset.z -= Camera.main.transform.position.z;
 
         xrOrigin.transform.position += offset;
+
+
     }
 }
