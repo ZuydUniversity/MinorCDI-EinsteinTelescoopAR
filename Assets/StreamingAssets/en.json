@@ -51,6 +51,10 @@
     {
       "key": "Maquette_InfoboardTelescope",
       "value": "Observe how the telescope receives waves"
+    },
+    {
+      "key": "WowEffect_Infoboard",
+      "value": "The size of the Einstein telescope in respect to the eiffel tower"
     }
   ]
 }
