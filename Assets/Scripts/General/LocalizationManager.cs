@@ -21,7 +21,9 @@ public class LocalizationManager : MonoBehaviour
     /// Action to call all text fields. Gets triggerd by a language change
     /// </summary>
     public event Action OnLanguageChanged; 
-
+    /// <summary>
+    /// Used to make itself a singleton
+    /// </summary>
     private void Awake()
     {
         if (Instance == null)
@@ -35,7 +37,10 @@ public class LocalizationManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    /// <summary>
+    /// Loads selected language after a button press
+    /// </summary>
+    /// <param name="languageCode"></param>
     public void LoadLanguage(string languageCode)
     {
         CurrentLanguage = languageCode;
@@ -63,14 +68,18 @@ public class LocalizationManager : MonoBehaviour
             return $"#{key}#"; 
     }
 }
-
+/// <summary>
+/// Entry in json file used for localization
+/// </summary>
 [System.Serializable]
 public class LocalizationEntry
 {
     public string key;
     public string value;
 }
-
+/// <summary>
+/// Dictionary of entries used for localization
+/// </summary>
 [System.Serializable]
 public class LocalizationDictionary
 {
