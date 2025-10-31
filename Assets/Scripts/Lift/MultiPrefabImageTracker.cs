@@ -115,6 +115,11 @@ public class AnimatedPrefabData
 public class MultiPrefabImageTracker : MonoBehaviour
 {
     /// <summary>
+    /// The qr scanner ui that gives visual indication of the scanning.
+    /// </summary>
+    public QRScanner scannerUI;
+
+    /// <summary>
     /// List of image prefab pairs configured in the inspector
     /// </summary>
     [SerializeField] private List<ImagePrefabPair> imagePrefabPairs = new List<ImagePrefabPair>();
@@ -215,6 +220,11 @@ public class MultiPrefabImageTracker : MonoBehaviour
 
         if (imageNameToPrefabPairs.TryGetValue(imageName, out List<ImagePrefabPair> pairs))
         {
+            if (scannerUI != null) 
+            {
+                scannerUI.OnScanSuccess();
+            }
+
             SpawnPrefabs(trackedImage, pairs, imageName);
             spawnedImages.Add(imageName);
         }
