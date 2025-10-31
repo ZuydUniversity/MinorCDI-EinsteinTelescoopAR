@@ -122,6 +122,16 @@ public class MovablePoint : MonoBehaviour
     }
 
     /// <summary>
+    /// Triggers movement effects directly (for use after smooth movement completion)
+    /// </summary>
+    public void TriggerMovementEffects()
+    {
+        currentPoint = this;
+        OnPlayerMoved?.Invoke(this);
+        StartCoroutine(HandleMovementEffects());
+    }
+
+    /// <summary>
     /// Checks if camera is on plane.
     /// </summary>
     void Update() 
@@ -176,11 +186,16 @@ public class MovablePoint : MonoBehaviour
         foreach (MovablePoint movablePoint in movablePoints)
         {
             MoveArrow newArrow = Instantiate(arrowPrefab, gameObject.transform.position, Quaternion.identity);
+            newArrow.transform.SetParent(gameObject.transform);
             newArrow.transform.LookAt(movablePoint.transform);
-            
+
+            Vector3 currentRotation = newArrow.transform.eulerAngles;
+            currentRotation.x = -30f;
+            newArrow.transform.eulerAngles = currentRotation;
+
             Vector3 offsetDirection = newArrow.transform.forward;
             offsetDirection.x *= arrowOffset + (planeSize.x / 2);
-            offsetDirection.y = 0;
+            offsetDirection.y = 0.4f;
             offsetDirection.z *= arrowOffset + (planeSize.z / 2);
             newArrow.transform.position += offsetDirection;
 
@@ -198,7 +213,10 @@ public class MovablePoint : MonoBehaviour
     {
         foreach (MoveArrow arrow in arrows) 
         {
-            Destroy(arrow.gameObject);
+            if (!arrow.moving) 
+            {
+                Destroy(arrow.gameObject);
+            }
         }
 
         arrows.Clear();
