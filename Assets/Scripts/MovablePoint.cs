@@ -128,6 +128,7 @@ public class MovablePoint : MonoBehaviour
     {
         currentPoint = this;
         OnPlayerMoved?.Invoke(this);
+        reachedViaMovement = false;
         StartCoroutine(HandleMovementEffects());
     }
 
