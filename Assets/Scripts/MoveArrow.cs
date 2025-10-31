@@ -24,7 +24,6 @@ public class MoveArrow : MonoBehaviour, ITappable
     /// How long it takes in seconds to move to the next place over tapping the arrow.
     /// </summary>
     public float moveDuration = 6f;
-
     /// <summary>
     /// Gets current XROrigin.
     /// </summary>
@@ -36,20 +35,41 @@ public class MoveArrow : MonoBehaviour, ITappable
     /// <summary>
     /// Moves to point when tapped.
     /// </summary>
-    public void OnTapped() 
+    public void OnTapped()
     {
         if (xrOrigin == null || endpoint == null)
         {
             return;
         }
 
+        // Bereken doelpositie relatief aan camera
         Vector3 offset = endpoint.transform.position - Camera.main.transform.position;
         offset.y = 0;
 
         Vector3 targetPosition = xrOrigin.transform.position + offset;
 
         moving = true;
+        // Start smooth move
         StartCoroutine(SmoothMove(xrOrigin.transform, targetPosition, moveDuration));
+    }
+
+    /// <summary>
+    /// Smoothly moves an object to a target position.
+    /// </summary>
+    private IEnumerator SmoothMove(Transform obj, Vector3 targetPosition, float duration)
+    {
+        Vector3 startPosition = obj.position;
+        float normalizedTime = 0f;
+
+        while (normalizedTime < 1f)
+        {
+            normalizedTime += Time.deltaTime / duration;
+            obj.position = Vector3.Lerp(startPosition, targetPosition, normalizedTime);
+            yield return null;
+        }
+
+        obj.position = targetPosition;
+        Destroy(gameObject);
     }
 
     /// <summary>

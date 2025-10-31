@@ -12,18 +12,27 @@ public class TelescopeLever : Lever
     public GameObject TelescopeObject;
 
     /// <summary>
-    /// Hides telescope when activated.
+    /// The audio source containing the audio.
+    /// </summary>
+    public AudioSource audioSource;
+
+
+    /// <summary>
+    /// Shows telescope and plays when activated.
     /// </summary>
     public override void OnActivate()
     {
         TelescopeObject.SetActive(true);
+        audioSource.Play();
+
     }
 
     /// <summary>
-    /// Shows telescope when activated.
+    /// Hides telescope and stops sound when deactivated.
     /// </summary>
     public override void OnDeactivate()
     {
+        audioSource.Stop();
         TelescopeObject.SetActive(false);
     }
 }

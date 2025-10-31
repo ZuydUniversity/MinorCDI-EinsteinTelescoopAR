@@ -200,6 +200,7 @@ public class MovablePoint : MonoBehaviour
             offsetDirection.z *= arrowOffset + (planeSize.z / 2);
             newArrow.transform.position += offsetDirection;
 
+
             newArrow.endpoint = movablePoint;
             arrows.Add(newArrow);
         }
