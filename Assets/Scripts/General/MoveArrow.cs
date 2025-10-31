@@ -29,7 +29,7 @@ public class MoveArrow : MonoBehaviour, ITappable
     /// </summary>
     void Start() 
     {
-        xrOrigin = FindObjectOfType<XROrigin>();
+        xrOrigin = FindFirstObjectByType<XROrigin>();
     }
 
     /// <summary>
