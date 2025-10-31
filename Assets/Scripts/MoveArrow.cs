@@ -18,7 +18,7 @@ public class MoveArrow : MonoBehaviour, ITappable
     /// <summary>
     /// Gets current XROrigin.
     /// </summary>
-    void Start() 
+    void Start()
     {
         xrOrigin = FindObjectOfType<XROrigin>();
     }
@@ -28,6 +28,7 @@ public class MoveArrow : MonoBehaviour, ITappable
     /// </summary>
     public void OnTapped()
     {
+        audioSource.Play();
         Vector3 offset = endpoint.transform.position;
         offset.x -= Camera.main.transform.position.x;
         offset.y = 0;
@@ -35,6 +36,6 @@ public class MoveArrow : MonoBehaviour, ITappable
 
         xrOrigin.transform.position += offset;
 
-        audioSource.Play();
+
     }
 }

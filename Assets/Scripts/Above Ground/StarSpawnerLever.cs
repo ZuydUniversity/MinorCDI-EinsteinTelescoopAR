@@ -9,7 +9,6 @@ public class StarSpawnerLever : Lever
     /// The telescope to hide/show.
     /// </summary>
     public StarSpawner spawner;
-    public AudioSource audioSource;
 
     /// <summary>
     /// Hides telescope when activated.
@@ -17,7 +16,6 @@ public class StarSpawnerLever : Lever
     public override void OnActivate()
     {
         spawner.StartAnimation();
-        audioSource.Play();
     }
 
     /// <summary>
