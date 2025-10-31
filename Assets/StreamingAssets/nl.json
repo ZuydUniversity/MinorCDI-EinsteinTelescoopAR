@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "key": "ControlPanelXRay",
+      "value": "Activeer X-Ray"
+    },
+    {
+      "key": "ControlPanelStarSpawner",
+      "value": "Activeer Telescoop"
+    },
+    {
+      "key": "Maquette_Info_BuildUpTelescope-1",
+      "value": "De grond wordt getest"
+    },
+    {
+      "key": "Maquette_Info_Screens_Activeer-Telescoop",
+      "value": "Laat golven zien die de telescoop ontvangt en een universum verschijnt."
+    },
+    {
+      "key": "Maquette_Info_Screens_X-Ray-View",
+      "value": "Bekijk hoe de telescoop er ondergronds uitziet!"
+    },
+    {
+      "key": "Maquette_Info_BuildUpTelescope-2",
+      "value": "Er wordt geboord"
+    },
+    {
+      "key": "Maquette_Info_BuildUpTelescope-3",
+      "value": "Er wordt gebouwd"
+    },
+    {
+      "key": "ControlPanelActivateTelescope",
+      "value": "Activeer Telescoop"
+    },
+    {
+      "key": "ControlPanelLaser",
+      "value": "Activeer Laser"
+    },
+    {
+      "key": "Maquette_InfoboardWithText",
+      "value": "Informatiepunt Pathfinder"
+    },
+    {
+      "key": "Maquette_InfoboardLaser",
+      "value": "Zie hoe de laser werkt."
+    },
+    {
+      "key": "Maquette_InfoboardTelescope",
+      "value": "Kijk hoe de telescoop golven ontvangt en het universum toont."
+    },
+    {
+      "key": "Maquette_InfoboardWithText (1)",
+      "value": "----->   Ga die kant op om binnen in de laser te spelen"
+    },
+    {
+      "key": "Maquette_InfoboardWithText (2)",
+      "value": "<-----   Ga die kant op om binnen in de laser te spelen"
+    },
+    {
+      "key": "Maquette_InfoboardWithText (3)",
+      "value": "Loop een rondje in de laser. Links om of rechts om, beide kan!"
+    }
+  ]
+}

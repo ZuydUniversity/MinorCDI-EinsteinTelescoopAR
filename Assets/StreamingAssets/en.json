@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "key": "ControlPanelXRay",
+      "value": "Activate X-Ray"
+    },
+    {
+      "key": "ControlPanelStarSpawner",
+      "value": "Activate Telescope"
+    },
+    {
+      "key": "Maquette_Info_BuildUpTelescope-1",
+      "value": "The ground gets tested"
+    },
+    {
+      "key": "Maquette_Info_Screens_Activeer-Telescoop",
+      "value": "Show gravity waves which the telescope receives and a universe will appear."
+    },
+    {
+      "key": "Maquette_Info_Screens_X-Ray-View",
+      "value": "Observe what the telescope looks like underground!"
+    },
+    {
+      "key": "Maquette_Info_BuildUpTelescope-2",
+      "value": "The drilling starts"
+    },
+    {
+      "key": "Maquette_Info_BuildUpTelescope-3",
+      "value": "The telescope gets built"
+    },
+    {
+      "key": "ControlPanelActivateTelescope",
+      "value": "Activate Telescope"
+    },
+    {
+      "key": "ControlPanelLaser",
+      "value": "Activate Laser"
+    },
+    {
+      "key": "Maquette_InfoboardWithText",
+      "value": "Information point Pathfinder"
+    },
+    {
+      "key": "Maquette_InfoboardLaser",
+      "value": "Observe how the laser works."
+    },
+    {
+      "key": "Maquette_InfoboardTelescope",
+      "value": "Show how the telescope receives waves and reveals the universe."
+    },
+    {
+      "key": "Maquette_InfoboardWithText (1)",
+      "value": "----->   Go this way to go inside the laser"
+    },
+    {
+      "key": "Maquette_InfoboardWithText (2)",
+      "value": "<-----   Go this way to go inside the laser"
+    },
+    {
+      "key": "Maquette_InfoboardWithText (3)",
+      "value": "Walk around in the laser. Go left or right, both are possible!"
+    }
+  ]
+}

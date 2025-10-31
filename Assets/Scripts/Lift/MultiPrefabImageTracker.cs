@@ -144,7 +144,7 @@ public class MultiPrefabImageTracker : MonoBehaviour
     void Awake()
     {
         trackedImageManager = GetComponent<ARTrackedImageManager>();
-        anchorManager = FindObjectOfType<ARAnchorManager>();
+        anchorManager = FindFirstObjectByType<ARAnchorManager>();
 
         foreach (var pair in imagePrefabPairs)
         {
