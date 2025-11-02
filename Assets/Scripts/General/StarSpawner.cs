@@ -76,6 +76,11 @@ public class StarSpawner : MonoBehaviour
     private AudioSource waveParticalAudio;
 
     /// <summary>
+    /// Indicator for where the stars will spawn.
+    /// </summary>
+    private HUDIndicator.IndicatorOffScreen indicator;
+
+    /// <summary>
     /// Runs before the first update call after this script is created.
     /// Creates the wave particals at the position of the spawner and gets audiosource of particles.
     /// </summary>
@@ -89,6 +94,8 @@ public class StarSpawner : MonoBehaviour
             waveParticles.transform.rotation = waveParticlesPrefab.transform.rotation;
             waveParticalAudio = waveParticles.GetComponent<AudioSource>();
         }
+
+        indicator = gameObject.GetComponent<HUDIndicator.IndicatorOffScreen>();
     }
 
     /// <summary>
@@ -108,6 +115,9 @@ public class StarSpawner : MonoBehaviour
             }
 
             spawnedObjects.Clear();
+
+            indicator.visible = true;
+
             waveParticles.Play();
             waveParticalAudio.Play();
 
@@ -135,8 +145,11 @@ public class StarSpawner : MonoBehaviour
     {
         if (playing) 
         {
+            indicator.visible = false;    
+
             waveParticles.Stop();
             waveParticalAudio.Stop();
+            
             playing = false;
         }
 
