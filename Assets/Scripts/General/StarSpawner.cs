@@ -52,6 +52,10 @@ public class StarSpawner : MonoBehaviour
     /// in the stars and blackholes.
     /// </summary>
     public float duration = 10.0f;
+    /// <summary>
+    /// The offset the particles should have from the origin.
+    /// </summary>
+    public Vector3 particleOffset = new Vector3(0f, 5f, 0f);
 
     /// <summary>
     /// Used to check if animation is already playing.
@@ -80,6 +84,8 @@ public class StarSpawner : MonoBehaviour
         if (waveParticlesPrefab != null) 
         {
             waveParticles = Instantiate(waveParticlesPrefab, gameObject.transform.position, Quaternion.identity);
+            waveParticles.transform.SetParent(gameObject.transform);
+            waveParticles.transform.position += particleOffset;
             waveParticles.transform.rotation = waveParticlesPrefab.transform.rotation;
             waveParticalAudio = waveParticles.GetComponent<AudioSource>();
         }
