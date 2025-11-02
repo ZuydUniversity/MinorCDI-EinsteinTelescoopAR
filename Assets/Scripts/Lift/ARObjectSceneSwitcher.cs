@@ -8,75 +8,36 @@ public class ARObjectSceneSwitcher : MonoBehaviour, ITappable
     /// The name of the scene that is loaded
     /// </summary>
     [SerializeField] private string targetSceneName = "Above Ground";
+
     /// <summary>
     /// Reference to the ElevatorController to play animations before scene transition
     /// </summary>
     [SerializeField] private ElevatorController elevatorController;
+
     /// <summary>
     /// The name of the main scene that may not be unloaded.
     /// </summary>
-    public string mainSceneName = "ElevatorScene";
+    public string mainSceneName = "MainScene";
 
     /// <summary>
     /// Initializes components and adds a BoxCollider if none exists
     /// </summary>
-    void Awake()
+    void Start()
     {
-        if (elevatorController == null)
-        {
-            elevatorController = GetComponentInParent<ElevatorController>();
-        }
-
-        if (!TryGetComponent<Collider>(out _))
-        {
-            var box = gameObject.AddComponent<BoxCollider>();
-            var renderers = GetComponents<Renderer>();
-            if (renderers.Length > 0)
-            {
-                Bounds b = renderers[0].bounds;
-                for (int i = 1; i < renderers.Length; i++) b.Encapsulate(renderers[i].bounds);
-                box.center = transform.InverseTransformPoint(b.center);
-                box.size = transform.InverseTransformVector(b.size);
-            }
-        }
-    }
-
-    /// <summary>
-    /// Called when the object is tapped. Ensures doors are closed before scene switching
-    /// </summary>
-    public void OnTapped()
-    {
-        var currentPoint = MovablePoint.GetCurrentPoint();
-        if (currentPoint != null && currentPoint.pointID == "2")
-        {
-            if (ButtonEmissionManager.Instance != null)
-            {
-                ButtonEmissionManager.Instance.SetButtonActive(gameObject, true);
-            }
-            
-            MovablePoint.RegisterLastClickedSwitcher(this);
-            EnsureDoorsClosedAndLoadScene();
-            return;
-        }
-        
-        MovablePoint.RegisterLastClickedSwitcher(this);
-        StartElevatorSequence();
+        elevatorController = GetComponentInParent<ElevatorController>();
     }
 
     /// <summary>
     /// Starts the elevator animation sequence and then loads the target scene
     /// </summary>
-    void StartElevatorSequence()
-    {
-        if (elevatorController != null)
+    public void OnTapped()
+    {       
+        if (ButtonEmissionManager.Instance != null)
         {
-            // First open doors, then check position and close doors before scene load
-            elevatorController.StartElevatorSequence(CheckPositionCloseDoorsAndLoadScene);
+            ButtonEmissionManager.Instance.SetButtonActive(gameObject, true);
         }
-        else
-        {
-            CheckPositionCloseDoorsAndLoadScene();
-        }
+
+        EnsureDoorsClosedAndLoadScene();
     }
 
     /// <summary>
@@ -110,26 +71,11 @@ public class ARObjectSceneSwitcher : MonoBehaviour, ITappable
             LoadTargetScene();
         }
     }
-
-    /// <summary>
-    /// Checks if at MovementPoint2, manages door state, and loads the target scene
-    /// </summary>
-    public void CheckPositionCloseDoorsAndLoadScene()
-    {
-        var currentPoint = MovablePoint.GetCurrentPoint();
-        if (currentPoint == null || currentPoint.pointID != "2")
-        {
-            return;
-        }
-        
-        EnsureDoorsClosedAndLoadScene();
-    }
-    
     
     /// <summary>
     /// Loads the target scene additively, unloads other scenes except main scene, and schedules door opening
     /// </summary>
-    void LoadTargetScene()
+    private void LoadTargetScene()
     {
         if (!string.IsNullOrEmpty(targetSceneName))
         {
@@ -159,7 +105,7 @@ public class ARObjectSceneSwitcher : MonoBehaviour, ITappable
     /// <summary>
     /// Coroutine that waits for elevator doors to finish closing animation before loading the target scene
     /// </summary>
-    private System.Collections.IEnumerator WaitForDoorsToCloseAndLoadScene()
+    private IEnumerator WaitForDoorsToCloseAndLoadScene()
     {
         yield return new WaitForSeconds(0.1f);
         
@@ -203,15 +149,7 @@ public class ARObjectSceneSwitcher : MonoBehaviour, ITappable
                 return true;
             }
         }
-        return false;
-    }
 
-    /// <summary>
-    /// Gets the target scene name for this ARObjectSceneSwitcher
-    /// </summary>
-    public string GetTargetSceneName()
-    {
-        return targetSceneName;
-    }
-    
+        return false;
+    } 
 }

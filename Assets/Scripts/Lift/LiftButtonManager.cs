@@ -3,28 +3,27 @@ using UnityEngine.SceneManagement;
 
 /// <summary>
 /// This script handles the visibility of the lift buttons
-/// based on the current scene and optional movement point position.
+/// based on the current scene.
 /// </summary>
 public class LiftButtonManager : MonoBehaviour
 {    
     /// <summary>
-    /// A rule for a part of a model. The sceneName declares the scene in which to make the part of
-    /// the model invisible and the partsToHide array defines which parts to hide of the model.
-    /// Optional movementPointID adds condition that player must be at specific point.
+    /// A rule for a part of a model. The sceneName 
+    /// delcares the scene in which to make the part of
+    /// the model invisible and the partsToHide array
+    /// defines which parts to hide of the model.
     /// </summary>
     [System.Serializable]
     public class ScenePartRule
     {
         public string sceneName;
         public GameObject[] partsToHide;
-        public string requiredMovementPointID = "";
     }
 
     /// <summary>
     /// A list of rules for parts of the model.
-    /// </summary>
+    /// <summary>
     [SerializeField] private ScenePartRule[] rules;
-    
 
     /// <summary>
     /// When the object this script is attached to is enabled
@@ -35,7 +34,6 @@ public class LiftButtonManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
-        MovablePoint.OnPlayerMoved += OnPlayerMoved;
     }
 
     /// <summary>
@@ -47,7 +45,6 @@ public class LiftButtonManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
-        MovablePoint.OnPlayerMoved -= OnPlayerMoved;
     }
 
     /// <summary>
@@ -68,29 +65,6 @@ public class LiftButtonManager : MonoBehaviour
     {
         UpdateVisibility(scene.name, false);
     }
-    
-    /// <summary>
-    /// Executes when player moves to a new MovementPoint
-    /// </summary>
-    private void OnPlayerMoved(MovablePoint newPoint)
-    {
-        ReevaluateAllActiveScenes();
-    }
-    
-    /// <summary>
-    /// Re-evaluate visibility rules for all currently loaded scenes
-    /// </summary>
-    private void ReevaluateAllActiveScenes()
-    {
-        for (int i = 0; i < SceneManager.sceneCount; i++)
-        {
-            Scene scene = SceneManager.GetSceneAt(i);
-            if (scene.isLoaded)
-            {
-                UpdateVisibility(scene.name, true);
-            }
-        }
-    }
 
     /// <summary>
     /// Updates visibility of model parts based on the rules.
@@ -103,30 +77,11 @@ public class LiftButtonManager : MonoBehaviour
         {
             if (rule.sceneName == sceneName) 
             {
-                bool shouldHide = hide;
-                
-                if (hide && !string.IsNullOrEmpty(rule.requiredMovementPointID))
-                {
-                    shouldHide = CheckMovementPointCondition(rule.requiredMovementPointID);
-                }
-                
                 foreach (var part in rule.partsToHide) 
                 {
-                    if (part != null)
-                        part.SetActive(!shouldHide);
+                    part.SetActive(!hide);
                 }
             }
         }
-    }
-    
-    /// <summary>
-    /// Check if player is at the required MovementPoint
-    /// </summary>
-    /// <param name="requiredPointID">The MovementPoint ID to check</param>
-    /// <returns>True if player is at the required point</returns>
-    private bool CheckMovementPointCondition(string requiredPointID)
-    {
-        var currentPoint = MovablePoint.GetCurrentPoint();
-        return currentPoint != null && currentPoint.pointID == requiredPointID;
     }
 }

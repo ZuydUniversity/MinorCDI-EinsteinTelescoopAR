@@ -22,24 +22,20 @@ public class ElevatorController : MonoBehaviour
     public ElevatorState currentState = ElevatorState.Closed;
     
     /// <summary>
-    /// Initialize the door animator component if not assigned in the inspector
+    /// Initialize elevator state and ensure doors are closed
     /// </summary>
-    void Awake()
+    void Start()
     {
         if (doorAnimator == null)
         {
             doorAnimator = GetComponent<Animator>();
         }
-    }
-    
-    /// <summary>
-    /// Initialize elevator state and ensure doors are closed
-    /// </summary>
-    void Start()
-    {
+
         currentState = ElevatorState.Closed;
         if (doorAnimator != null)
+        {
             doorAnimator.SetBool("DoorsOpen", false);
+        }
     }
     
     /// <summary>

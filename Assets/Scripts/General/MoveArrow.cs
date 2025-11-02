@@ -24,13 +24,12 @@ public class MoveArrow : MonoBehaviour, ITappable
     /// How long it takes in seconds to move to the next place over tapping the arrow.
     /// </summary>
     public float moveDuration = 6f;
-
     /// <summary>
     /// Gets current XROrigin.
     /// </summary>
-    void Start()
+    void Start() 
     {
-        xrOrigin = FindObjectOfType<XROrigin>();
+        xrOrigin = FindFirstObjectByType<XROrigin>();
     }
 
     /// <summary>
@@ -43,12 +42,14 @@ public class MoveArrow : MonoBehaviour, ITappable
             return;
         }
 
+        // Bereken doelpositie relatief aan camera
         Vector3 offset = endpoint.transform.position - Camera.main.transform.position;
         offset.y = 0;
 
         Vector3 targetPosition = xrOrigin.transform.position + offset;
 
         moving = true;
+        // Start smooth move
         StartCoroutine(SmoothMove(xrOrigin.transform, targetPosition, moveDuration));
     }
 
@@ -68,8 +69,6 @@ public class MoveArrow : MonoBehaviour, ITappable
         }
 
         obj.position = targetPosition;
-        endpoint.MarkAsReachedViaMovement();
-        endpoint.TriggerMovementEffects();
         Destroy(gameObject);
     }
 }

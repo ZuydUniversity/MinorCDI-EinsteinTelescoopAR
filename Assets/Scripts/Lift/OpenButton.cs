@@ -6,6 +6,9 @@ using UnityEngine;
 /// </summary>
 public class OpenButton : MonoBehaviour, ITappable
 {
+    /// <summary>
+    /// The controller for the elevator used to open it.
+    /// </summary>
     [SerializeField] private ElevatorController elevatorController;
     
     /// <summary>
@@ -15,7 +18,7 @@ public class OpenButton : MonoBehaviour, ITappable
     {
         if (elevatorController == null)
         {
-            elevatorController = FindObjectOfType<ElevatorController>();
+            elevatorController = FindFirstObjectByType<ElevatorController>();
         }
     }
     
