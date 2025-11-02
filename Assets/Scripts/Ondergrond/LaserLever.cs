@@ -51,5 +51,6 @@ public class LaserLever : Lever
     public override void OnDeactivate()
     {
         laserAnimator.Play(deactivateAnimation);
+        audioSource.Stop();
     }
 }
