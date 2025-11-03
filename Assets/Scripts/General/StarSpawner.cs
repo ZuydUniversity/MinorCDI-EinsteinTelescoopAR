@@ -180,12 +180,7 @@ public class StarSpawner : MonoBehaviour
         if (star != null || blackhole != null) 
         {
             GameObject origin = gameObject;
-            
             Vector3 randomizedSpawnPosition = new Vector3(origin.transform.position.x, origin.transform.position.y, origin.transform.position.z);
-            randomizedSpawnPosition.x += Random.Range(minSpawnOffset, maxSpawnOffset);
-            randomizedSpawnPosition.y += Random.Range(minSpawnOffset, maxSpawnOffset);
-            randomizedSpawnPosition.z += Random.Range(minSpawnOffset, maxSpawnOffset);
-
             GameObject prefabToSpawn;
             if (currentBlackHoleCount == maxBlackholeCount) 
             {
@@ -205,11 +200,16 @@ public class StarSpawner : MonoBehaviour
                         prefabToSpawn = null;
                         break;
                 }
+                randomizedSpawnPosition.x += Random.Range(minSpawnOffset, maxSpawnOffset);
+                randomizedSpawnPosition.y += Random.Range(minSpawnOffset / 2, maxSpawnOffset);
+                randomizedSpawnPosition.z += Random.Range(minSpawnOffset, maxSpawnOffset);
+
             }
             else 
             {
                 prefabToSpawn = blackhole;
                 currentBlackHoleCount += 1;
+                randomizedSpawnPosition.z += Random.Range(0, 8);
             }
 
             GameObject newObject = Instantiate(prefabToSpawn, randomizedSpawnPosition, Quaternion.identity);
