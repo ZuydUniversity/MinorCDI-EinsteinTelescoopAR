@@ -58,6 +58,15 @@ public class StarSpawner : MonoBehaviour
     public Vector3 particleOffset = new Vector3(0f, 5f, 0f);
 
     /// <summary>
+    /// The max amount of black holes that can spawn.
+    /// </summary>
+    public int maxBlackholeCount = 2;
+    /// <summary>
+    /// The current amount of black holes spawned in.
+    /// </summary>
+    private int currentBlackHoleCount = 0;
+
+    /// <summary>
     /// Used to check if animation is already playing.
     /// </summary>
     private bool playing = false;
@@ -131,6 +140,7 @@ public class StarSpawner : MonoBehaviour
     /// </summary>
     public void ShowCelestialBodies() 
     {
+        currentBlackHoleCount = 0;
         for (int index = 0; index < count; index++)
         {
             SpawnObject();
@@ -177,26 +187,29 @@ public class StarSpawner : MonoBehaviour
             randomizedSpawnPosition.z += Random.Range(minSpawnOffset, maxSpawnOffset);
 
             GameObject prefabToSpawn;
-
-            /// randomized star spawning for show waves, switch calculates the position
-            float spawnSelection = Random.Range(0, 3);
-            switch (spawnSelection) 
+            if (currentBlackHoleCount == maxBlackholeCount) 
             {
-                case 0:
-                    prefabToSpawn = dwarfStar;
-                    break;
+                /// randomized star spawning for show waves, switch calculates the position
+                float spawnSelection = Random.Range(0, 2);
+                switch (spawnSelection) 
+                {
+                    case 0:
+                        prefabToSpawn = dwarfStar;
+                        break;
 
-                case 1:
-                    prefabToSpawn = star;
-                    break;
+                    case 1:
+                        prefabToSpawn = star;
+                        break;
 
-                case 2:
-                    prefabToSpawn = blackhole;
-                    break;
-
-                default:
-                    prefabToSpawn = null;
-                    break;
+                    default:
+                        prefabToSpawn = null;
+                        break;
+                }
+            }
+            else 
+            {
+                prefabToSpawn = blackhole;
+                currentBlackHoleCount += 1;
             }
 
             GameObject newObject = Instantiate(prefabToSpawn, randomizedSpawnPosition, Quaternion.identity);
