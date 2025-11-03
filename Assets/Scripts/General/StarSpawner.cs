@@ -52,6 +52,10 @@ public class StarSpawner : MonoBehaviour
     /// in the stars and blackholes.
     /// </summary>
     public float duration = 10.0f;
+    /// <summary>
+    /// The offset the particles should have from the origin.
+    /// </summary>
+    public Vector3 particleOffset = new Vector3(0f, 5f, 0f);
 
     /// <summary>
     /// Used to check if animation is already playing.
@@ -72,6 +76,11 @@ public class StarSpawner : MonoBehaviour
     private AudioSource waveParticalAudio;
 
     /// <summary>
+    /// Indicator for where the stars will spawn.
+    /// </summary>
+    private HUDIndicator.IndicatorOffScreen indicator;
+
+    /// <summary>
     /// Runs before the first update call after this script is created.
     /// Creates the wave particals at the position of the spawner and gets audiosource of particles.
     /// </summary>
@@ -80,9 +89,13 @@ public class StarSpawner : MonoBehaviour
         if (waveParticlesPrefab != null) 
         {
             waveParticles = Instantiate(waveParticlesPrefab, gameObject.transform.position, Quaternion.identity);
+            waveParticles.transform.SetParent(gameObject.transform);
+            waveParticles.transform.position += particleOffset;
             waveParticles.transform.rotation = waveParticlesPrefab.transform.rotation;
             waveParticalAudio = waveParticles.GetComponent<AudioSource>();
         }
+
+        indicator = gameObject.GetComponent<HUDIndicator.IndicatorOffScreen>();
     }
 
     /// <summary>
@@ -102,6 +115,9 @@ public class StarSpawner : MonoBehaviour
             }
 
             spawnedObjects.Clear();
+
+            indicator.visible = true;
+
             waveParticles.Play();
             waveParticalAudio.Play();
 
@@ -129,8 +145,11 @@ public class StarSpawner : MonoBehaviour
     {
         if (playing) 
         {
+            indicator.visible = false;    
+
             waveParticles.Stop();
             waveParticalAudio.Stop();
+            
             playing = false;
         }
 

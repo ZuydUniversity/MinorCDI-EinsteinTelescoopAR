@@ -27,6 +27,16 @@ public class LaserLever : Lever
     public AudioSource audioSource;
 
     /// <summary>
+    /// The laser object containing the indecator.
+    /// </summary>
+    public GameObject laser;
+
+    /// <summary>
+    /// Indicator of where the laser is.
+    /// </summary>
+    private HUDIndicator.IndicatorOffScreen indicator;
+
+    /// <summary>
     /// The function to play the audio
     /// </summary>
     /// <returns></returns>   
@@ -41,6 +51,13 @@ public class LaserLever : Lever
     /// </summary>
     public override void OnActivate()
     {
+        if (indicator == null)
+        {
+            indicator = laser.GetComponent<HUDIndicator.IndicatorOffScreen>();
+        }
+
+        indicator.visible = true;
+
         laserAnimator.Play(activateAnimation);
         StartCoroutine(PlayAudioWithDelay(3));
     }
@@ -50,6 +67,9 @@ public class LaserLever : Lever
     /// </summary>
     public override void OnDeactivate()
     {
+        indicator.visible = false;
+
         laserAnimator.Play(deactivateAnimation);
+        audioSource.Stop();
     }
 }
