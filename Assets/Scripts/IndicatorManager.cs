@@ -81,6 +81,14 @@ public class IndicatorManager : MonoBehaviour
         {
             // Project direction onto screen edge
             Vector3 fromCenter = screenPoint - new Vector3(Screen.width / 2, Screen.height / 2, 0);
+
+            // **Crucial Check for Behind Camera**
+            if (screenPoint.z < 0)
+            {
+                // Flip the vector to point toward the correct edge
+                fromCenter *= -1;
+            }
+
             fromCenter.z = 0;
             fromCenter.Normalize();
 
