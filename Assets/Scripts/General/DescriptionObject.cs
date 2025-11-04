@@ -312,4 +312,10 @@ public class DescriptionObject : MonoBehaviour, ITappable
         }
     }
 
+    public void SetDescription(string newDescription)
+    {
+        description = newDescription;
+    }
+
+
 }
