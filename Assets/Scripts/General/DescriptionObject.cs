@@ -42,6 +42,34 @@ public class DescriptionObject : MonoBehaviour, ITappable
     /// </summary>
     private GameObject descriptionBoxInstance;
 
+    public float dynamicPixelSize = 1.8f;
+
+
+    [Header("AutoScale")]
+    public float referenceScreenHeight = 1080f;
+    public float referenceFOV = 60f;
+    [Range(0f, 1f)] public float distanceEffect = 0.7f;
+
+    private Transform descriptionCanvasTf;
+    private float baseDistance ;
+    private Vector3 baseScale;
+
+    /// DYNAMIC TEXTSIZE
+    [Header("Dynamic Text Size")]
+    public int baseTitleFontSize = 32;        // kies jouw basisgroottes
+    public int baseDescriptionFontSize = 24;
+    public float fontScaleMultiplier = 50.0f;  // extra globale factor
+    public int minFontSize = 12;
+    public int maxFontSize = 96;
+
+
+    private Text titleTextComponent;
+    private Text descriptionTextComponent;
+
+
+
+
+
     /// <summary>
     /// Starts before first update. Gets the camera in the current scene.
     /// </summary>
@@ -57,12 +85,17 @@ public class DescriptionObject : MonoBehaviour, ITappable
     {
         if (descriptionBoxInstance != null)
         {
-            Vector3 lookDirection = mainCamera.transform.position - descriptionBoxInstance.transform.position;
+            Vector3 lookDirection = mainCamera.transform.position - descriptionCanvasTf.transform.position;
             lookDirection.y = 0;
             if (lookDirection.sqrMagnitude > 0.001f)
             {
-                descriptionBoxInstance.transform.rotation = mainCamera.transform.rotation;
+                descriptionCanvasTf.transform.rotation = mainCamera.transform.rotation;
             }
+
+
+            ApplyScaleNow();
+
+        
 
             // Checks if description box renders. Else it hides the description box
             Renderer render = gameObject.GetComponent<Renderer>();
@@ -99,27 +132,59 @@ public class DescriptionObject : MonoBehaviour, ITappable
         descriptionBoxInstance = Instantiate(descriptionBoxPrefab, gameObject.transform);
         descriptionBoxInstance.transform.position += offset;
 
-        Transform descriptionBoxTitle = descriptionBoxInstance.transform.Find(titleName);
-        if (descriptionBoxTitle != null)
+
+        var canvas = descriptionBoxInstance.GetComponentInChildren<Canvas>(true);
+        if (canvas == null) {
+            canvas = descriptionBoxInstance.AddComponent<Canvas>();
+        }
+        canvas.renderMode = RenderMode.WorldSpace;
+        canvas.worldCamera = mainCamera;
+
+        descriptionCanvasTf = canvas.transform;
+
+        var rt = canvas.GetComponent<RectTransform>();
+        if (rt != null && (rt.sizeDelta.x <= 0f || rt.sizeDelta.y <= 0f))
         {
-            Text titleTextComponent = descriptionBoxTitle.GetComponent<Text>();
-            if (titleTextComponent != null)
-            {
-                titleTextComponent.text = title;
-                FitText(titleTextComponent);
-            }
+            rt.sizeDelta = new Vector2(1.6f, 0.88f);
         }
 
-        Transform descriptionBoxDescription = descriptionBoxInstance.transform.Find(descriptionName);
-        if (descriptionBoxDescription != null)
+        var scaler = canvas.GetComponent<CanvasScaler>() ?? canvas.gameObject.AddComponent<CanvasScaler>();
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;
+        scaler.dynamicPixelsPerUnit = dynamicPixelSize;
+
+
+        // Tekstrefs cachen
+        var titleTf = descriptionBoxInstance.transform.Find(titleName);
+        if (titleTf != null)
         {
-            Text descriptionTextComponent = descriptionBoxDescription.GetComponent<Text>();
-            if (descriptionTextComponent != null)
-            {
-                descriptionTextComponent.text = description;
-                FitText(descriptionTextComponent);
-            }
+            titleTextComponent = titleTf.GetComponent<Text>();
         }
+        var descTf = descriptionBoxInstance.transform.Find(descriptionName);
+        if (descTf != null)
+        {
+            descriptionTextComponent = descTf.GetComponent<Text>();
+        }
+
+
+
+        if (titleTextComponent != null)
+        {
+            titleTextComponent.text = title;
+            PrepareTextForDynamicSizing(titleTextComponent);
+        }
+        if (descriptionTextComponent != null)
+        {
+            descriptionTextComponent.text = description;
+            PrepareTextForDynamicSizing(descriptionTextComponent);
+        }
+
+
+        baseDistance = Vector3.Distance(mainCamera.transform.position, descriptionCanvasTf.position);
+        baseScale = descriptionCanvasTf.localScale;
+
+        StartCoroutine(ApplyScaleNextFrame());
+
+
 
         StartCoroutine(SlideIn(descriptionBoxInstance.transform, 10, AnimationCurve.EaseInOut(0, 0, 1, 1)));
     }
@@ -132,8 +197,21 @@ public class DescriptionObject : MonoBehaviour, ITappable
         if (descriptionBoxInstance != null) 
         {
             Destroy(descriptionBoxInstance);
+            descriptionBoxInstance = null;
+            descriptionCanvasTf = null;
         }
     }
+
+
+    private static void PrepareTextForDynamicSizing(Text t)
+    {
+        // BestFit uitzetten zodat we zelf fontSize kunnen sturen
+        t.resizeTextForBestFit = false;
+        // (optioneel) overflow netjes houden
+        t.horizontalOverflow = HorizontalWrapMode.Wrap;
+        t.verticalOverflow = VerticalWrapMode.Truncate;
+    }
+
 
     /// <summary>
     /// Fits text to textbox.
@@ -143,9 +221,11 @@ public class DescriptionObject : MonoBehaviour, ITappable
         RectTransform rect = textComponent.GetComponent<RectTransform>();
         if (rect != null)
         {
-            textComponent.resizeTextForBestFit = true;
+            textComponent.resizeTextForBestFit = false;
         }
     }
+
+
     
     /// <summary>
     /// Slides in the description box slowly.
@@ -182,4 +262,54 @@ public class DescriptionObject : MonoBehaviour, ITappable
         cg.alpha = 1f;
 
     }
+
+
+    private IEnumerator ApplyScaleNextFrame()
+    {
+        yield return null; // 1 frame wachten voor layout/best fit
+        ApplyScaleNow();
+    }
+
+    private void ApplyScaleNow()
+    {
+        if (descriptionCanvasTf == null || mainCamera == null) return;
+
+        // zelfde schaalfactoren als voor het canvas
+        float d = Vector3.Distance(mainCamera.transform.position, descriptionCanvasTf.position);
+        float distanceRatio = d / Mathf.Max(0.0001f, baseDistance);
+        distanceRatio = Mathf.Lerp(1f, distanceRatio, distanceEffect);
+
+        float screenRatio = (float)Screen.height / Mathf.Max(1f, referenceScreenHeight);
+
+        float fovRatio = Mathf.Tan(mainCamera.fieldOfView * 0.5f * Mathf.Deg2Rad) /
+                         Mathf.Tan(referenceFOV * 0.5f * Mathf.Deg2Rad);
+
+        float scaleFactor = distanceRatio * screenRatio * fovRatio;
+
+        // canvas schalen
+        descriptionCanvasTf.localScale = baseScale * scaleFactor;
+
+        //  tekstgrootte dynamisch mee laten schalen
+        UpdateTextSizes(scaleFactor);
+    }
+
+    private void UpdateTextSizes(float scaleFactor)
+    {
+        if (titleTextComponent != null)
+        {
+            int fs = Mathf.Clamp(
+                Mathf.RoundToInt(baseTitleFontSize * scaleFactor * fontScaleMultiplier),
+                minFontSize, maxFontSize);
+            titleTextComponent.fontSize = fs;
+        }
+
+        if (descriptionTextComponent != null)
+        {
+            int fs = Mathf.Clamp(
+                Mathf.RoundToInt(baseDescriptionFontSize * scaleFactor * fontScaleMultiplier),
+                minFontSize, maxFontSize);
+            descriptionTextComponent.fontSize = fs;
+        }
+    }
+
 }
