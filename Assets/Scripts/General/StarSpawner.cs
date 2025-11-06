@@ -52,6 +52,19 @@ public class StarSpawner : MonoBehaviour
     /// in the stars and blackholes.
     /// </summary>
     public float duration = 10.0f;
+    /// <summary>
+    /// The offset the particles should have from the origin.
+    /// </summary>
+    public Vector3 particleOffset = new Vector3(0f, 5f, 0f);
+
+    /// <summary>
+    /// The max amount of black holes that can spawn.
+    /// </summary>
+    public int maxBlackholeCount = 2;
+    /// <summary>
+    /// The current amount of black holes spawned in.
+    /// </summary>
+    private int currentBlackHoleCount = 0;
 
     /// <summary>
     /// Used to check if animation is already playing.
@@ -72,6 +85,11 @@ public class StarSpawner : MonoBehaviour
     private AudioSource waveParticalAudio;
 
     /// <summary>
+    /// Indicator for where the stars will spawn.
+    /// </summary>
+    private HUDIndicator.IndicatorOffScreen indicator;
+
+    /// <summary>
     /// Runs before the first update call after this script is created.
     /// Creates the wave particals at the position of the spawner and gets audiosource of particles.
     /// </summary>
@@ -80,9 +98,13 @@ public class StarSpawner : MonoBehaviour
         if (waveParticlesPrefab != null) 
         {
             waveParticles = Instantiate(waveParticlesPrefab, gameObject.transform.position, Quaternion.identity);
+            waveParticles.transform.SetParent(gameObject.transform);
+            waveParticles.transform.position += particleOffset;
             waveParticles.transform.rotation = waveParticlesPrefab.transform.rotation;
             waveParticalAudio = waveParticles.GetComponent<AudioSource>();
         }
+
+        indicator = gameObject.GetComponent<HUDIndicator.IndicatorOffScreen>();
     }
 
     /// <summary>
@@ -102,6 +124,9 @@ public class StarSpawner : MonoBehaviour
             }
 
             spawnedObjects.Clear();
+
+            indicator.visible = true;
+
             waveParticles.Play();
             waveParticalAudio.Play();
 
@@ -115,6 +140,7 @@ public class StarSpawner : MonoBehaviour
     /// </summary>
     public void ShowCelestialBodies() 
     {
+        currentBlackHoleCount = 0;
         for (int index = 0; index < count; index++)
         {
             SpawnObject();
@@ -129,8 +155,11 @@ public class StarSpawner : MonoBehaviour
     {
         if (playing) 
         {
+            indicator.visible = false;    
+
             waveParticles.Stop();
             waveParticalAudio.Stop();
+            
             playing = false;
         }
 
@@ -158,26 +187,29 @@ public class StarSpawner : MonoBehaviour
             randomizedSpawnPosition.z += Random.Range(minSpawnOffset, maxSpawnOffset);
 
             GameObject prefabToSpawn;
-
-            /// randomized star spawning for show waves, switch calculates the position
-            float spawnSelection = Random.Range(0, 3);
-            switch (spawnSelection) 
+            if (currentBlackHoleCount == maxBlackholeCount) 
             {
-                case 0:
-                    prefabToSpawn = dwarfStar;
-                    break;
+                /// randomized star spawning for show waves, switch calculates the position
+                float spawnSelection = Random.Range(0, 2);
+                switch (spawnSelection) 
+                {
+                    case 0:
+                        prefabToSpawn = dwarfStar;
+                        break;
 
-                case 1:
-                    prefabToSpawn = star;
-                    break;
+                    case 1:
+                        prefabToSpawn = star;
+                        break;
 
-                case 2:
-                    prefabToSpawn = blackhole;
-                    break;
-
-                default:
-                    prefabToSpawn = null;
-                    break;
+                    default:
+                        prefabToSpawn = null;
+                        break;
+                }
+            }
+            else 
+            {
+                prefabToSpawn = blackhole;
+                currentBlackHoleCount += 1;
             }
 
             GameObject newObject = Instantiate(prefabToSpawn, randomizedSpawnPosition, Quaternion.identity);
