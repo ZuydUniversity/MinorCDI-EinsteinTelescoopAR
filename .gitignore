@@ -104,3 +104,6 @@ InitTestScene*.unity*
 .githooks/post-commit
 .githooks/post-merge
 .githooks/pre-push
+
+EinsteinAR_BackUpThisFolder_ButDontShipItWithYourGame/
+EinsteinAR_BurstDebugInformation_DoNotShip/

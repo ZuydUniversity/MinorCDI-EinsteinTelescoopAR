@@ -3947,8 +3947,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ParticleSystem_Play_mD943E601BFE16CB9BB5
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MonoBehaviour_Invoke_mF724350C59362B0F1BFE26383209A274A29A63FB (MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71* __this, String_t* ___0_methodName, float ___1_time, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void StarSpawner_SpawnObject_m4C01FEB1CFE94367658F4A7160C23A03F9F4A41B (StarSpawner_tD4333503BBD626B9B65B01D7D5802AE3970BF46D* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ParticleSystem_Stop_m2D8D4967496EF0F5BFEF679C49A9E65A9646C423 (ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* __this, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494 (float ___0_minInclusive, float ___1_maxInclusive, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Random_Range_m6763D9767F033357F88B6637F048F4ACA4123B68 (int32_t ___0_minInclusive, int32_t ___1_maxExclusive, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494 (float ___0_minInclusive, float ___1_maxInclusive, const RuntimeMethod* method) ;
 inline GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m831D2F71DF2AA6C93AFDFEFA04CF2CFC5FBBCDB4 (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_original, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_position, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___2_rotation, const RuntimeMethod* method)
 {
 	return ((  GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* (*) (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974, const RuntimeMethod*))Object_Instantiate_TisRuntimeObject_m249A6BA4F2F19C2D3CE217D4D31847DF0EF03EFE_gshared)(___0_original, ___1_position, ___2_rotation, method);
@@ -8192,7 +8192,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* U3CSlideInU3Ed__29_System_Coll
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LanguageSwitcher_SetLanguage_m3E236DA5085D3847F7919AF750A62169879255D8 (LanguageSwitcher_t227FB3DB6E2396E20095BE200B18290673DE05DA* __this, String_t* ___0_languageCode, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:20>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:22>
 		bool L_0 = __this->___isChanging;
 		if (L_0)
 		{
@@ -8200,7 +8200,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LanguageSwitcher_SetLanguage_m3E236DA508
 		}
 	}
 	{
-		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:22>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:24>
 		String_t* L_1 = ___0_languageCode;
 		RuntimeObject* L_2;
 		L_2 = LanguageSwitcher_ChangeLanguageCoroutine_m0E011489E1B211ECE54046434C77B94829011EE2(__this, L_1, NULL);
@@ -8210,7 +8210,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LanguageSwitcher_SetLanguage_m3E236DA508
 
 IL_0016:
 	{
-		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:24>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:26>
 		return;
 	}
 }
@@ -8317,11 +8317,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CChangeLanguageCoroutineU3Ed__2_MoveNe
 IL_0017:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:28>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:30>
 		LanguageSwitcher_t227FB3DB6E2396E20095BE200B18290673DE05DA* L_4 = V_1;
 		NullCheck(L_4);
 		L_4->___isChanging = (bool)1;
-		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:31>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:33>
 		AsyncOperationHandle_1_t942B32DFBF2792F48E49169E2A65A5E46162395C L_5;
 		L_5 = LocalizationSettings_get_InitializationOperation_m9ED4C71AA291F24A8045CDC43E38469CA6297808(NULL);
 		AsyncOperationHandle_1_t942B32DFBF2792F48E49169E2A65A5E46162395C L_6 = L_5;
@@ -8335,13 +8335,13 @@ IL_0017:
 IL_003e:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:33>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:35>
 		RuntimeObject* L_8;
 		L_8 = LocalizationSettings_get_AvailableLocales_m95587473945EA5E4DF6638412151A0FEE83A0BCC(NULL);
 		NullCheck(L_8);
 		List_1_tBD0AC994E5F9C7F539E0378F0CBB119065136548* L_9;
 		L_9 = InterfaceFuncInvoker0< List_1_tBD0AC994E5F9C7F539E0378F0CBB119065136548* >::Invoke(0, ILocalesProvider_t61A5B94D50A769527BFEF945350EA16D17BAFBB0_il2cpp_TypeInfo_var, L_8);
-		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:34>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:36>
 		NullCheck(L_9);
 		Enumerator_tDFBE2143FD49CC62E56F7AAF0EB88DF441DA9E7A L_10;
 		L_10 = List_1_GetEnumerator_mE0FA68275D64D67562AFC2A554776A501D2AA777(L_9, List_1_GetEnumerator_mE0FA68275D64D67562AFC2A554776A501D2AA777_RuntimeMethod_var);
@@ -8365,11 +8365,11 @@ FINALLY_008e:
 
 IL_0057_1:
 			{
-				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:34>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:36>
 				Locale_t7BD9FB50247883E73B4CC92360943B0455CF02B9* L_11;
 				L_11 = Enumerator_get_Current_mD8A958DBBD4B427D4CFCDA413E910912676BB9B2_inline((&V_2), Enumerator_get_Current_mD8A958DBBD4B427D4CFCDA413E910912676BB9B2_RuntimeMethod_var);
 				V_3 = L_11;
-				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:36>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:38>
 				Locale_t7BD9FB50247883E73B4CC92360943B0455CF02B9* L_12 = V_3;
 				NullCheck(L_12);
 				LocaleIdentifier_t1C6758D6E05D8D5DBCD7FFEC16E8E55547595C18 L_13;
@@ -8386,16 +8386,16 @@ IL_0057_1:
 				}
 			}
 			{
-				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:38>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:40>
 				Locale_t7BD9FB50247883E73B4CC92360943B0455CF02B9* L_17 = V_3;
 				LocalizationSettings_set_SelectedLocale_m19FDCECD3A7667D216F3CD160E0A9F7078D262A1(L_17, NULL);
-				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:39>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:41>
 				goto IL_009c;
 			}
 
 IL_0083_1:
 			{
-				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:34>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:36>
 				bool L_18;
 				L_18 = Enumerator_MoveNext_mD8D01438124B3A705A4F636F472AFCC1ED9D36BF((&V_2), Enumerator_MoveNext_mD8D01438124B3A705A4F636F472AFCC1ED9D36BF_RuntimeMethod_var);
 				if (L_18)
@@ -8415,11 +8415,11 @@ IL_0083_1:
 
 IL_009c:
 	{
-		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:43>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:45>
 		LanguageSwitcher_t227FB3DB6E2396E20095BE200B18290673DE05DA* L_19 = V_1;
 		NullCheck(L_19);
 		L_19->___isChanging = (bool)0;
-		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:44>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/LanguageSwitcher.cs:46>
 		return (bool)0;
 	}
 }
@@ -10178,7 +10178,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void StarSpawner_SpawnObject_m4C01FEB1CFE9436
 		L_3 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_2, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
 		if (!L_3)
 		{
-			goto IL_0159;
+			goto IL_0175;
 		}
 	}
 
@@ -10214,90 +10214,93 @@ IL_001f:
 		L_15 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_14, NULL);
 		float L_16 = L_15.___z;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_1), L_8, L_12, L_16, NULL);
-		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:185>
-		float* L_17 = (float*)(&(&V_1)->___x);
-		float* L_18 = L_17;
-		float L_19 = *((float*)L_18);
-		float L_20 = __this->___minSpawnOffset;
-		float L_21 = __this->___maxSpawnOffset;
-		float L_22;
-		L_22 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494(L_20, L_21, NULL);
-		*((float*)L_18) = (float)((float)il2cpp_codegen_add(L_19, L_22));
-		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:186>
-		float* L_23 = (float*)(&(&V_1)->___y);
-		float* L_24 = L_23;
-		float L_25 = *((float*)L_24);
-		float L_26 = __this->___minSpawnOffset;
-		float L_27 = __this->___maxSpawnOffset;
-		float L_28;
-		L_28 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494(L_26, L_27, NULL);
-		*((float*)L_24) = (float)((float)il2cpp_codegen_add(L_25, L_28));
 		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:187>
-		float* L_29 = (float*)(&(&V_1)->___z);
-		float* L_30 = L_29;
-		float L_31 = *((float*)L_30);
-		float L_32 = __this->___minSpawnOffset;
-		float L_33 = __this->___maxSpawnOffset;
-		float L_34;
-		L_34 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494(L_32, L_33, NULL);
-		*((float*)L_30) = (float)((float)il2cpp_codegen_add(L_31, L_34));
+		int32_t L_17 = __this->___currentBlackHoleCount;
+		int32_t L_18 = __this->___maxBlackholeCount;
+		if ((!(((uint32_t)L_17) == ((uint32_t)L_18))))
+		{
+			goto IL_00fc;
+		}
+	}
+	{
 		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:190>
-		int32_t L_35 = __this->___currentBlackHoleCount;
-		int32_t L_36 = __this->___maxBlackholeCount;
-		if ((!(((uint32_t)L_35) == ((uint32_t)L_36))))
+		int32_t L_19;
+		L_19 = Random_Range_m6763D9767F033357F88B6637F048F4ACA4123B68(0, 2, NULL);
+		V_4 = ((float)L_19);
+		float L_20 = V_4;
+		if ((((float)L_20) == ((float)(0.0f))))
 		{
-			goto IL_00f3;
+			goto IL_008c;
 		}
 	}
 	{
-		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:193>
-		int32_t L_37;
-		L_37 = Random_Range_m6763D9767F033357F88B6637F048F4ACA4123B68(0, 2, NULL);
-		V_4 = ((float)L_37);
-		float L_38 = V_4;
-		if ((((float)L_38) == ((float)(0.0f))))
+		float L_21 = V_4;
+		if ((((float)L_21) == ((float)(1.0f))))
 		{
-			goto IL_00dd;
+			goto IL_0095;
 		}
 	}
 	{
-		float L_39 = V_4;
-		if ((((float)L_39) == ((float)(1.0f))))
-		{
-			goto IL_00e6;
-		}
-	}
-	{
-		goto IL_00ef;
+		goto IL_009e;
 	}
 
-IL_00dd:
+IL_008c:
 	{
-		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:197>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_40 = __this->___dwarfStar;
-		V_2 = L_40;
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:194>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_22 = __this->___dwarfStar;
+		V_2 = L_22;
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:195>
+		goto IL_00a0;
+	}
+
+IL_0095:
+	{
 		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:198>
-		goto IL_0108;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_23 = __this->___star;
+		V_2 = L_23;
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:199>
+		goto IL_00a0;
 	}
 
-IL_00e6:
+IL_009e:
 	{
-		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:201>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_41 = __this->___star;
-		V_2 = L_41;
 		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:202>
-		goto IL_0108;
+		V_2 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)NULL;
 	}
 
-IL_00ef:
+IL_00a0:
 	{
 		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:205>
-		V_2 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)NULL;
+		float* L_24 = (float*)(&(&V_1)->___x);
+		float* L_25 = L_24;
+		float L_26 = *((float*)L_25);
+		float L_27 = __this->___minSpawnOffset;
+		float L_28 = __this->___maxSpawnOffset;
+		float L_29;
+		L_29 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494(L_27, L_28, NULL);
+		*((float*)L_25) = (float)((float)il2cpp_codegen_add(L_26, L_29));
 		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:206>
-		goto IL_0108;
+		float* L_30 = (float*)(&(&V_1)->___y);
+		float* L_31 = L_30;
+		float L_32 = *((float*)L_31);
+		float L_33 = __this->___minSpawnOffset;
+		float L_34 = __this->___maxSpawnOffset;
+		float L_35;
+		L_35 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494(((float)(L_33/(2.0f))), L_34, NULL);
+		*((float*)L_31) = (float)((float)il2cpp_codegen_add(L_32, L_35));
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:207>
+		float* L_36 = (float*)(&(&V_1)->___z);
+		float* L_37 = L_36;
+		float L_38 = *((float*)L_37);
+		float L_39 = __this->___minSpawnOffset;
+		float L_40 = __this->___maxSpawnOffset;
+		float L_41;
+		L_41 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494(L_39, L_40, NULL);
+		*((float*)L_37) = (float)((float)il2cpp_codegen_add(L_38, L_41));
+		goto IL_0124;
 	}
 
-IL_00f3:
+IL_00fc:
 	{
 		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:211>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_42 = __this->___blackhole;
@@ -10305,57 +10308,64 @@ IL_00f3:
 		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:212>
 		int32_t L_43 = __this->___currentBlackHoleCount;
 		__this->___currentBlackHoleCount = ((int32_t)il2cpp_codegen_add(L_43, 1));
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:213>
+		float* L_44 = (float*)(&(&V_1)->___z);
+		float* L_45 = L_44;
+		float L_46 = *((float*)L_45);
+		int32_t L_47;
+		L_47 = Random_Range_m6763D9767F033357F88B6637F048F4ACA4123B68(0, 8, NULL);
+		*((float*)L_45) = (float)((float)il2cpp_codegen_add(L_46, ((float)L_47)));
 	}
 
-IL_0108:
+IL_0124:
 	{
-		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:215>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_44 = V_2;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_45 = V_1;
-		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_46;
-		L_46 = Quaternion_get_identity_m7E701AE095ED10FD5EA0B50ABCFDE2EEFF2173A5_inline(NULL);
-		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_47;
-		L_47 = Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m831D2F71DF2AA6C93AFDFEFA04CF2CFC5FBBCDB4(L_44, L_45, L_46, Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m831D2F71DF2AA6C93AFDFEFA04CF2CFC5FBBCDB4_RuntimeMethod_var);
-		V_3 = L_47;
 		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:216>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_48 = V_3;
-		NullCheck(L_48);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_49;
-		L_49 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_48, NULL);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_50 = L_49;
-		NullCheck(L_50);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_51;
-		L_51 = Transform_get_localScale_m804A002A53A645CDFCD15BB0F37209162720363F(L_50, NULL);
-		float L_52 = __this->___minScaleOffset;
-		float L_53 = __this->___maxScaleOffset;
-		float L_54;
-		L_54 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494(L_52, L_53, NULL);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_55;
-		L_55 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_51, L_54, NULL);
-		NullCheck(L_50);
-		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_50, L_55, NULL);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_48 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_49 = V_1;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_50;
+		L_50 = Quaternion_get_identity_m7E701AE095ED10FD5EA0B50ABCFDE2EEFF2173A5_inline(NULL);
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_51;
+		L_51 = Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m831D2F71DF2AA6C93AFDFEFA04CF2CFC5FBBCDB4(L_48, L_49, L_50, Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m831D2F71DF2AA6C93AFDFEFA04CF2CFC5FBBCDB4_RuntimeMethod_var);
+		V_3 = L_51;
 		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:217>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_56 = V_3;
-		NullCheck(L_56);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_57;
-		L_57 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_56, NULL);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_58 = V_0;
-		NullCheck(L_58);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_59;
-		L_59 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_58, NULL);
-		NullCheck(L_57);
-		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_57, L_59, NULL);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_52 = V_3;
+		NullCheck(L_52);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_53;
+		L_53 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_52, NULL);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_54 = L_53;
+		NullCheck(L_54);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_55;
+		L_55 = Transform_get_localScale_m804A002A53A645CDFCD15BB0F37209162720363F(L_54, NULL);
+		float L_56 = __this->___minScaleOffset;
+		float L_57 = __this->___maxScaleOffset;
+		float L_58;
+		L_58 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494(L_56, L_57, NULL);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_59;
+		L_59 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_55, L_58, NULL);
+		NullCheck(L_54);
+		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_54, L_59, NULL);
 		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:218>
-		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_60 = __this->___spawnedObjects;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_61 = V_3;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_60 = V_3;
 		NullCheck(L_60);
-		List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_inline(L_60, L_61, List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_RuntimeMethod_var);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_61;
+		L_61 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_60, NULL);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_62 = V_0;
+		NullCheck(L_62);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_63;
+		L_63 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_62, NULL);
+		NullCheck(L_61);
+		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_61, L_63, NULL);
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:219>
+		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_64 = __this->___spawnedObjects;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_65 = V_3;
+		NullCheck(L_64);
+		List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_inline(L_64, L_65, List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_RuntimeMethod_var);
 	}
 
-IL_0159:
+IL_0175:
 	{
-		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:220>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/Scripts/General/StarSpawner.cs:221>
 		return;
 	}
 }
