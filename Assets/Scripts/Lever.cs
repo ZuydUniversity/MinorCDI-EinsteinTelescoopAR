@@ -47,7 +47,7 @@ public abstract class Lever : MonoBehaviour, ITappable
         StartCoroutine(StartAnimation());
     }
 
-    /// <summary>
+    //// <summary>
     /// Plays animation on tap.
     /// </summary>
     private IEnumerator StartAnimation() 
