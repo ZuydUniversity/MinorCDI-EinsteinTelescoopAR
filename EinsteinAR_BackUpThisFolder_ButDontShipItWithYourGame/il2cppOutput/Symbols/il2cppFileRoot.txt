@@ -1,1 +1,1 @@
-C:\Users\koopa\Desktop\Projects\MinorCDI-EinsteinTelescoopAR\Library\Bee\artifacts\Android\il2cppOutput\cpp
+C:\Users\trist\Desktop\development\MinorCDI-EinsteinTelescoopAR\Library\Bee\artifacts\Android\il2cppOutput\cpp

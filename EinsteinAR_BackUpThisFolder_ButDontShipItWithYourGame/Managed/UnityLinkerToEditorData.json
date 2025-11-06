@@ -95,7 +95,8 @@
             "name": "AudioClip",
             "scenes": [
               "Assets/Scenes/AboveGroundScene.unity",
-              "Assets/Scenes/OndergrondScene.unity"
+              "Assets/Scenes/OndergrondScene.unity",
+              "Assets/Scenes/TutorialScene.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -118,7 +119,8 @@
             "name": "AudioResource",
             "scenes": [
               "Assets/Scenes/AboveGroundScene.unity",
-              "Assets/Scenes/OndergrondScene.unity"
+              "Assets/Scenes/OndergrondScene.unity",
+              "Assets/Scenes/TutorialScene.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -339,7 +341,8 @@
             "scenes": [
               "Assets/Scenes/AboveGroundScene.unity",
               "Assets/Scenes/MainScene.unity",
-              "Assets/Scenes/OndergrondScene.unity"
+              "Assets/Scenes/OndergrondScene.unity",
+              "Assets/Scenes/TutorialScene.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -349,7 +352,8 @@
             "scenes": [
               "Assets/Scenes/AboveGroundScene.unity",
               "Assets/Scenes/MainScene.unity",
-              "Assets/Scenes/OndergrondScene.unity"
+              "Assets/Scenes/OndergrondScene.unity",
+              "Assets/Scenes/TutorialScene.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -428,7 +432,8 @@
             "scenes": [
               "Assets/Scenes/AboveGroundScene.unity",
               "Assets/Scenes/MainScene.unity",
-              "Assets/Scenes/OndergrondScene.unity"
+              "Assets/Scenes/OndergrondScene.unity",
+              "Assets/Scenes/TutorialScene.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -1045,7 +1050,8 @@
             "scenes": [
               "Assets/Scenes/AboveGroundScene.unity",
               "Assets/Scenes/MainScene.unity",
-              "Assets/Scenes/OndergrondScene.unity"
+              "Assets/Scenes/OndergrondScene.unity",
+              "Assets/Scenes/TutorialScene.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -1484,7 +1490,8 @@
             "scenes": [
               "Assets/Scenes/AboveGroundScene.unity",
               "Assets/Scenes/MainScene.unity",
-              "Assets/Scenes/OndergrondScene.unity"
+              "Assets/Scenes/OndergrondScene.unity",
+              "Assets/Scenes/TutorialScene.unity"
             ],
             "dependencyType": 0,
             "icon": null
