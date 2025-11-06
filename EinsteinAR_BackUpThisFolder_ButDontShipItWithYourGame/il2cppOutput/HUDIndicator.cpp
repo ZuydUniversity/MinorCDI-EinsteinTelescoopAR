@@ -905,7 +905,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Mathf_Clamp_mEB9AEA827D27D2
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 109461
+// Method Definition Index: 109474
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MonoScriptData_t80FCDE4CDA97C2CDD7F1DF9C21E869A283E9F59B UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mD6CD2FB44D94B0D251B605349D6E1A516F833CEA (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -939,7 +939,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MonoScriptData_t80FCDE4CDA97C2CDD7F1DF9C21E86
 		return L_6;
 	}
 }
-// Method Definition Index: 109462
+// Method Definition Index: 109475
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_m4FC2788765FC3B986A180423A269469AF61D792D (UnitySourceGeneratedAssemblyMonoScriptTypes_v1_tD1A55A27AE15EF6E3DFAD858848CFC724AA3676C* __this, const RuntimeMethod* method) 
 {
 	{
@@ -1025,7 +1025,7 @@ IL2CPP_EXTERN_C void MonoScriptData_t80FCDE4CDA97C2CDD7F1DF9C21E869A283E9F59B_ma
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 109463
+// Method Definition Index: 109476
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_Create_mB5F8C4463A00E83186859AEC1AD647E545603752 (IndicatorCanvasOffScreen_t46BA20F91AF32C5DE53F50060584C04F9CC8A600* __this, Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* ___0_indicator, IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* ___1_renderer, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1041,27 +1041,27 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_Create_mB5F8C44
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:23>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:23>
 		Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* L_0 = ___0_indicator;
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_1 = ___1_renderer;
 		IndicatorCanvas_Create_m2BFEEE89387E4ABD8B04F91BAA804B9C6E032793(__this, L_0, L_1, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:25>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:25>
 		Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* L_2 = ___0_indicator;
 		__this->___indicatorOffScreen = ((IndicatorOffScreen_t52FDC6937453565083E31FEB2F50321D721CFBD9*)IsInstClass((RuntimeObject*)L_2, IndicatorOffScreen_t52FDC6937453565083E31FEB2F50321D721CFBD9_il2cpp_TypeInfo_var));
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___indicatorOffScreen), (void*)((IndicatorOffScreen_t52FDC6937453565083E31FEB2F50321D721CFBD9*)IsInstClass((RuntimeObject*)L_2, IndicatorOffScreen_t52FDC6937453565083E31FEB2F50321D721CFBD9_il2cpp_TypeInfo_var)));
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:28>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:28>
 		IndicatorOffScreen_t52FDC6937453565083E31FEB2F50321D721CFBD9* L_3 = __this->___indicatorOffScreen;
 		NullCheck(L_3);
 		IndicatorIconStyle_tC42EAD1FF60DDABB1CE4DBBA69A7B117E4D59A8B* L_4 = L_3->___style;
 		__this->___style = L_4;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___style), (void*)L_4);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:29>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:29>
 		IndicatorOffScreen_t52FDC6937453565083E31FEB2F50321D721CFBD9* L_5 = __this->___indicatorOffScreen;
 		NullCheck(L_5);
 		IndicatorArrowStyle_tB45064753D4B537943D3FD13C91EDB68119C3E9F* L_6 = L_5->___arrowStyle;
 		__this->___arrowStyle = L_6;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___arrowStyle), (void*)L_6);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:32>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:32>
 		Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* L_7 = ___0_indicator;
 		NullCheck(L_7);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_8;
@@ -1075,7 +1075,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_Create_mB5F8C44
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_11, L_10, NULL);
 		((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject = L_11;
 		Il2CppCodeGenWriteBarrier((void**)(&((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject), (void*)L_11);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:33>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:33>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_12 = ((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject;
 		NullCheck(L_12);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_13;
@@ -1086,34 +1086,34 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_Create_mB5F8C44
 		L_15 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_14, NULL);
 		NullCheck(L_13);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_13, L_15, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:36>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:36>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_16 = ((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject;
 		NullCheck(L_16);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_17;
 		L_17 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_16, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
 		__this->___rectTransform = L_17;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___rectTransform), (void*)L_17);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:37>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:37>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_18 = __this->___rectTransform;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_19;
 		L_19 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
 		NullCheck(L_18);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_18, L_19, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:38>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:38>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_20 = __this->___rectTransform;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_21;
 		memset((&L_21), 0, sizeof(L_21));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_21), (0.5f), (0.5f), NULL);
 		NullCheck(L_20);
 		RectTransform_set_pivot_m79D0177D383D432A93C2615F1932B739B1C6E146(L_20, L_21, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:41>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:41>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_22 = ((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject;
 		NullCheck(L_22);
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_23;
 		L_23 = GameObject_AddComponent_TisRawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179_mF832D1CFB763BE172F50826618A3D458EE451B43(L_22, GameObject_AddComponent_TisRawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179_mF832D1CFB763BE172F50826618A3D458EE451B43_RuntimeMethod_var);
 		__this->___rawImage = L_23;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___rawImage), (void*)L_23);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:44>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:44>
 		Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* L_24 = ___0_indicator;
 		NullCheck(L_24);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_25;
@@ -1127,7 +1127,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_Create_mB5F8C44
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_28, L_27, NULL);
 		__this->___arrowGameObject = L_28;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___arrowGameObject), (void*)L_28);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:45>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:45>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_29 = __this->___arrowGameObject;
 		NullCheck(L_29);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_30;
@@ -1138,39 +1138,39 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_Create_mB5F8C44
 		L_32 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_31, NULL);
 		NullCheck(L_30);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_30, L_32, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:48>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:48>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_33 = __this->___arrowGameObject;
 		NullCheck(L_33);
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_34;
 		L_34 = GameObject_AddComponent_TisRawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179_mF832D1CFB763BE172F50826618A3D458EE451B43(L_33, GameObject_AddComponent_TisRawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179_mF832D1CFB763BE172F50826618A3D458EE451B43_RuntimeMethod_var);
 		__this->___arrowRawImage = L_34;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___arrowRawImage), (void*)L_34);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:51>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:51>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_35 = __this->___arrowGameObject;
 		NullCheck(L_35);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_36;
 		L_36 = GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4(L_35, GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4_RuntimeMethod_var);
 		__this->___arrowRectTransform = L_36;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___arrowRectTransform), (void*)L_36);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:52>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:52>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_37 = __this->___arrowRectTransform;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_38;
 		L_38 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
 		NullCheck(L_37);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_37, L_38, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:56>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:56>
 		IndicatorCanvasOffScreen_UpdateStyle_m5D92B3DD20D5F96756C4C81C9C914635FC0BAE2A(__this, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:57>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:57>
 		IndicatorCanvasOffScreen_UpdateArrowStyle_m9EFC248DD7C0F0DF2AD557BD01B58DC47F3066EA(__this, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:58>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:58>
 		return;
 	}
 }
-// Method Definition Index: 109464
+// Method Definition Index: 109477
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_Update_mF5DB196E42A091221DF3E9811C85466F92AFC9A9 (IndicatorCanvasOffScreen_t46BA20F91AF32C5DE53F50060584C04F9CC8A600* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:61>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:61>
 		bool L_0 = ((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___active;
 		if (L_0)
 		{
@@ -1178,13 +1178,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_Update_mF5DB196
 		}
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:61>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:61>
 		return;
 	}
 
 IL_0009:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:63>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:63>
 		bool L_1;
 		L_1 = IndicatorCanvas_IsVisible_m00150BFA715C69FA79A4FB5A30A04AD4734D3C0C(__this, NULL);
 		if (!L_1)
@@ -1193,9 +1193,9 @@ IL_0009:
 		}
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:65>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:65>
 		IndicatorCanvasOffScreen_UpdateStyle_m5D92B3DD20D5F96756C4C81C9C914635FC0BAE2A(__this, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:68>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:68>
 		IndicatorOffScreen_t52FDC6937453565083E31FEB2F50321D721CFBD9* L_2 = __this->___indicatorOffScreen;
 		NullCheck(L_2);
 		bool L_3 = L_2->___showArrow;
@@ -1205,18 +1205,18 @@ IL_0009:
 		}
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:69>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:69>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4 = __this->___arrowGameObject;
 		NullCheck(L_4);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_4, (bool)1, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:70>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:70>
 		IndicatorCanvasOffScreen_UpdateArrowStyle_m9EFC248DD7C0F0DF2AD557BD01B58DC47F3066EA(__this, NULL);
 		goto IL_0044;
 	}
 
 IL_0038:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:73>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:73>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = __this->___arrowGameObject;
 		NullCheck(L_5);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_5, (bool)0, NULL);
@@ -1224,26 +1224,26 @@ IL_0038:
 
 IL_0044:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:77>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:77>
 		IndicatorCanvasOffScreen_UpdatePosition_mD36860AFD5E11145E4C3F593C86B0C1EA9B0E7F7(__this, NULL);
 		return;
 	}
 
 IL_004b:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:80>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:80>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = ((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject;
 		NullCheck(L_6);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_6, (bool)0, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:82>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:82>
 		return;
 	}
 }
-// Method Definition Index: 109465
+// Method Definition Index: 109478
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_UpdateStyle_m5D92B3DD20D5F96756C4C81C9C914635FC0BAE2A (IndicatorCanvasOffScreen_t46BA20F91AF32C5DE53F50060584C04F9CC8A600* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:85>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:85>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_0 = __this->___rectTransform;
 		IndicatorIconStyle_tC42EAD1FF60DDABB1CE4DBBA69A7B117E4D59A8B* L_1 = __this->___style;
 		NullCheck(L_1);
@@ -1256,29 +1256,29 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_UpdateStyle_m5D
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_5), L_2, L_4, NULL);
 		NullCheck(L_0);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_0, L_5, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:86>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:86>
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_6 = __this->___rawImage;
 		IndicatorIconStyle_tC42EAD1FF60DDABB1CE4DBBA69A7B117E4D59A8B* L_7 = __this->___style;
 		NullCheck(L_7);
 		Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* L_8 = L_7->___texture;
 		NullCheck(L_6);
 		RawImage_set_texture_mC016318C95CC17A826D57DD219DBCB6DFD295C02(L_6, L_8, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:87>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:87>
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_9 = __this->___rawImage;
 		IndicatorIconStyle_tC42EAD1FF60DDABB1CE4DBBA69A7B117E4D59A8B* L_10 = __this->___style;
 		NullCheck(L_10);
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_11 = L_10->___color;
 		NullCheck(L_9);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_9, L_11);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:88>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:88>
 		return;
 	}
 }
-// Method Definition Index: 109466
+// Method Definition Index: 109479
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_UpdateArrowStyle_m9EFC248DD7C0F0DF2AD557BD01B58DC47F3066EA (IndicatorCanvasOffScreen_t46BA20F91AF32C5DE53F50060584C04F9CC8A600* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:91>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:91>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_0 = __this->___arrowRectTransform;
 		IndicatorArrowStyle_tB45064753D4B537943D3FD13C91EDB68119C3E9F* L_1 = __this->___arrowStyle;
 		NullCheck(L_1);
@@ -1291,7 +1291,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_UpdateArrowStyl
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_5), L_2, L_4, NULL);
 		NullCheck(L_0);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_0, L_5, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:92>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:92>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_6 = __this->___arrowRectTransform;
 		IndicatorIconStyle_tC42EAD1FF60DDABB1CE4DBBA69A7B117E4D59A8B* L_7 = __this->___style;
 		NullCheck(L_7);
@@ -1310,25 +1310,25 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_UpdateArrowStyl
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_15), (0.5f), ((float)il2cpp_codegen_add((1.0f), ((float)(((float)il2cpp_codegen_add(((float)(((float)il2cpp_codegen_add(L_8, L_10))/(4.0f))), L_12))/L_14)))), NULL);
 		NullCheck(L_6);
 		RectTransform_set_pivot_m79D0177D383D432A93C2615F1932B739B1C6E146(L_6, L_15, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:94>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:94>
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_16 = __this->___arrowRawImage;
 		IndicatorArrowStyle_tB45064753D4B537943D3FD13C91EDB68119C3E9F* L_17 = __this->___arrowStyle;
 		NullCheck(L_17);
 		Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* L_18 = L_17->___texture;
 		NullCheck(L_16);
 		RawImage_set_texture_mC016318C95CC17A826D57DD219DBCB6DFD295C02(L_16, L_18, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:95>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:95>
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_19 = __this->___arrowRawImage;
 		IndicatorArrowStyle_tB45064753D4B537943D3FD13C91EDB68119C3E9F* L_20 = __this->___arrowStyle;
 		NullCheck(L_20);
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_21 = L_20->___color;
 		NullCheck(L_19);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_19, L_21);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:96>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:96>
 		return;
 	}
 }
-// Method Definition Index: 109467
+// Method Definition Index: 109480
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_UpdatePosition_mD36860AFD5E11145E4C3F593C86B0C1EA9B0E7F7 (IndicatorCanvasOffScreen_t46BA20F91AF32C5DE53F50060584C04F9CC8A600* __this, const RuntimeMethod* method) 
 {
 	Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D V_0;
@@ -1342,14 +1342,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_UpdatePosition_
 	float V_5 = 0.0f;
 	float V_6 = 0.0f;
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:99>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:99>
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_0;
 		L_0 = IndicatorCanvas_get_renderer_m1CD3362C1ADA56E63569419A0EE04DDFA2365DE1_inline(__this, NULL);
 		NullCheck(L_0);
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_1;
 		L_1 = IndicatorRenderer_GetRect_m58F0923F1F36BCDC87841400A99F02C234B97A25(L_0, NULL);
 		V_0 = L_1;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:100>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:100>
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_2;
 		L_2 = IndicatorCanvas_get_renderer_m1CD3362C1ADA56E63569419A0EE04DDFA2365DE1_inline(__this, NULL);
 		NullCheck(L_2);
@@ -1377,7 +1377,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_UpdatePosition_
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_11;
 		L_11 = Transform_InverseTransformPoint_m18CD395144D9C78F30E15A5B82B6670E792DBA5D(L_3, L_10, NULL);
 		V_1 = L_11;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:102>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:102>
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* L_12 = (&V_0);
 		float L_13;
 		L_13 = Rect_get_x_mB267B718E0D067F2BAE31BA477647FBF964916EB_inline(L_12, NULL);
@@ -1385,7 +1385,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_UpdatePosition_
 		NullCheck(L_14);
 		float L_15 = L_14->___width;
 		Rect_set_x_mAB91AB71898A20762BC66FD0723C4C739C4C3406_inline(L_12, ((float)il2cpp_codegen_add(L_13, ((float)(L_15/(2.0f))))), NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:103>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:103>
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* L_16 = (&V_0);
 		float L_17;
 		L_17 = Rect_get_y_mC733E8D49F3CE21B2A3D40A1B72D687F22C97F49_inline(L_16, NULL);
@@ -1393,7 +1393,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_UpdatePosition_
 		NullCheck(L_18);
 		float L_19 = L_18->___height;
 		Rect_set_y_mDE91F4B98A6E8623EFB1250FF6526D5DB5855629_inline(L_16, ((float)il2cpp_codegen_add(L_17, ((float)(L_19/(2.0f))))), NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:104>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:104>
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* L_20 = (&V_0);
 		float L_21;
 		L_21 = Rect_get_width_m620D67551372073C9C32C4C4624C2A5713F7F9A9_inline(L_20, NULL);
@@ -1401,7 +1401,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_UpdatePosition_
 		NullCheck(L_22);
 		float L_23 = L_22->___width;
 		Rect_set_width_m93B6217CF3EFF89F9B0C81F34D7345DE90B93E5A_inline(L_20, ((float)il2cpp_codegen_subtract(L_21, L_23)), NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:105>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:105>
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* L_24 = (&V_0);
 		float L_25;
 		L_25 = Rect_get_height_mE1AA6C6C725CCD2D317BD2157396D3CF7D47C9D8_inline(L_24, NULL);
@@ -1409,7 +1409,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_UpdatePosition_
 		NullCheck(L_26);
 		float L_27 = L_26->___height;
 		Rect_set_height_mD00038E6E06637137A5626CA8CD421924005BF03_inline(L_24, ((float)il2cpp_codegen_subtract(L_25, L_27)), NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:108>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:108>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_28 = V_1;
 		float L_29 = L_28.___z;
 		if ((!(((float)L_29) >= ((float)(0.0f)))))
@@ -1462,7 +1462,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_UpdatePosition_
 		}
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:109>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:109>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_44 = ((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject;
 		NullCheck(L_44);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_44, (bool)0, NULL);
@@ -1471,11 +1471,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_UpdatePosition_
 
 IL_0118:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:113>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:113>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_45 = ((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject;
 		NullCheck(L_45);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_45, (bool)1, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:115>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:115>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_46 = V_1;
 		float L_47 = L_46.___z;
 		if ((!(((float)L_47) < ((float)(0.0f)))))
@@ -1484,7 +1484,7 @@ IL_0118:
 		}
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:116>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:116>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_48 = V_1;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_49;
 		L_49 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_48, (-1.0f), NULL);
@@ -1493,19 +1493,19 @@ IL_0118:
 
 IL_013d:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:119>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:119>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_50 = V_1;
 		float L_51 = L_50.___x;
 		float L_52;
 		L_52 = Rect_get_width_m620D67551372073C9C32C4C4624C2A5713F7F9A9_inline((&V_0), NULL);
 		V_2 = ((float)(L_51/L_52));
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:120>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:120>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_53 = V_1;
 		float L_54 = L_53.___y;
 		float L_55;
 		L_55 = Rect_get_height_mE1AA6C6C725CCD2D317BD2157396D3CF7D47C9D8_inline((&V_0), NULL);
 		V_3 = ((float)(L_54/L_55));
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:123>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:123>
 		float L_56 = V_2;
 		float L_57;
 		L_57 = fabsf(L_56);
@@ -1518,7 +1518,7 @@ IL_013d:
 		}
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:126>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:126>
 		float L_60 = V_2;
 		if ((!(((float)L_60) > ((float)(0.0f)))))
 		{
@@ -1526,7 +1526,7 @@ IL_013d:
 		}
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:127>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:127>
 		float L_61;
 		L_61 = Rect_get_width_m620D67551372073C9C32C4C4624C2A5713F7F9A9_inline((&V_0), NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_62 = V_1;
@@ -1534,7 +1534,7 @@ IL_013d:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_64 = V_1;
 		float L_65 = L_64.___x;
 		V_5 = ((float)(((float)il2cpp_codegen_multiply(((float)(L_61/(2.0f))), L_63))/L_65));
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:128>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:128>
 		float L_66;
 		L_66 = Rect_get_width_m620D67551372073C9C32C4C4624C2A5713F7F9A9_inline((&V_0), NULL);
 		float L_67 = V_5;
@@ -1549,7 +1549,7 @@ IL_013d:
 
 IL_01ad:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:132>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:132>
 		float L_70;
 		L_70 = Rect_get_width_m620D67551372073C9C32C4C4624C2A5713F7F9A9_inline((&V_0), NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_71 = V_1;
@@ -1557,7 +1557,7 @@ IL_01ad:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_73 = V_1;
 		float L_74 = L_73.___x;
 		V_6 = ((float)(((float)il2cpp_codegen_multiply(((float)(((-L_70))/(2.0f))), L_72))/L_74));
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:133>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:133>
 		float L_75;
 		L_75 = Rect_get_width_m620D67551372073C9C32C4C4624C2A5713F7F9A9_inline((&V_0), NULL);
 		float L_76 = V_6;
@@ -1572,7 +1572,7 @@ IL_01ad:
 
 IL_01e8:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:139>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:139>
 		float L_79 = V_3;
 		if ((!(((float)L_79) > ((float)(0.0f)))))
 		{
@@ -1580,14 +1580,14 @@ IL_01e8:
 		}
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:140>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:140>
 		float L_80;
 		L_80 = Rect_get_height_mE1AA6C6C725CCD2D317BD2157396D3CF7D47C9D8_inline((&V_0), NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_81 = V_1;
 		float L_82 = L_81.___x;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_83 = V_1;
 		float L_84 = L_83.___y;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:141>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:141>
 		float L_85;
 		L_85 = Rect_get_height_mE1AA6C6C725CCD2D317BD2157396D3CF7D47C9D8_inline((&V_0), NULL);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_86;
@@ -1601,14 +1601,14 @@ IL_01e8:
 
 IL_0225:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:145>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:145>
 		float L_88;
 		L_88 = Rect_get_height_mE1AA6C6C725CCD2D317BD2157396D3CF7D47C9D8_inline((&V_0), NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_89 = V_1;
 		float L_90 = L_89.___x;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_91 = V_1;
 		float L_92 = L_91.___y;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:146>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:146>
 		float L_93;
 		L_93 = Rect_get_height_mE1AA6C6C725CCD2D317BD2157396D3CF7D47C9D8_inline((&V_0), NULL);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_94;
@@ -1621,13 +1621,13 @@ IL_0225:
 
 IL_025a:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:151>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:151>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_96 = V_1;
 		float L_97 = L_96.___x;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_98 = V_1;
 		float L_99 = L_98.___y;
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&V_4), L_97, L_99, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:152>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:152>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_100 = __this->___arrowRectTransform;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_101;
 		L_101 = Vector2_get_down_m7672D87B9C778FB2AEF7BB79758142D01166B493_inline(NULL);
@@ -1638,7 +1638,7 @@ IL_025a:
 		L_104 = Quaternion_Euler_m9262AB29E3E9CE94EF71051F38A28E82AEC73F90_inline((0.0f), (0.0f), L_103, NULL);
 		NullCheck(L_100);
 		Transform_set_rotation_m61340DE74726CF0F9946743A727C4D444397331D(L_100, L_104, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:154>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:154>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_105 = __this->___rectTransform;
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_106;
 		L_106 = IndicatorCanvas_get_renderer_m1CD3362C1ADA56E63569419A0EE04DDFA2365DE1_inline(__this, NULL);
@@ -1657,11 +1657,11 @@ IL_025a:
 		L_113 = Transform_TransformPoint_m05BFF013DB830D7BFE44A007703694AE1062EE44(L_107, L_112, NULL);
 		NullCheck(L_105);
 		Transform_set_position_mA1A817124BB41B685043DED2A9BA48CDF37C4156(L_105, L_113, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:157>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:157>
 		return;
 	}
 }
-// Method Definition Index: 109468
+// Method Definition Index: 109481
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_Destroy_mFD46176DD6FEB4BA7243C4851CE664ABCF100CCE (IndicatorCanvasOffScreen_t46BA20F91AF32C5DE53F50060584C04F9CC8A600* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1671,15 +1671,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen_Destroy_mFD4617
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:160>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:160>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = ((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		Object_Destroy_mE97D0A766419A81296E8D4E5C23D01D3FE91ACBB(L_0, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:161>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorCanvasOffScreen.cs:161>
 		return;
 	}
 }
-// Method Definition Index: 109469
+// Method Definition Index: 109482
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen__ctor_mB4181D54BB3C345C85E20F4886B10803379510EF (IndicatorCanvasOffScreen_t46BA20F91AF32C5DE53F50060584C04F9CC8A600* __this, const RuntimeMethod* method) 
 {
 	{
@@ -1695,7 +1695,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOffScreen__ctor_mB4181D54
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 109470
+// Method Definition Index: 109483
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorOffScreen_CreateIndicatorCanvas_mF9D0FA24A25FCC3556EFE4487C18EF7E0B3719AA (IndicatorOffScreen_t52FDC6937453565083E31FEB2F50321D721CFBD9* __this, IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* ___0_renderer, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1707,30 +1707,30 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorOffScreen_CreateIndicatorCanvas
 	}
 	IndicatorCanvasOffScreen_t46BA20F91AF32C5DE53F50060584C04F9CC8A600* V_0 = NULL;
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorOffScreen.cs:15>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorOffScreen.cs:15>
 		IndicatorCanvasOffScreen_t46BA20F91AF32C5DE53F50060584C04F9CC8A600* L_0 = (IndicatorCanvasOffScreen_t46BA20F91AF32C5DE53F50060584C04F9CC8A600*)il2cpp_codegen_object_new(IndicatorCanvasOffScreen_t46BA20F91AF32C5DE53F50060584C04F9CC8A600_il2cpp_TypeInfo_var);
 		IndicatorCanvasOffScreen__ctor_mB4181D54BB3C345C85E20F4886B10803379510EF(L_0, NULL);
 		V_0 = L_0;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorOffScreen.cs:16>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorOffScreen.cs:16>
 		IndicatorCanvasOffScreen_t46BA20F91AF32C5DE53F50060584C04F9CC8A600* L_1 = V_0;
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_2 = ___0_renderer;
 		NullCheck(L_1);
 		VirtualActionInvoker2< Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D*, IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* >::Invoke(4, L_1, __this, L_2);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorOffScreen.cs:18>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorOffScreen.cs:18>
 		Dictionary_2_t9CD2746B1C11FCE579033B889D0B126BB246CA30* L_3 = ((Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D*)__this)->___indicatorsCanvas;
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_4 = ___0_renderer;
 		IndicatorCanvasOffScreen_t46BA20F91AF32C5DE53F50060584C04F9CC8A600* L_5 = V_0;
 		NullCheck(L_3);
 		Dictionary_2_Add_mBE49AB2024CBC21861E8038826FD515F4344B97C(L_3, L_4, L_5, Dictionary_2_Add_mBE49AB2024CBC21861E8038826FD515F4344B97C_RuntimeMethod_var);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorOffScreen.cs:19>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorOffScreen.cs:19>
 		return;
 	}
 }
-// Method Definition Index: 109471
+// Method Definition Index: 109484
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorOffScreen__ctor_mAAF604186E09D27B5851054856D9D6476281490D (IndicatorOffScreen_t52FDC6937453565083E31FEB2F50321D721CFBD9* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorOffScreen.cs:11>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OffScreen/IndicatorOffScreen.cs:11>
 		__this->___showArrow = (bool)1;
 		Indicator__ctor_mD1D80E184C763912A9075B0AF9C0747876FAA523(__this, NULL);
 		return;
@@ -1744,7 +1744,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorOffScreen__ctor_mAAF604186E09D2
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 109472
+// Method Definition Index: 109485
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_Create_m3B405A5008C09242385CD0A87AB9D65746719921 (IndicatorCanvasOnScreen_t19491C39670BEAC23EBB432093E67A915BB16BAA* __this, Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* ___0_indicator, IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* ___1_renderer, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1758,21 +1758,21 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_Create_m3B405A50
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:18>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:18>
 		Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* L_0 = ___0_indicator;
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_1 = ___1_renderer;
 		IndicatorCanvas_Create_m2BFEEE89387E4ABD8B04F91BAA804B9C6E032793(__this, L_0, L_1, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:20>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:20>
 		Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* L_2 = ___0_indicator;
 		__this->___indicatorOnScreen = ((IndicatorOnScreen_t9A2B5ECA8150A71AB24F21D4478FB471817809C9*)IsInstClass((RuntimeObject*)L_2, IndicatorOnScreen_t9A2B5ECA8150A71AB24F21D4478FB471817809C9_il2cpp_TypeInfo_var));
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___indicatorOnScreen), (void*)((IndicatorOnScreen_t9A2B5ECA8150A71AB24F21D4478FB471817809C9*)IsInstClass((RuntimeObject*)L_2, IndicatorOnScreen_t9A2B5ECA8150A71AB24F21D4478FB471817809C9_il2cpp_TypeInfo_var)));
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:23>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:23>
 		IndicatorOnScreen_t9A2B5ECA8150A71AB24F21D4478FB471817809C9* L_3 = __this->___indicatorOnScreen;
 		NullCheck(L_3);
 		IndicatorIconStyle_tC42EAD1FF60DDABB1CE4DBBA69A7B117E4D59A8B* L_4 = L_3->___style;
 		__this->___style = L_4;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___style), (void*)L_4);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:26>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:26>
 		Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* L_5 = ___0_indicator;
 		NullCheck(L_5);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6;
@@ -1786,7 +1786,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_Create_m3B405A50
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_9, L_8, NULL);
 		((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject = L_9;
 		Il2CppCodeGenWriteBarrier((void**)(&((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject), (void*)L_9);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:27>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:27>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_10 = ((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject;
 		NullCheck(L_10);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_11;
@@ -1797,44 +1797,44 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_Create_m3B405A50
 		L_13 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_12, NULL);
 		NullCheck(L_11);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_11, L_13, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:30>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:30>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_14 = ((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject;
 		NullCheck(L_14);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_15;
 		L_15 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_14, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
 		__this->___rectTransform = L_15;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___rectTransform), (void*)L_15);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:31>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:31>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_16 = __this->___rectTransform;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_17;
 		L_17 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
 		NullCheck(L_16);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_16, L_17, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:32>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:32>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_18 = __this->___rectTransform;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_19;
 		memset((&L_19), 0, sizeof(L_19));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_19), (0.5f), (0.5f), NULL);
 		NullCheck(L_18);
 		RectTransform_set_pivot_m79D0177D383D432A93C2615F1932B739B1C6E146(L_18, L_19, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:35>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:35>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_20 = ((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject;
 		NullCheck(L_20);
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_21;
 		L_21 = GameObject_AddComponent_TisRawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179_mF832D1CFB763BE172F50826618A3D458EE451B43(L_20, GameObject_AddComponent_TisRawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179_mF832D1CFB763BE172F50826618A3D458EE451B43_RuntimeMethod_var);
 		__this->___rawImage = L_21;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___rawImage), (void*)L_21);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:38>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:38>
 		IndicatorCanvasOnScreen_UpdateStyle_m3604B3595066C44BE7B0807320D53F9124C3B7D0(__this, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:39>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:39>
 		return;
 	}
 }
-// Method Definition Index: 109473
+// Method Definition Index: 109486
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_Update_m47F25AE2D3BC4AB79A0AC128C36621765DBADF53 (IndicatorCanvasOnScreen_t19491C39670BEAC23EBB432093E67A915BB16BAA* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:42>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:42>
 		bool L_0 = ((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___active;
 		if (L_0)
 		{
@@ -1842,13 +1842,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_Update_m47F25AE2
 		}
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:42>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:42>
 		return;
 	}
 
 IL_0009:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:44>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:44>
 		bool L_1;
 		L_1 = IndicatorCanvas_IsVisible_m00150BFA715C69FA79A4FB5A30A04AD4734D3C0C(__this, NULL);
 		if (!L_1)
@@ -1857,16 +1857,16 @@ IL_0009:
 		}
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:45>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:45>
 		IndicatorCanvasOnScreen_UpdateStyle_m3604B3595066C44BE7B0807320D53F9124C3B7D0(__this, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:46>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:46>
 		IndicatorCanvasOnScreen_UpdatePosition_mA90BE6021CC8A623C9856AAF51B349CCA442E842(__this, NULL);
 		return;
 	}
 
 IL_001e:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:49>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:49>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2 = ((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject;
 		NullCheck(L_2);
 		bool L_3;
@@ -1877,7 +1877,7 @@ IL_001e:
 		}
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:50>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:50>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4 = ((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject;
 		NullCheck(L_4);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_4, (bool)0, NULL);
@@ -1885,15 +1885,15 @@ IL_001e:
 
 IL_0037:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:53>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:53>
 		return;
 	}
 }
-// Method Definition Index: 109474
+// Method Definition Index: 109487
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_UpdateStyle_m3604B3595066C44BE7B0807320D53F9124C3B7D0 (IndicatorCanvasOnScreen_t19491C39670BEAC23EBB432093E67A915BB16BAA* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:56>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:56>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_0 = __this->___rectTransform;
 		IndicatorIconStyle_tC42EAD1FF60DDABB1CE4DBBA69A7B117E4D59A8B* L_1 = __this->___style;
 		NullCheck(L_1);
@@ -1906,25 +1906,25 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_UpdateStyle_m360
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_5), L_2, L_4, NULL);
 		NullCheck(L_0);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_0, L_5, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:57>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:57>
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_6 = __this->___rawImage;
 		IndicatorIconStyle_tC42EAD1FF60DDABB1CE4DBBA69A7B117E4D59A8B* L_7 = __this->___style;
 		NullCheck(L_7);
 		Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* L_8 = L_7->___texture;
 		NullCheck(L_6);
 		RawImage_set_texture_mC016318C95CC17A826D57DD219DBCB6DFD295C02(L_6, L_8, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:58>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:58>
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_9 = __this->___rawImage;
 		IndicatorIconStyle_tC42EAD1FF60DDABB1CE4DBBA69A7B117E4D59A8B* L_10 = __this->___style;
 		NullCheck(L_10);
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_11 = L_10->___color;
 		NullCheck(L_9);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_9, L_11);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:59>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:59>
 		return;
 	}
 }
-// Method Definition Index: 109475
+// Method Definition Index: 109488
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_UpdatePosition_mA90BE6021CC8A623C9856AAF51B349CCA442E842 (IndicatorCanvasOnScreen_t19491C39670BEAC23EBB432093E67A915BB16BAA* __this, const RuntimeMethod* method) 
 {
 	Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D V_0;
@@ -1932,14 +1932,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_UpdatePosition_m
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_1;
 	memset((&V_1), 0, sizeof(V_1));
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:62>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:62>
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_0;
 		L_0 = IndicatorCanvas_get_renderer_m1CD3362C1ADA56E63569419A0EE04DDFA2365DE1_inline(__this, NULL);
 		NullCheck(L_0);
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_1;
 		L_1 = IndicatorRenderer_GetRect_m58F0923F1F36BCDC87841400A99F02C234B97A25(L_0, NULL);
 		V_0 = L_1;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:63>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:63>
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_2;
 		L_2 = IndicatorCanvas_get_renderer_m1CD3362C1ADA56E63569419A0EE04DDFA2365DE1_inline(__this, NULL);
 		NullCheck(L_2);
@@ -1967,7 +1967,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_UpdatePosition_m
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_11;
 		L_11 = Transform_InverseTransformPoint_m18CD395144D9C78F30E15A5B82B6670E792DBA5D(L_3, L_10, NULL);
 		V_1 = L_11;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:65>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:65>
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* L_12 = (&V_0);
 		float L_13;
 		L_13 = Rect_get_x_mB267B718E0D067F2BAE31BA477647FBF964916EB_inline(L_12, NULL);
@@ -1975,7 +1975,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_UpdatePosition_m
 		NullCheck(L_14);
 		float L_15 = L_14->___width;
 		Rect_set_x_mAB91AB71898A20762BC66FD0723C4C739C4C3406_inline(L_12, ((float)il2cpp_codegen_add(L_13, ((float)(L_15/(2.0f))))), NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:66>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:66>
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* L_16 = (&V_0);
 		float L_17;
 		L_17 = Rect_get_y_mC733E8D49F3CE21B2A3D40A1B72D687F22C97F49_inline(L_16, NULL);
@@ -1983,7 +1983,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_UpdatePosition_m
 		NullCheck(L_18);
 		float L_19 = L_18->___height;
 		Rect_set_y_mDE91F4B98A6E8623EFB1250FF6526D5DB5855629_inline(L_16, ((float)il2cpp_codegen_add(L_17, ((float)(L_19/(2.0f))))), NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:67>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:67>
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* L_20 = (&V_0);
 		float L_21;
 		L_21 = Rect_get_width_m620D67551372073C9C32C4C4624C2A5713F7F9A9_inline(L_20, NULL);
@@ -1991,7 +1991,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_UpdatePosition_m
 		NullCheck(L_22);
 		float L_23 = L_22->___width;
 		Rect_set_width_m93B6217CF3EFF89F9B0C81F34D7345DE90B93E5A_inline(L_20, ((float)il2cpp_codegen_subtract(L_21, L_23)), NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:68>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:68>
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* L_24 = (&V_0);
 		float L_25;
 		L_25 = Rect_get_height_mE1AA6C6C725CCD2D317BD2157396D3CF7D47C9D8_inline(L_24, NULL);
@@ -1999,7 +1999,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_UpdatePosition_m
 		NullCheck(L_26);
 		float L_27 = L_26->___height;
 		Rect_set_height_mD00038E6E06637137A5626CA8CD421924005BF03_inline(L_24, ((float)il2cpp_codegen_subtract(L_25, L_27)), NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:71>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:71>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_28 = V_1;
 		float L_29 = L_28.___z;
 		if ((!(((float)L_29) >= ((float)(0.0f)))))
@@ -2052,11 +2052,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_UpdatePosition_m
 		}
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:72>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:72>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_44 = ((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject;
 		NullCheck(L_44);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_44, (bool)1, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:74>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:74>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_45 = __this->___rectTransform;
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_46;
 		L_46 = IndicatorCanvas_get_renderer_m1CD3362C1ADA56E63569419A0EE04DDFA2365DE1_inline(__this, NULL);
@@ -2080,15 +2080,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_UpdatePosition_m
 
 IL_014c:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:78>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:78>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_54 = ((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject;
 		NullCheck(L_54);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_54, (bool)0, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:81>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:81>
 		return;
 	}
 }
-// Method Definition Index: 109476
+// Method Definition Index: 109489
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_Destroy_m5FFA408335062661D1CC223FE8A4600365F01C78 (IndicatorCanvasOnScreen_t19491C39670BEAC23EBB432093E67A915BB16BAA* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2098,15 +2098,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen_Destroy_m5FFA408
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:84>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:84>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = ((IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19*)__this)->___gameObject;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		Object_Destroy_mE97D0A766419A81296E8D4E5C23D01D3FE91ACBB(L_0, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:85>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs:85>
 		return;
 	}
 }
-// Method Definition Index: 109477
+// Method Definition Index: 109490
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen__ctor_mCC2C8E32C6A74A1B6EB6B64D4C074A629367E3FD (IndicatorCanvasOnScreen_t19491C39670BEAC23EBB432093E67A915BB16BAA* __this, const RuntimeMethod* method) 
 {
 	{
@@ -2122,7 +2122,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvasOnScreen__ctor_mCC2C8E32C
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 109478
+// Method Definition Index: 109491
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorOnScreen_CreateIndicatorCanvas_m0DF2ED874678C3C8B0DF6BFE300135470464201D (IndicatorOnScreen_t9A2B5ECA8150A71AB24F21D4478FB471817809C9* __this, IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* ___0_renderer, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2134,26 +2134,26 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorOnScreen_CreateIndicatorCanvas_
 	}
 	IndicatorCanvasOnScreen_t19491C39670BEAC23EBB432093E67A915BB16BAA* V_0 = NULL;
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorOnScreen.cs:12>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorOnScreen.cs:12>
 		IndicatorCanvasOnScreen_t19491C39670BEAC23EBB432093E67A915BB16BAA* L_0 = (IndicatorCanvasOnScreen_t19491C39670BEAC23EBB432093E67A915BB16BAA*)il2cpp_codegen_object_new(IndicatorCanvasOnScreen_t19491C39670BEAC23EBB432093E67A915BB16BAA_il2cpp_TypeInfo_var);
 		IndicatorCanvasOnScreen__ctor_mCC2C8E32C6A74A1B6EB6B64D4C074A629367E3FD(L_0, NULL);
 		V_0 = L_0;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorOnScreen.cs:13>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorOnScreen.cs:13>
 		IndicatorCanvasOnScreen_t19491C39670BEAC23EBB432093E67A915BB16BAA* L_1 = V_0;
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_2 = ___0_renderer;
 		NullCheck(L_1);
 		VirtualActionInvoker2< Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D*, IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* >::Invoke(4, L_1, __this, L_2);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorOnScreen.cs:15>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorOnScreen.cs:15>
 		Dictionary_2_t9CD2746B1C11FCE579033B889D0B126BB246CA30* L_3 = ((Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D*)__this)->___indicatorsCanvas;
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_4 = ___0_renderer;
 		IndicatorCanvasOnScreen_t19491C39670BEAC23EBB432093E67A915BB16BAA* L_5 = V_0;
 		NullCheck(L_3);
 		Dictionary_2_Add_mBE49AB2024CBC21861E8038826FD515F4344B97C(L_3, L_4, L_5, Dictionary_2_Add_mBE49AB2024CBC21861E8038826FD515F4344B97C_RuntimeMethod_var);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorOnScreen.cs:16>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorOnScreen.cs:16>
 		return;
 	}
 }
-// Method Definition Index: 109479
+// Method Definition Index: 109492
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorOnScreen__ctor_mE6889A385F8E3A5984BED3B68654F2E6DF011542 (IndicatorOnScreen_t9A2B5ECA8150A71AB24F21D4478FB471817809C9* __this, const RuntimeMethod* method) 
 {
 	{
@@ -2169,7 +2169,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorOnScreen__ctor_mE6889A385F8E3A5
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 109480
+// Method Definition Index: 109493
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_Start_m8927942D6379F6A7215AD7BFC6A551BFD51D6EB2 (Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2192,7 +2192,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_Start_m8927942D6379F6A7215AD7B
 	memset((&V_1), 0, sizeof(V_1));
 	IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* V_2 = NULL;
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:17>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:17>
 		List_1_t0F88D62E685A0FC84881CAF936C027A9515BD1B9* L_0 = __this->___renderers;
 		NullCheck(L_0);
 		int32_t L_1;
@@ -2203,12 +2203,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_Start_m8927942D6379F6A7215AD7B
 		}
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:18>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:18>
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		IndicatorRendererU5BU5D_t5E1D50809B157A354E338550C72A8325EA1EA16E* L_2;
 		L_2 = Object_FindObjectsOfType_TisIndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB_mA2EE78B7E398F87E3E40A3AC3048D2F6D3D3FBB3((bool)1, Object_FindObjectsOfType_TisIndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB_mA2EE78B7E398F87E3E40A3AC3048D2F6D3D3FBB3_RuntimeMethod_var);
 		V_0 = L_2;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:20>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:20>
 		IndicatorRendererU5BU5D_t5E1D50809B157A354E338550C72A8325EA1EA16E* L_3 = V_0;
 		NullCheck(L_3);
 		if (!(((RuntimeArray*)L_3)->max_length))
@@ -2217,7 +2217,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_Start_m8927942D6379F6A7215AD7B
 		}
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:21>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:21>
 		IndicatorRendererU5BU5D_t5E1D50809B157A354E338550C72A8325EA1EA16E* L_4 = V_0;
 		List_1_t0F88D62E685A0FC84881CAF936C027A9515BD1B9* L_5;
 		L_5 = Enumerable_ToList_TisIndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB_mC9209534A312EDC89666557417AF5EADA49697DB((RuntimeObject*)L_4, Enumerable_ToList_TisIndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB_mC9209534A312EDC89666557417AF5EADA49697DB_RuntimeMethod_var);
@@ -2228,14 +2228,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_Start_m8927942D6379F6A7215AD7B
 
 IL_0026:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:24>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:24>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(_stringLiteral9BC44D3B239CF23B4CE281F13A6AEF26810E446A, NULL);
 	}
 
 IL_0030:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:28>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:28>
 		List_1_t0F88D62E685A0FC84881CAF936C027A9515BD1B9* L_6 = __this->___renderers;
 		NullCheck(L_6);
 		Enumerator_t37FE034615AE46A1D92E18CF6DB7D156C9C90594 L_7;
@@ -2260,18 +2260,18 @@ FINALLY_0058:
 
 IL_003e_1:
 			{
-				//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:28>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:28>
 				IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_8;
 				L_8 = Enumerator_get_Current_m68283AAB1DCBD5BF7B09A6E6B1E88C375C8F116A_inline((&V_1), Enumerator_get_Current_m68283AAB1DCBD5BF7B09A6E6B1E88C375C8F116A_RuntimeMethod_var);
 				V_2 = L_8;
-				//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:29>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:29>
 				IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_9 = V_2;
 				VirtualActionInvoker1< IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* >::Invoke(4, __this, L_9);
 			}
 
 IL_004d_1:
 			{
-				//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:28>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:28>
 				bool L_10;
 				L_10 = Enumerator_MoveNext_m6C8202DCEB879A6FD06A3B3E4004A7FA4F9B6172((&V_1), Enumerator_MoveNext_m6C8202DCEB879A6FD06A3B3E4004A7FA4F9B6172_RuntimeMethod_var);
 				if (L_10)
@@ -2291,20 +2291,20 @@ IL_004d_1:
 
 IL_0066:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:31>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:31>
 		return;
 	}
 }
-// Method Definition Index: 109481
+// Method Definition Index: 109494
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_t0F88D62E685A0FC84881CAF936C027A9515BD1B9* Indicator_GetRenderers_mC28A76D08280CD12654DD045EF7AA6617592AC7D (Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:34>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:34>
 		List_1_t0F88D62E685A0FC84881CAF936C027A9515BD1B9* L_0 = __this->___renderers;
 		return L_0;
 	}
 }
-// Method Definition Index: 109482
+// Method Definition Index: 109495
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_SetRenderer_mF2DB2C2B2A18E140854D2F96EEE53990810B2537 (Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* __this, IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* ___0_renderer, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2316,9 +2316,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_SetRenderer_mF2DB2C2B2A18E1408
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:38>
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:39>
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:40>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:38>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:39>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:40>
 		List_1_t0F88D62E685A0FC84881CAF936C027A9515BD1B9* L_0 = (List_1_t0F88D62E685A0FC84881CAF936C027A9515BD1B9*)il2cpp_codegen_object_new(List_1_t0F88D62E685A0FC84881CAF936C027A9515BD1B9_il2cpp_TypeInfo_var);
 		List_1__ctor_m5506C3EEBB609D2F7E4C47E04C24A0670AF9DD1A(L_0, List_1__ctor_m5506C3EEBB609D2F7E4C47E04C24A0670AF9DD1A_RuntimeMethod_var);
 		List_1_t0F88D62E685A0FC84881CAF936C027A9515BD1B9* L_1 = L_0;
@@ -2327,23 +2327,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_SetRenderer_mF2DB2C2B2A18E1408
 		List_1_Add_mFF5859D365D7A616AC86D2553A98C6E0EBF92D66_inline(L_1, L_2, List_1_Add_mFF5859D365D7A616AC86D2553A98C6E0EBF92D66_RuntimeMethod_var);
 		__this->___renderers = L_1;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___renderers), (void*)L_1);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:41>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:41>
 		return;
 	}
 }
-// Method Definition Index: 109483
+// Method Definition Index: 109496
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_SetRenderer_mF5D02E547CB59424BD8DF8FE913427083283307D (Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* __this, List_1_t0F88D62E685A0FC84881CAF936C027A9515BD1B9* ___0_renderers, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:44>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:44>
 		List_1_t0F88D62E685A0FC84881CAF936C027A9515BD1B9* L_0 = ___0_renderers;
 		__this->___renderers = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___renderers), (void*)L_0);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:45>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:45>
 		return;
 	}
 }
-// Method Definition Index: 109484
+// Method Definition Index: 109497
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_Update_m26440AB7828954502D0119593C708FB757369D9A (Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2361,7 +2361,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_Update_m26440AB7828954502D0119
 	KeyValuePair_2_tD8B05333EC728464808DF959FFC34F1D96632E3A V_1;
 	memset((&V_1), 0, sizeof(V_1));
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:48>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:48>
 		Dictionary_2_t9CD2746B1C11FCE579033B889D0B126BB246CA30* L_0 = __this->___indicatorsCanvas;
 		NullCheck(L_0);
 		Enumerator_tBEFA0A0CE47376AEA2C80EBC82760529E1151231 L_1;
@@ -2386,11 +2386,11 @@ FINALLY_002d:
 
 IL_000e_1:
 			{
-				//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:48>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:48>
 				KeyValuePair_2_tD8B05333EC728464808DF959FFC34F1D96632E3A L_2;
 				L_2 = Enumerator_get_Current_mAB6C6359D55874BC66D0C093CE31671D1D689A6F_inline((&V_0), Enumerator_get_Current_mAB6C6359D55874BC66D0C093CE31671D1D689A6F_RuntimeMethod_var);
 				V_1 = L_2;
-				//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:49>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:49>
 				IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19* L_3;
 				L_3 = KeyValuePair_2_get_Value_m2888C9BBD3024028B67604CF2BF06663E4C57279_inline((&V_1), KeyValuePair_2_get_Value_m2888C9BBD3024028B67604CF2BF06663E4C57279_RuntimeMethod_var);
 				NullCheck(L_3);
@@ -2399,7 +2399,7 @@ IL_000e_1:
 
 IL_0022_1:
 			{
-				//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:48>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:48>
 				bool L_4;
 				L_4 = Enumerator_MoveNext_m0DD9C937B9F8508CD1F7F02EBF0295B1227C1E41((&V_0), Enumerator_MoveNext_m0DD9C937B9F8508CD1F7F02EBF0295B1227C1E41_RuntimeMethod_var);
 				if (L_4)
@@ -2419,11 +2419,11 @@ IL_0022_1:
 
 IL_003b:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:51>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:51>
 		return;
 	}
 }
-// Method Definition Index: 109485
+// Method Definition Index: 109498
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_OnEnable_mB8895CDB0ACE1780E5765766F0E0F988FF95C6C4 (Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2441,7 +2441,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_OnEnable_mB8895CDB0ACE1780E576
 	KeyValuePair_2_tD8B05333EC728464808DF959FFC34F1D96632E3A V_1;
 	memset((&V_1), 0, sizeof(V_1));
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:54>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:54>
 		Dictionary_2_t9CD2746B1C11FCE579033B889D0B126BB246CA30* L_0 = __this->___indicatorsCanvas;
 		NullCheck(L_0);
 		Enumerator_tBEFA0A0CE47376AEA2C80EBC82760529E1151231 L_1;
@@ -2466,11 +2466,11 @@ FINALLY_002d:
 
 IL_000e_1:
 			{
-				//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:54>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:54>
 				KeyValuePair_2_tD8B05333EC728464808DF959FFC34F1D96632E3A L_2;
 				L_2 = Enumerator_get_Current_mAB6C6359D55874BC66D0C093CE31671D1D689A6F_inline((&V_0), Enumerator_get_Current_mAB6C6359D55874BC66D0C093CE31671D1D689A6F_RuntimeMethod_var);
 				V_1 = L_2;
-				//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:55>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:55>
 				IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19* L_3;
 				L_3 = KeyValuePair_2_get_Value_m2888C9BBD3024028B67604CF2BF06663E4C57279_inline((&V_1), KeyValuePair_2_get_Value_m2888C9BBD3024028B67604CF2BF06663E4C57279_RuntimeMethod_var);
 				NullCheck(L_3);
@@ -2479,7 +2479,7 @@ IL_000e_1:
 
 IL_0022_1:
 			{
-				//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:54>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:54>
 				bool L_4;
 				L_4 = Enumerator_MoveNext_m0DD9C937B9F8508CD1F7F02EBF0295B1227C1E41((&V_0), Enumerator_MoveNext_m0DD9C937B9F8508CD1F7F02EBF0295B1227C1E41_RuntimeMethod_var);
 				if (L_4)
@@ -2499,11 +2499,11 @@ IL_0022_1:
 
 IL_003b:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:57>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:57>
 		return;
 	}
 }
-// Method Definition Index: 109486
+// Method Definition Index: 109499
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_OnDisable_mD59E9CF76E5CCD2EFB9A8C16952CC258D7944821 (Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2521,7 +2521,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_OnDisable_mD59E9CF76E5CCD2EFB9
 	KeyValuePair_2_tD8B05333EC728464808DF959FFC34F1D96632E3A V_1;
 	memset((&V_1), 0, sizeof(V_1));
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:60>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:60>
 		Dictionary_2_t9CD2746B1C11FCE579033B889D0B126BB246CA30* L_0 = __this->___indicatorsCanvas;
 		NullCheck(L_0);
 		Enumerator_tBEFA0A0CE47376AEA2C80EBC82760529E1151231 L_1;
@@ -2546,11 +2546,11 @@ FINALLY_002d:
 
 IL_000e_1:
 			{
-				//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:60>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:60>
 				KeyValuePair_2_tD8B05333EC728464808DF959FFC34F1D96632E3A L_2;
 				L_2 = Enumerator_get_Current_mAB6C6359D55874BC66D0C093CE31671D1D689A6F_inline((&V_0), Enumerator_get_Current_mAB6C6359D55874BC66D0C093CE31671D1D689A6F_RuntimeMethod_var);
 				V_1 = L_2;
-				//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:61>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:61>
 				IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19* L_3;
 				L_3 = KeyValuePair_2_get_Value_m2888C9BBD3024028B67604CF2BF06663E4C57279_inline((&V_1), KeyValuePair_2_get_Value_m2888C9BBD3024028B67604CF2BF06663E4C57279_RuntimeMethod_var);
 				NullCheck(L_3);
@@ -2559,7 +2559,7 @@ IL_000e_1:
 
 IL_0022_1:
 			{
-				//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:60>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:60>
 				bool L_4;
 				L_4 = Enumerator_MoveNext_m0DD9C937B9F8508CD1F7F02EBF0295B1227C1E41((&V_0), Enumerator_MoveNext_m0DD9C937B9F8508CD1F7F02EBF0295B1227C1E41_RuntimeMethod_var);
 				if (L_4)
@@ -2579,11 +2579,11 @@ IL_0022_1:
 
 IL_003b:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:63>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:63>
 		return;
 	}
 }
-// Method Definition Index: 109487
+// Method Definition Index: 109500
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_OnDestroy_mF18792DDE42F9EAE72D4F94B148E90A05595D331 (Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2601,7 +2601,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_OnDestroy_mF18792DDE42F9EAE72D
 	KeyValuePair_2_tD8B05333EC728464808DF959FFC34F1D96632E3A V_1;
 	memset((&V_1), 0, sizeof(V_1));
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:66>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:66>
 		Dictionary_2_t9CD2746B1C11FCE579033B889D0B126BB246CA30* L_0 = __this->___indicatorsCanvas;
 		NullCheck(L_0);
 		Enumerator_tBEFA0A0CE47376AEA2C80EBC82760529E1151231 L_1;
@@ -2626,11 +2626,11 @@ FINALLY_002e:
 
 IL_000e_1:
 			{
-				//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:66>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:66>
 				KeyValuePair_2_tD8B05333EC728464808DF959FFC34F1D96632E3A L_2;
 				L_2 = Enumerator_get_Current_mAB6C6359D55874BC66D0C093CE31671D1D689A6F_inline((&V_0), Enumerator_get_Current_mAB6C6359D55874BC66D0C093CE31671D1D689A6F_RuntimeMethod_var);
 				V_1 = L_2;
-				//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:67>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:67>
 				IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_3;
 				L_3 = KeyValuePair_2_get_Key_m6570703468AE591F826356EB9FC562D7EEC15117_inline((&V_1), KeyValuePair_2_get_Key_m6570703468AE591F826356EB9FC562D7EEC15117_RuntimeMethod_var);
 				Indicator_DestroyIndicatorCanvas_m649C7844397871C5C2BB84DBB4F6A385B3E99B68(__this, L_3, NULL);
@@ -2638,7 +2638,7 @@ IL_000e_1:
 
 IL_0023_1:
 			{
-				//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:66>
+				//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:66>
 				bool L_4;
 				L_4 = Enumerator_MoveNext_m0DD9C937B9F8508CD1F7F02EBF0295B1227C1E41((&V_0), Enumerator_MoveNext_m0DD9C937B9F8508CD1F7F02EBF0295B1227C1E41_RuntimeMethod_var);
 				if (L_4)
@@ -2658,11 +2658,11 @@ IL_0023_1:
 
 IL_003c:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:69>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:69>
 		return;
 	}
 }
-// Method Definition Index: 109489
+// Method Definition Index: 109502
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_DestroyIndicatorCanvas_m649C7844397871C5C2BB84DBB4F6A385B3E99B68 (Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* __this, IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* ___0_renderer, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2673,7 +2673,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_DestroyIndicatorCanvas_m649C78
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:74>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:74>
 		Dictionary_2_t9CD2746B1C11FCE579033B889D0B126BB246CA30* L_0 = __this->___indicatorsCanvas;
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_1 = ___0_renderer;
 		NullCheck(L_0);
@@ -2685,7 +2685,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_DestroyIndicatorCanvas_m649C78
 		}
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:75>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:75>
 		Dictionary_2_t9CD2746B1C11FCE579033B889D0B126BB246CA30* L_3 = __this->___indicatorsCanvas;
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_4 = ___0_renderer;
 		NullCheck(L_3);
@@ -2697,11 +2697,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator_DestroyIndicatorCanvas_m649C78
 
 IL_001f:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:77>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:77>
 		return;
 	}
 }
-// Method Definition Index: 109490
+// Method Definition Index: 109503
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator__ctor_mD1D80E184C763912A9075B0AF9C0747876FAA523 (Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2714,14 +2714,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator__ctor_mD1D80E184C763912A9075B0
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:11>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:11>
 		__this->___visible = (bool)1;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:12>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:12>
 		List_1_t0F88D62E685A0FC84881CAF936C027A9515BD1B9* L_0 = (List_1_t0F88D62E685A0FC84881CAF936C027A9515BD1B9*)il2cpp_codegen_object_new(List_1_t0F88D62E685A0FC84881CAF936C027A9515BD1B9_il2cpp_TypeInfo_var);
 		List_1__ctor_m5506C3EEBB609D2F7E4C47E04C24A0670AF9DD1A(L_0, List_1__ctor_m5506C3EEBB609D2F7E4C47E04C24A0670AF9DD1A_RuntimeMethod_var);
 		__this->___renderers = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___renderers), (void*)L_0);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:14>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Indicator.cs:14>
 		Dictionary_2_t9CD2746B1C11FCE579033B889D0B126BB246CA30* L_1 = (Dictionary_2_t9CD2746B1C11FCE579033B889D0B126BB246CA30*)il2cpp_codegen_object_new(Dictionary_2_t9CD2746B1C11FCE579033B889D0B126BB246CA30_il2cpp_TypeInfo_var);
 		Dictionary_2__ctor_mAD79A3BDEB0E3BF0C462702FB8B308D55F7FA1F2(L_1, Dictionary_2__ctor_mAD79A3BDEB0E3BF0C462702FB8B308D55F7FA1F2_RuntimeMethod_var);
 		__this->___indicatorsCanvas = L_1;
@@ -2738,63 +2738,63 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Indicator__ctor_mD1D80E184C763912A9075B0
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 109491
+// Method Definition Index: 109504
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvas_set_indicator_m244FDE9F337D8DD0C42011BCF07F4BF329D4754F (IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19* __this, Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:8>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:8>
 		Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* L_0 = ___0_value;
 		__this->___U3CindicatorU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CindicatorU3Ek__BackingField), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 109492
+// Method Definition Index: 109505
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* IndicatorCanvas_get_indicator_mE88179B822D362E86DFFAE02F46E5C1BFB701708 (IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:8>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:8>
 		Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* L_0 = __this->___U3CindicatorU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 109493
+// Method Definition Index: 109506
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvas_set_renderer_mBE1FF2F5AA177B18B62E9DCE45983087B0535F80 (IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19* __this, IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:9>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:9>
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_0 = ___0_value;
 		__this->___U3CrendererU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CrendererU3Ek__BackingField), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 109494
+// Method Definition Index: 109507
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* IndicatorCanvas_get_renderer_m1CD3362C1ADA56E63569419A0EE04DDFA2365DE1 (IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:9>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:9>
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_0 = __this->___U3CrendererU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 109495
+// Method Definition Index: 109508
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvas_Create_m2BFEEE89387E4ABD8B04F91BAA804B9C6E032793 (IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19* __this, Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* ___0_indicator, IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* ___1_renderer, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:14>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:14>
 		Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* L_0 = ___0_indicator;
 		IndicatorCanvas_set_indicator_m244FDE9F337D8DD0C42011BCF07F4BF329D4754F_inline(__this, L_0, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:15>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:15>
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_1 = ___1_renderer;
 		IndicatorCanvas_set_renderer_mBE1FF2F5AA177B18B62E9DCE45983087B0535F80_inline(__this, L_1, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:17>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:17>
 		__this->___active = (bool)1;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:18>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:18>
 		return;
 	}
 }
-// Method Definition Index: 109497
+// Method Definition Index: 109510
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvas_OnEnable_mBF2CBE0FD5F6D6927B0D4D85DFFEE254B4C12554 (IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2804,7 +2804,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvas_OnEnable_mBF2CBE0FD5F6D6
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:23>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:23>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = __this->___gameObject;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -2815,7 +2815,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvas_OnEnable_mBF2CBE0FD5F6D6
 		}
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:24>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:24>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2 = __this->___gameObject;
 		NullCheck(L_2);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_2, (bool)1, NULL);
@@ -2823,13 +2823,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvas_OnEnable_mBF2CBE0FD5F6D6
 
 IL_001a:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:26>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:26>
 		__this->___active = (bool)1;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:27>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:27>
 		return;
 	}
 }
-// Method Definition Index: 109498
+// Method Definition Index: 109511
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvas_OnDisable_mCB54552026A65D0196ABE1D071CBBE840E5B93A6 (IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2839,7 +2839,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvas_OnDisable_mCB54552026A65
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:29>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:29>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = __this->___gameObject;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -2850,7 +2850,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvas_OnDisable_mCB54552026A65
 		}
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:30>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:30>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2 = __this->___gameObject;
 		NullCheck(L_2);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_2, (bool)0, NULL);
@@ -2858,25 +2858,25 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvas_OnDisable_mCB54552026A65
 
 IL_001a:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:32>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:32>
 		__this->___active = (bool)0;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:33>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:33>
 		return;
 	}
 }
-// Method Definition Index: 109499
+// Method Definition Index: 109512
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvas_Destroy_m91E9C5975E963FBB9ABDFEBA8DD5933EAA9D867D (IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:35>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:35>
 		return;
 	}
 }
-// Method Definition Index: 109500
+// Method Definition Index: 109513
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool IndicatorCanvas_IsVisible_m00150BFA715C69FA79A4FB5A30A04AD4734D3C0C (IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:38>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:38>
 		Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* L_0;
 		L_0 = IndicatorCanvas_get_indicator_mE88179B822D362E86DFFAE02F46E5C1BFB701708_inline(__this, NULL);
 		NullCheck(L_0);
@@ -2899,7 +2899,7 @@ IL_0019:
 		return (bool)0;
 	}
 }
-// Method Definition Index: 109501
+// Method Definition Index: 109514
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvas__ctor_mBD0DEC1A4D26D4F4ADC71320065FCE2BFCA2AFC5 (IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19* __this, const RuntimeMethod* method) 
 {
 	{
@@ -2915,7 +2915,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorCanvas__ctor_mBD0DEC1A4D26D4F4A
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 109502
+// Method Definition Index: 109515
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorRenderer_Awake_m1612882420B874A5B8FDF2E369C9B9AF022224D9 (IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2926,12 +2926,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorRenderer_Awake_m1612882420B874A
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:17>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:17>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_0;
 		L_0 = Component_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m0640480E7E38BB88B0D1F6AD59E697C8EE6AAFA4(__this, Component_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m0640480E7E38BB88B0D1F6AD59E697C8EE6AAFA4_RuntimeMethod_var);
 		__this->___rectTransform = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___rectTransform), (void*)L_0);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:19>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:19>
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_1 = __this->___camera;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_2;
@@ -2942,7 +2942,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorRenderer_Awake_m1612882420B874A
 		}
 	}
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:20>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:20>
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_3;
 		L_3 = Camera_get_main_m52C992F18E05355ABB9EEB64A4BF2215E12762DF(NULL);
 		__this->___camera = L_3;
@@ -2951,15 +2951,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorRenderer_Awake_m1612882420B874A
 
 IL_0025:
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:22>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:22>
 		return;
 	}
 }
-// Method Definition Index: 109503
+// Method Definition Index: 109516
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D IndicatorRenderer_GetRect_m58F0923F1F36BCDC87841400A99F02C234B97A25 (IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:25>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:25>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_0 = __this->___rectTransform;
 		NullCheck(L_0);
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_1;
@@ -2970,49 +2970,49 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0
 		return L_3;
 	}
 }
-// Method Definition Index: 109504
+// Method Definition Index: 109517
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* IndicatorRenderer_GetRectTransform_m97B72A71A44FC0E822CE678D83F81B9252C2607A (IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:29>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:29>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_0 = __this->___rectTransform;
 		return L_0;
 	}
 }
-// Method Definition Index: 109505
+// Method Definition Index: 109518
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D IndicatorRenderer_SetMarginToRect_mC4F55D8B4C1838B29D6FF651970FFFC36CB13E4F (IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* __this, Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D ___0_rect, float ___1_margin, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:33>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:33>
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* L_0 = (&___0_rect);
 		float L_1;
 		L_1 = Rect_get_x_mB267B718E0D067F2BAE31BA477647FBF964916EB_inline(L_0, NULL);
 		float L_2 = ___1_margin;
 		Rect_set_x_mAB91AB71898A20762BC66FD0723C4C739C4C3406_inline(L_0, ((float)il2cpp_codegen_add(L_1, L_2)), NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:34>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:34>
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* L_3 = (&___0_rect);
 		float L_4;
 		L_4 = Rect_get_y_mC733E8D49F3CE21B2A3D40A1B72D687F22C97F49_inline(L_3, NULL);
 		float L_5 = ___1_margin;
 		Rect_set_y_mDE91F4B98A6E8623EFB1250FF6526D5DB5855629_inline(L_3, ((float)il2cpp_codegen_add(L_4, L_5)), NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:35>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:35>
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* L_6 = (&___0_rect);
 		float L_7;
 		L_7 = Rect_get_width_m620D67551372073C9C32C4C4624C2A5713F7F9A9_inline(L_6, NULL);
 		float L_8 = ___1_margin;
 		Rect_set_width_m93B6217CF3EFF89F9B0C81F34D7345DE90B93E5A_inline(L_6, ((float)il2cpp_codegen_subtract(L_7, ((float)il2cpp_codegen_multiply(L_8, (2.0f))))), NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:36>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:36>
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* L_9 = (&___0_rect);
 		float L_10;
 		L_10 = Rect_get_height_mE1AA6C6C725CCD2D317BD2157396D3CF7D47C9D8_inline(L_9, NULL);
 		float L_11 = ___1_margin;
 		Rect_set_height_mD00038E6E06637137A5626CA8CD421924005BF03_inline(L_9, ((float)il2cpp_codegen_subtract(L_10, ((float)il2cpp_codegen_multiply(L_11, (2.0f))))), NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:37>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:37>
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_12 = ___0_rect;
 		return L_12;
 	}
 }
-// Method Definition Index: 109506
+// Method Definition Index: 109519
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorRenderer_OnDrawGizmosSelected_mB524E6BB9CEDB6C3147C04C4E7CD7F1D1C48A5DA (IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3030,12 +3030,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorRenderer_OnDrawGizmosSelected_m
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_2;
 	memset((&V_2), 0, sizeof(V_2));
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:41>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:41>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_0;
 		L_0 = Component_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m0640480E7E38BB88B0D1F6AD59E697C8EE6AAFA4(__this, Component_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m0640480E7E38BB88B0D1F6AD59E697C8EE6AAFA4_RuntimeMethod_var);
 		__this->___rectTransform = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___rectTransform), (void*)L_0);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:42>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:42>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_1 = __this->___rectTransform;
 		NullCheck(L_1);
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_2;
@@ -3044,20 +3044,20 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorRenderer_OnDrawGizmosSelected_m
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_4;
 		L_4 = IndicatorRenderer_SetMarginToRect_mC4F55D8B4C1838B29D6FF651970FFFC36CB13E4F(__this, L_2, L_3, NULL);
 		V_0 = L_4;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:44>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:44>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_5 = (Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4*)il2cpp_codegen_object_new(Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_il2cpp_TypeInfo_var);
 		Texture2D__ctor_m3BA82E87442B7F69E118477069AE11101B9DF796(L_5, 1, 1, NULL);
 		V_1 = L_5;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:45>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:45>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_6 = V_1;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_7 = __this->___canvasColor;
 		NullCheck(L_6);
 		Texture2D_SetPixel_m2CCFC5F729135D59DC4A697C2605A3FC5C8574DB(L_6, 0, 0, L_7, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:46>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:46>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_8 = V_1;
 		NullCheck(L_8);
 		Texture2D_Apply_mA014182C9EE0BBF6EEE3B286854F29E50EB972DC(L_8, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:48>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:48>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_9 = __this->___rectTransform;
 		float L_10;
 		L_10 = Rect_get_x_mB267B718E0D067F2BAE31BA477647FBF964916EB_inline((&V_0), NULL);
@@ -3070,7 +3070,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorRenderer_OnDrawGizmosSelected_m
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_13;
 		L_13 = Transform_TransformPoint_m05BFF013DB830D7BFE44A007703694AE1062EE44(L_9, L_12, NULL);
 		V_2 = L_13;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:49>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:49>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_14 = V_2;
 		float L_15 = L_14.___x;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_16 = V_2;
@@ -3095,23 +3095,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorRenderer_OnDrawGizmosSelected_m
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_27 = V_1;
 		il2cpp_codegen_runtime_class_init_inline(Graphics_t99CD970FFEA58171C70F54DF0C06D315BD452F2C_il2cpp_TypeInfo_var);
 		Graphics_DrawTexture_m400F92CB13445A7BC054BC074B7073EA7E4B322F(L_26, L_27, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:51>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:51>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_28 = V_1;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		Object_DestroyImmediate_m6336EBC83591A5DB64EC70C92132824C6E258705(L_28, NULL);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:52>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:52>
 		return;
 	}
 }
-// Method Definition Index: 109507
+// Method Definition Index: 109520
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorRenderer__ctor_mEEA1B327DA7DFF7A800E221F81F1DBA00C58AA0B (IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:9>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:9>
 		__this->___visible = (bool)1;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:10>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:10>
 		__this->___margin = (32.0f);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:11>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:11>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_0;
 		memset((&L_0), 0, sizeof(L_0));
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&L_0), (0.0f), (0.811764717f), (1.0f), (0.105882354f), NULL);
@@ -3128,17 +3128,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorRenderer__ctor_mEEA1B327DA7DFF7
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 109508
+// Method Definition Index: 109521
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorArrowStyle__ctor_m14F86675C128C965DF0D99872A48E9A3E8AF9F11 (IndicatorArrowStyle_tB45064753D4B537943D3FD13C91EDB68119C3E9F* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Styles/IndicatorArrowStyle.cs:10>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Styles/IndicatorArrowStyle.cs:10>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_0;
 		L_0 = Color_get_white_m068F5AF879B0FCA584E3693F762EA41BB65532C6_inline(NULL);
 		__this->___color = L_0;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Styles/IndicatorArrowStyle.cs:12>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Styles/IndicatorArrowStyle.cs:12>
 		__this->___width = (16.0f);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Styles/IndicatorArrowStyle.cs:13>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Styles/IndicatorArrowStyle.cs:13>
 		__this->___height = (16.0f);
 		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
 		return;
@@ -3152,17 +3152,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorArrowStyle__ctor_m14F86675C128C
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 109509
+// Method Definition Index: 109522
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IndicatorIconStyle__ctor_mBF6A8A6735FC85B155D9A0A812F10807983D5A27 (IndicatorIconStyle_tC42EAD1FF60DDABB1CE4DBBA69A7B117E4D59A8B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Styles/IndicatorIconStyle.cs:10>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Styles/IndicatorIconStyle.cs:10>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_0;
 		L_0 = Color_get_white_m068F5AF879B0FCA584E3693F762EA41BB65532C6_inline(NULL);
 		__this->___color = L_0;
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Styles/IndicatorIconStyle.cs:11>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Styles/IndicatorIconStyle.cs:11>
 		__this->___width = (32.0f);
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Styles/IndicatorIconStyle.cs:12>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/Styles/IndicatorIconStyle.cs:12>
 		__this->___height = (32.0f);
 		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
 		return;
@@ -3229,29 +3229,29 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector2__ctor_m9525B79969AFF
 		return;
 	}
 }
-// Method Definition Index: 109494
+// Method Definition Index: 109507
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* IndicatorCanvas_get_renderer_m1CD3362C1ADA56E63569419A0EE04DDFA2365DE1_inline (IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:9>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:9>
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_0 = __this->___U3CrendererU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 109504
+// Method Definition Index: 109517
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* IndicatorRenderer_GetRectTransform_m97B72A71A44FC0E822CE678D83F81B9252C2607A_inline (IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:29>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorRenderer.cs:29>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_0 = __this->___rectTransform;
 		return L_0;
 	}
 }
-// Method Definition Index: 109492
+// Method Definition Index: 109505
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* IndicatorCanvas_get_indicator_mE88179B822D362E86DFFAE02F46E5C1BFB701708_inline (IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:8>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:8>
 		Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* L_0 = __this->___U3CindicatorU3Ek__BackingField;
 		return L_0;
 	}
@@ -3504,22 +3504,22 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector3__ctor_m376936E6B999E
 		return;
 	}
 }
-// Method Definition Index: 109491
+// Method Definition Index: 109504
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void IndicatorCanvas_set_indicator_m244FDE9F337D8DD0C42011BCF07F4BF329D4754F_inline (IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19* __this, Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:8>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:8>
 		Indicator_tFD226CEB5A27B2403280B82A4121C6824EEEFF3D* L_0 = ___0_value;
 		__this->___U3CindicatorU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CindicatorU3Ek__BackingField), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 109493
+// Method Definition Index: 109506
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void IndicatorCanvas_set_renderer_mBE1FF2F5AA177B18B62E9DCE45983087B0535F80_inline (IndicatorCanvas_t662E0A52212509EE3408B7A8252637BCE868BD19* __this, IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/koopa/Desktop/Projects/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:9>
+		//<source_info:C:/Users/trist/Desktop/development/MinorCDI-EinsteinTelescoopAR/Assets/HUD Indicator/Scripts/IndicatorCanvas.cs:9>
 		IndicatorRenderer_t60A6CC77A61CCBEF3465C9E41884248D437461BB* L_0 = ___0_value;
 		__this->___U3CrendererU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CrendererU3Ek__BackingField), (void*)L_0);

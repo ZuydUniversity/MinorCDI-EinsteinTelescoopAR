@@ -8,6 +8,9 @@ using System.Collections;
 public class LanguageSwitcher : MonoBehaviour
 {
 
+    /// <summary>
+    /// Checks if it is changing language.
+    /// </summary>
     private bool isChanging = false;
 
     /// <summary>
@@ -29,11 +32,11 @@ public class LanguageSwitcher : MonoBehaviour
         // Wait for Unity Localization to initialize
         yield return LocalizationSettings.InitializationOperation;
 
-        var locales = LocalizationSettings.AvailableLocales.Locales;
+        var locales = LocalizationSettings.AvailableLocales.Locales;       
         foreach (var locale in locales)
         {
             if (locale.Identifier.Code == languageCode)
-            {
+            {              
                 LocalizationSettings.SelectedLocale = locale;
                 break;
             }
