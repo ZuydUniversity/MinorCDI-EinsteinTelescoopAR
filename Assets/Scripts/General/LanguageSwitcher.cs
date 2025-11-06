@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using System.Collections;
+
 /// <summary>
 /// script for buttons to call to change language
 /// </summary>
 public class LanguageSwitcher : MonoBehaviour
 {
+
     /// <summary>
     /// Checks if it is changing language.
     /// </summary>
