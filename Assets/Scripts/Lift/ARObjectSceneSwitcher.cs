@@ -42,15 +42,27 @@ public class ARObjectSceneSwitcher : MonoBehaviour, ITappable
     {       
         if (!loadingScene)
         {
+
+            ButtonEmissionManager.Instance.SetButtonActive(gameObject, true);
+            if (buttonClip != null)
+            {
+                AudioSource.PlayClipAtPoint(buttonClip, transform.position);
+            }
+            else
+            {
+                Debug.LogWarning("Button clip is not assigned in ARObjectSceneSwitcher.");
+            }
+        }
+
             loadingScene = true;
             if (ButtonEmissionManager.Instance != null)
             {
                 ButtonEmissionManager.Instance.SetButtonActive(gameObject, true);
             }
 
+
             EnsureDoorsClosedAndLoadScene();
         }
-    }
 
     /// <summary>
     /// Ensures doors are closed before loading the target scene, or keeps doors open if already in target scene
