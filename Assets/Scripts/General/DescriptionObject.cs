@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Localization.Components; 
+using UnityEngine.Localization;            
 
 public class DescriptionObject : MonoBehaviour, ITappable
 {
@@ -76,6 +78,24 @@ public class DescriptionObject : MonoBehaviour, ITappable
     void Start() 
     {
         mainCamera = Camera.main;
+
+        /// <summary>
+        /// Initializes the localization system for this object.
+        /// If a <see cref="LocalizeStringEvent"/> component is found,
+        /// it connects its update event to <see cref="SetDescription"/> 
+        /// so that localized text updates automatically when the language changes.
+        /// It also forces an immediate refresh to ensure the correct 
+        /// localized value is applied after the scene loads.
+        /// </summary>
+        var localizeEvent = GetComponent<LocalizeStringEvent>();
+        if (localizeEvent != null)
+        {
+            
+            localizeEvent.OnUpdateString.AddListener(SetDescription);
+
+            
+            localizeEvent.RefreshString();
+        }
     }
 
     /// <summary>
@@ -314,8 +334,21 @@ public class DescriptionObject : MonoBehaviour, ITappable
 
     public void SetDescription(string newDescription)
     {
+        if (string.IsNullOrEmpty(newDescription))
+        {
+            Debug.Log($"[Localization] Lege string ontvangen van LocalizeStringEvent voor {name}");
+            return;
+        }
+
+        Debug.Log($"[Localization] Ontvangen tekst voor {name}: {newDescription}");
         description = newDescription;
+
+        if (descriptionTextComponent != null)
+            descriptionTextComponent.text = newDescription;
     }
+
+
+
 
 
 }
