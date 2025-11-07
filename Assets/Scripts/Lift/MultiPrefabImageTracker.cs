@@ -10,7 +10,7 @@ using UnityEngine.XR.ARSubsystems;
 public enum SpawnAlignmentMode
 {
     GroundAligned,   // Upright in world space
-    MarkerSurface    // Matches the image’s plane orientation
+    MarkerSurface    // Matches the imageï¿½s plane orientation
 }
 
 [System.Serializable]

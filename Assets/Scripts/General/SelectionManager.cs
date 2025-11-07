@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.XR.ARSubsystems;
-using UnityEngine.SceneManagement;
+using TMPro;
 
 public class SelectionManager : MonoBehaviour
 {
@@ -44,15 +44,32 @@ public class SelectionManager : MonoBehaviour
             return;
         }
 
-        Ray ray = mainCamera.ScreenPointToRay(touchPos);
-        Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 2f);
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (!isUIElement(touchPos))
         {
-            ITappable tappable = hit.transform.GetComponent<ITappable>();
-            if (tappable != null) 
+            Ray ray = mainCamera.ScreenPointToRay(touchPos);
+            Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 2f);
+            if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                tappable.OnTapped();
+                ITappable tappable = hit.transform.GetComponent<ITappable>();
+                if (tappable != null) 
+                {
+                    tappable.OnTapped();
+                }
             }
         }
+    }
+
+    /// <summary>
+    /// Checks if an UI element is hit.
+    /// </summary>
+    /// <param name="screenPosition" type="Vector2">The position on the screen.</param>
+    private bool isUIElement(Vector2 screenPosition)
+    {
+        PointerEventData pointerData = new PointerEventData(EventSystem.current);
+        pointerData.position = screenPosition;
+
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, raycastResults);
+        return raycastResults.Count != 0;
     }
 }
