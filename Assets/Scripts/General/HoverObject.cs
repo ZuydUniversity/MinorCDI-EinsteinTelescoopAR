@@ -7,11 +7,11 @@ public class FloatingObject : MonoBehaviour
     /// Set the height of the floating. Higher means the object moves farther up and down from its
     /// starting position.
     /// </summary>
-    public float amplitude = 0.5f;
+    public float amplitude = 0.1f;
     /// <summary>
     /// the speed of the floating, higher means faster.
     /// </summary>
-    public float frequency = 1f;
+    public float frequency = 0.3f;
     /// <summary>
     /// Starting position of the object containing this script.
     /// Base for the movement
