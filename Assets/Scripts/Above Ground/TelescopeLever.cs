@@ -10,6 +10,10 @@ public class TelescopeLever : Lever
     /// The telescope to hide/show.
     /// </summary>
     public GameObject TelescopeObject;
+    /// <summary>
+    /// The ground to hide/show.
+    /// </summary>
+    public GameObject groundObject;
 
     /// <summary>
     /// The audio source containing the audio.
@@ -23,6 +27,8 @@ public class TelescopeLever : Lever
     public override void OnActivate()
     {
         TelescopeObject.SetActive(true);
+        groundObject.SetActive(false);
+
         audioSource.Play();
 
     }
@@ -33,6 +39,8 @@ public class TelescopeLever : Lever
     public override void OnDeactivate()
     {
         audioSource.Stop();
+
         TelescopeObject.SetActive(false);
+        groundObject.SetActive(true);
     }
 }
