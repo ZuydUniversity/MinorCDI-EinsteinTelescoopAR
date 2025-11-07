@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using System.Collections;
+using TMPro;
 
 /// <summary>
 /// script for buttons to call to change language
@@ -8,6 +9,7 @@ using System.Collections;
 public class LanguageSwitcher : MonoBehaviour
 {
 
+    public GameObject Dropdown;
     /// <summary>
     /// Checks if it is changing language.
     /// </summary>
@@ -24,7 +26,11 @@ public class LanguageSwitcher : MonoBehaviour
             StartCoroutine(ChangeLanguageCoroutine(languageCode));
         }
     }
-
+    /// <summary>
+    /// Changes the language on the background
+    /// </summary>
+    /// <param name="languageCode"></param>
+    /// <returns></returns>
     private IEnumerator ChangeLanguageCoroutine(string languageCode)
     {
         isChanging = true;
@@ -43,5 +49,15 @@ public class LanguageSwitcher : MonoBehaviour
         }
 
         isChanging = false;
+    }
+    /// <summary>
+    /// Function to call function from the UI dropdown
+    /// </summary>
+    public void ChangeLanguageFromDropdown()
+    {
+        string code = "";
+        if (Dropdown.GetComponent<TMP_Dropdown>().captionText.text == "Nederlands") { code = "nl-NL"; }
+        if (Dropdown.GetComponent<TMP_Dropdown>().captionText.text == "English") { code = "en"; }
+        SetLanguage(code);
     }
 }
