@@ -15,12 +15,17 @@ public class ElevatorController : MonoBehaviour
     /// Possible states of the elevator doors
     /// </summary>
     public enum ElevatorState { Closed, Open, Animating }
-    
+
     /// <summary>
     /// Current state of the elevator doors
     /// </summary>
     public ElevatorState currentState = ElevatorState.Closed;
-    
+
+    //soundclips for the elevator doors and movement
+    public AudioClip doorClip;
+    public AudioClip moveClip;
+    public AudioClip arrivalClip;
+
     /// <summary>
     /// Initialize elevator state and ensure doors are closed
     /// </summary>
@@ -92,6 +97,17 @@ public class ElevatorController : MonoBehaviour
     /// </summary>
     public void OpenDoorsOnArrival()
     {
+
+        //play arrival sound
+        if (arrivalClip != null)
+        {
+            AudioSource.PlayClipAtPoint(arrivalClip, transform.position);
+        }
+        else
+        {
+            Debug.LogWarning("Arrival clip is not assigned in ElevatorController.");
+        }
+            
         if (doorAnimator == null)
         {
             return;
@@ -113,7 +129,16 @@ public class ElevatorController : MonoBehaviour
     /// </summary>
     private IEnumerator OpenDoorsOnArrivalCoroutine()
     {
-        yield return new WaitForSeconds(0.5f);
+        //play move sound
+        if (moveClip != null)
+        {
+            AudioSource.PlayClipAtPoint(moveClip, transform.position);
+        }
+        else
+        {
+            Debug.LogWarning("Move clip is not assigned in ElevatorController.");
+        }
+        yield return new WaitForSeconds(4.0f);
         yield return StartCoroutine(AnimateDoors(true, null));
         
         if (ButtonEmissionManager.Instance != null)
@@ -152,10 +177,20 @@ public class ElevatorController : MonoBehaviour
     {
         currentState = ElevatorState.Animating;
         
+        // Play door sound effect
+        if (doorClip != null)
+            {
+                AudioSource.PlayClipAtPoint(doorClip, transform.position);
+            }
+        else
+            {
+                Debug.LogWarning("Door clip is not assigned in ElevatorController.");
+            }
+
         if (open)
         {
             doorAnimator.SetBool("DoorsOpen", true);
-            yield return new WaitForSeconds(2.1f);
+            yield return new WaitForSeconds(2.02f);
         }
         else
         {
@@ -174,7 +209,7 @@ public class ElevatorController : MonoBehaviour
         doorAnimator.SetBool("DoorsOpen", true);
         yield return new WaitForEndOfFrame();
         
-        float duration = 2.1f;
+        float duration = 2.02f;
         float elapsedTime = 0f;
         
         while (elapsedTime < duration)

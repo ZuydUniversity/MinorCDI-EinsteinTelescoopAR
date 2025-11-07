@@ -35,6 +35,8 @@ public class MovablePoint : MonoBehaviour
     /// </summary>
     private bool onPlane = false;
 
+    public AudioClip soundClip;
+
     /// <summary>
     /// Checks if camera is on plane.
     /// </summary>
@@ -95,6 +97,20 @@ public class MovablePoint : MonoBehaviour
 
             newArrow.endpoint = movablePoint;
             arrows.Add(newArrow);
+
+            //if we have a sound clip, play it when we create the arrows. Have it loop until we leave the point
+            if (soundClip != null && newArrow.GetComponent<AudioSource>() == null)
+            {
+                AudioSource audioSource = newArrow.gameObject.AddComponent<AudioSource>();
+                audioSource.clip = soundClip;
+                audioSource.loop = true;
+                audioSource.playOnAwake = true;
+                audioSource.spatialBlend = 1.0f; // Make the sound 3D
+                audioSource.minDistance = 1f;
+                audioSource.maxDistance = 20f;
+                audioSource.volume = 0.25f;
+                audioSource.Play();
+            }
         }
 
         onPlane = true;

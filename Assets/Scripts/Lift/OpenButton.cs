@@ -9,6 +9,9 @@ public class OpenButton : MonoBehaviour, ITappable
     /// <summary>
     /// The controller for the elevator used to open it.
     /// </summary>
+    
+    //sound clip for the button tap
+    [SerializeField] private AudioClip buttonClip;
     [SerializeField] private ElevatorController elevatorController;
     
     /// <summary>
@@ -31,5 +34,15 @@ public class OpenButton : MonoBehaviour, ITappable
         {
             elevatorController.OpenDoors();
         }
+        // Play button sound effect
+        if (buttonClip != null)
+        {
+            AudioSource.PlayClipAtPoint(buttonClip, transform.position);
+        }
+        else
+        {
+            Debug.LogWarning("Button clip is not assigned in OpenButton.");
+        }
+
     }
 }
