@@ -317,9 +317,11 @@ public class DescriptionObject : MonoBehaviour, ITappable
     {
         if (titleTextComponent != null)
         {
+            int titleMaxSize = titleTextComponent.resizeTextMaxSize > 0 ? titleTextComponent.resizeTextMaxSize : maxFontSize;
+            
             int fs = Mathf.Clamp(
                 Mathf.RoundToInt(baseTitleFontSize * scaleFactor * fontScaleMultiplier),
-                minFontSize, maxFontSize);
+                minFontSize, titleMaxSize);
             titleTextComponent.fontSize = fs;
         }
 
