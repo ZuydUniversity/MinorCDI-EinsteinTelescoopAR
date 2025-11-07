@@ -14,6 +14,9 @@ public class ARObjectSceneSwitcher : MonoBehaviour, ITappable
     /// </summary>
     [SerializeField] private ElevatorController elevatorController;
 
+    //button sound clip
+    public AudioClip buttonClip;
+
     /// <summary>
     /// The name of the main scene that may not be unloaded.
     /// </summary>
@@ -35,6 +38,14 @@ public class ARObjectSceneSwitcher : MonoBehaviour, ITappable
         if (ButtonEmissionManager.Instance != null)
         {
             ButtonEmissionManager.Instance.SetButtonActive(gameObject, true);
+            if (buttonClip != null)
+            {
+                AudioSource.PlayClipAtPoint(buttonClip, transform.position);
+            }
+            else
+            {
+                Debug.LogWarning("Button clip is not assigned in ARObjectSceneSwitcher.");
+            }
         }
 
         EnsureDoorsClosedAndLoadScene();
