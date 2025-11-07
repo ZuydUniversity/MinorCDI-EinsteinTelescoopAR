@@ -20,6 +20,11 @@ public class ARObjectSceneSwitcher : MonoBehaviour, ITappable
     public string mainSceneName = "MainScene";
 
     /// <summary>
+    /// Checks if scene is already being loaded.
+    /// </summary>
+    private bool loadingScene = false;
+
+    /// <summary>
     /// Initializes components and adds a BoxCollider if none exists
     /// </summary>
     void Start()
@@ -32,12 +37,16 @@ public class ARObjectSceneSwitcher : MonoBehaviour, ITappable
     /// </summary>
     public void OnTapped()
     {       
-        if (ButtonEmissionManager.Instance != null)
+        if (!loadingScene)
         {
-            ButtonEmissionManager.Instance.SetButtonActive(gameObject, true);
-        }
+            loadingScene = true;
+            if (ButtonEmissionManager.Instance != null)
+            {
+                ButtonEmissionManager.Instance.SetButtonActive(gameObject, true);
+            }
 
-        EnsureDoorsClosedAndLoadScene();
+            EnsureDoorsClosedAndLoadScene();
+        }
     }
 
     /// <summary>
@@ -51,25 +60,28 @@ public class ARObjectSceneSwitcher : MonoBehaviour, ITappable
             {
                 elevatorController.OpenDoorsOnArrival();
             }
-            return;
-        }
-
-        if (elevatorController != null)
-        {
-            if (elevatorController.currentState == ElevatorController.ElevatorState.Closed)
-            {
-                LoadTargetScene();
-            }
-            else
-            {
-                elevatorController.CloseDoors();
-                StartCoroutine(WaitForDoorsToCloseAndLoadScene());
-            }
         }
         else
         {
-            LoadTargetScene();
+            if (elevatorController != null)
+            {
+                if (elevatorController.currentState == ElevatorController.ElevatorState.Closed)
+                {
+                    LoadTargetScene();
+                }
+                else
+                {
+                    elevatorController.CloseDoors();
+                    StartCoroutine(WaitForDoorsToCloseAndLoadScene());
+                }
+            }
+            else
+            {
+                LoadTargetScene();
+            }
         }
+
+        loadingScene = false;
     }
     
     /// <summary>
