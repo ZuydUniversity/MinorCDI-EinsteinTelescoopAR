@@ -129,8 +129,8 @@ public class DescriptionObject : MonoBehaviour, ITappable
     /// </summary>
     private void ShowDescription() 
     {
-        descriptionBoxInstance = Instantiate(descriptionBoxPrefab, gameObject.transform);
-        descriptionBoxInstance.transform.position += offset;
+        descriptionBoxInstance = Instantiate(descriptionBoxPrefab);
+        descriptionBoxInstance.transform.position = transform.position + offset;
 
 
         var canvas = descriptionBoxInstance.GetComponentInChildren<Canvas>(true);
