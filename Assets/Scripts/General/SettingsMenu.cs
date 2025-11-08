@@ -13,13 +13,15 @@ public class SettingsMenu : MonoBehaviour
     /// XROrgigin to be moved
     /// </summary>
     public XROrigin xROrigin;
+
     /// <summary>
-    /// Opens SettingMenu
+    /// Toggles the menu.
     /// </summary>
-    public void OpenMenu()
+    public void ToggleMenu() 
     {
-        Menu.SetActive(true);
+        Menu.SetActive(!Menu.activeSelf);
     }
+
     /// <summary>
     /// Closes SettingMenu
     /// </summary>
@@ -27,6 +29,7 @@ public class SettingsMenu : MonoBehaviour
     {
         Menu.SetActive(false);
     }
+
     /// <summary>
     /// Restarts game if needed. 
     /// </summary>
@@ -34,6 +37,7 @@ public class SettingsMenu : MonoBehaviour
     {
         SceneManager.LoadScene("MainScene");
     }
+
     /// <summary>
     /// Returns player to lift (use when player gets lost)
     /// </summary>

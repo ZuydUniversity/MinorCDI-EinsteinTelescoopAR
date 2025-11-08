@@ -8,8 +8,6 @@ using TMPro;
 /// </summary>
 public class LanguageSwitcher : MonoBehaviour
 {
-
-    public GameObject Dropdown;
     /// <summary>
     /// Checks if it is changing language.
     /// </summary>
@@ -26,11 +24,32 @@ public class LanguageSwitcher : MonoBehaviour
             StartCoroutine(ChangeLanguageCoroutine(languageCode));
         }
     }
+
+    public void OnLanguageDropDownChanged(int index)
+    {
+        string languageCode;
+        switch(index)
+        {
+            case 0:
+                languageCode = "en";
+                break;
+
+            case 1:
+                languageCode = "nl-NL";
+                break;
+
+            default:
+                languageCode = "N/A";
+                break;
+        }
+
+        SetLanguage(languageCode);
+    }
+
     /// <summary>
     /// Changes the language on the background
     /// </summary>
-    /// <param name="languageCode"></param>
-    /// <returns></returns>
+    /// <param name="languageCode">The code of the language to load</param>
     private IEnumerator ChangeLanguageCoroutine(string languageCode)
     {
         isChanging = true;
@@ -49,15 +68,5 @@ public class LanguageSwitcher : MonoBehaviour
         }
 
         isChanging = false;
-    }
-    /// <summary>
-    /// Function to call function from the UI dropdown
-    /// </summary>
-    public void ChangeLanguageFromDropdown()
-    {
-        string code = "";
-        if (Dropdown.GetComponent<TMP_Dropdown>().captionText.text == "Nederlands") { code = "nl-NL"; }
-        if (Dropdown.GetComponent<TMP_Dropdown>().captionText.text == "English") { code = "en"; }
-        SetLanguage(code);
     }
 }
