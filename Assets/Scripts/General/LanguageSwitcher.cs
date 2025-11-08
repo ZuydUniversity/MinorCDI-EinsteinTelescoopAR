@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using System.Collections;
+using TMPro;
 
 /// <summary>
 /// script for buttons to call to change language
 /// </summary>
 public class LanguageSwitcher : MonoBehaviour
 {
-
     /// <summary>
     /// Checks if it is changing language.
     /// </summary>
@@ -25,6 +25,31 @@ public class LanguageSwitcher : MonoBehaviour
         }
     }
 
+    public void OnLanguageDropDownChanged(int index)
+    {
+        string languageCode;
+        switch(index)
+        {
+            case 0:
+                languageCode = "en";
+                break;
+
+            case 1:
+                languageCode = "nl-NL";
+                break;
+
+            default:
+                languageCode = "N/A";
+                break;
+        }
+
+        SetLanguage(languageCode);
+    }
+
+    /// <summary>
+    /// Changes the language on the background
+    /// </summary>
+    /// <param name="languageCode">The code of the language to load</param>
     private IEnumerator ChangeLanguageCoroutine(string languageCode)
     {
         isChanging = true;
