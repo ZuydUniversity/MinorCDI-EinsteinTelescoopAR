@@ -1,4 +1,5 @@
 using System.Net;
+using System.Linq;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,15 @@ public class SettingsMenu : MonoBehaviour
     /// XROrgigin to be moved
     /// </summary>
     public XROrigin xROrigin;
+
+    /// <summary>
+    /// The name of the movable point to reset to.
+    /// </summary>
+    public string moveablePointName = "InsideElevator";
+    /// <summary>
+    /// The movable point to reset to.
+    /// </summary>
+    private MovablePoint movablePoint;
 
     /// <summary>
     /// Toggles the menu.
@@ -43,9 +53,18 @@ public class SettingsMenu : MonoBehaviour
     /// </summary>
     public void ReturnToLift()
     {
-        Vector3 offset = Vector3.zero - Camera.main.transform.position;
-        offset.y = 0;
-        Vector3 targetPosition = xROrigin.transform.position + offset;
-        xROrigin.transform.position = targetPosition;
+        if (movablePoint == null) 
+        {
+            movablePoint = FindObjectsOfType<MovablePoint>().FirstOrDefault(obj => obj.name == moveablePointName);
+        }
+
+        if (movablePoint != null)
+        {
+            Vector3 offset = movablePoint.transform.position - Camera.main.transform.position;
+            offset.y = 0;
+
+            Vector3 targetPosition = xROrigin.transform.position + offset;
+            xROrigin.transform.position = targetPosition;
+        }
     }
 }
