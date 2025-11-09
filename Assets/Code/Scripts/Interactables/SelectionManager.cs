@@ -1,0 +1,58 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+/// <summary>
+/// Detects if user tapped on screen and determines which
+/// tappable object (see ITappable) was tapped on.
+/// </summary>
+public class SelectionManager : MonoBehaviour
+{
+    /// <summary>
+    /// maincamera used for raycasting for tap detection.
+    /// </summary>
+    public Camera mainCamera;
+
+    /// <summary>
+    /// Checks each frame if the screen is tapped.
+    /// </summary>
+    void Update()
+    {
+        #if UNITY_EDITOR && !UNITY_ANDROID
+        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            Vector2 touchPosition = Mouse.current.position.ReadValue();
+            callTappedObject(touchPosition);
+        }
+        #else
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
+        {
+            Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
+            callTappedObject(touchPosition);
+        }
+        #endif
+    }
+
+    /// <summary>
+    /// Calles the object that was tapped.
+    /// </summary>
+    /// <param name="screenPosition" type="Vector2">The position the user tapped on.</param>
+    private void callTappedObject(Vector2 screenPosition) 
+    {
+        Ray ray = mainCamera.ScreenPointToRay(screenPosition);
+        
+        /// Draws ray in unity editor for debugging purposes.
+        #if UNITY_EDITOR
+        Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 2f);
+        #endif
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            ITappable tappable = hit.transform.GetComponent<ITappable>();
+            if (tappable != null) 
+            {
+                tappable.OnTapped();
+            }
+        }
+    }
+}
