@@ -21,10 +21,39 @@ public class ElevatorController : MonoBehaviour
     /// </summary>
     public ElevatorState currentState = ElevatorState.Closed;
 
-    //soundclips for the elevator doors and movement
+    // Sound clips for the elevator doors and movement
+    [Header("Audio Clips")]
     public AudioClip doorClip;
     public AudioClip moveClip;
     public AudioClip arrivalClip;
+
+    [Header("Audio Settings")]
+    [Range(0f, 1f)] public float doorVolume = 1.0f;
+    [Range(0f, 1f)] public float moveVolume = 1.0f;
+    [Range(0f, 1f)] public float arrivalVolume = 1.0f;
+
+    [Tooltip("3D sound: 0 = 2D, 1 = full 3D")]
+    [Range(0f, 1f)] public float spatialBlend = 1f;
+    public AudioRolloffMode rolloffMode = AudioRolloffMode.Logarithmic;
+    public float minDistance = 1f;
+    public float maxDistance = 20f;
+
+    // Dedicated audio sources to avoid overlap
+    private AudioSource doorSource;
+    private AudioSource moveSource;
+    private AudioSource arrivalSource;
+
+    void Awake()
+    {
+        // Prepare reusable audio sources (no prefabs)
+        doorSource    = EnsureSource("DoorSource");
+        moveSource    = EnsureSource("MoveSource");
+        arrivalSource = EnsureSource("ArrivalSource");
+
+        ApplyCommonAudioSettings(doorSource);
+        ApplyCommonAudioSettings(moveSource);
+        ApplyCommonAudioSettings(arrivalSource);
+    }
 
     /// <summary>
     /// Initialize elevator state and ensure doors are closed
@@ -97,11 +126,10 @@ public class ElevatorController : MonoBehaviour
     /// </summary>
     public void OpenDoorsOnArrival()
     {
-
-        //play arrival sound
+        // Play arrival sound (non-overlapping)
         if (arrivalClip != null)
         {
-            AudioSource.PlayClipAtPoint(arrivalClip, transform.position);
+            PlayNonOverlapping(arrivalSource, arrivalClip, false, arrivalVolume, restartIfPlaying:true);
         }
         else
         {
@@ -129,15 +157,16 @@ public class ElevatorController : MonoBehaviour
     /// </summary>
     private IEnumerator OpenDoorsOnArrivalCoroutine()
     {
-        //play move sound
+        // Play move sound (non-overlapping)
         if (moveClip != null)
         {
-            AudioSource.PlayClipAtPoint(moveClip, transform.position);
+            PlayNonOverlapping(moveSource, moveClip, false, moveVolume, restartIfPlaying:true);
         }
         else
         {
             Debug.LogWarning("Move clip is not assigned in ElevatorController.");
         }
+
         yield return new WaitForSeconds(4.0f);
         yield return StartCoroutine(AnimateDoors(true, null));
         
@@ -177,15 +206,15 @@ public class ElevatorController : MonoBehaviour
     {
         currentState = ElevatorState.Animating;
         
-        // Play door sound effect
+        // Play door sound effect (restart to sync with each animation trigger)
         if (doorClip != null)
-            {
-                AudioSource.PlayClipAtPoint(doorClip, transform.position);
-            }
+        {
+            PlayNonOverlapping(doorSource, doorClip, false, doorVolume, restartIfPlaying:true);
+        }
         else
-            {
-                Debug.LogWarning("Door clip is not assigned in ElevatorController.");
-            }
+        {
+            Debug.LogWarning("Door clip is not assigned in ElevatorController.");
+        }
 
         if (open)
         {
@@ -242,6 +271,64 @@ public class ElevatorController : MonoBehaviour
         if (doorAnimator != null)
         {
             doorAnimator.SetBool("DoorsOpen", false);
+        }
+    }
+
+    // ---------------------------
+    // Audio helpers
+    // ---------------------------
+
+    private AudioSource EnsureSource(string nameSuffix)
+    {
+        // Try to reuse if already present
+        var src = gameObject.AddComponent<AudioSource>();
+        src.playOnAwake   = false;
+        src.loop          = false;
+        src.spatialBlend  = spatialBlend;
+        src.rolloffMode   = rolloffMode;
+        src.minDistance   = Mathf.Max(0.01f, minDistance);
+        src.maxDistance   = Mathf.Max(src.minDistance, maxDistance);
+        src.dopplerLevel  = 0f;
+        src.name          = name + "_" + nameSuffix;
+        return src;
+    }
+
+    private void ApplyCommonAudioSettings(AudioSource src)
+    {
+        if (src == null) return;
+        src.spatialBlend = spatialBlend;
+        src.rolloffMode  = rolloffMode;
+        src.minDistance  = Mathf.Max(0.01f, minDistance);
+        src.maxDistance  = Mathf.Max(src.minDistance, maxDistance);
+    }
+
+    /// <summary>
+    /// Plays a clip on a dedicated source without creating new sources.
+    /// Optionally restarts if already playing to keep it in sync.
+    /// </summary>
+    private void PlayNonOverlapping(AudioSource src, AudioClip clip, bool loop, float vol, bool restartIfPlaying)
+    {
+        if (src == null || clip == null) return;
+
+        // Apply common settings in case inspector values changed at runtime
+        ApplyCommonAudioSettings(src);
+
+        src.loop   = loop;
+        src.clip   = clip;
+        src.volume = Mathf.Clamp01(vol);
+
+        if (src.isPlaying)
+        {
+            if (restartIfPlaying)
+            {
+                src.Stop();
+                src.Play();
+            }
+            // else: keep current playback, do not stack
+        }
+        else
+        {
+            src.Play();
         }
     }
 }
