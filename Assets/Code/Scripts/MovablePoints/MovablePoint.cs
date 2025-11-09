@@ -26,6 +26,11 @@ public class MovablePoint : MonoBehaviour
     public Vector3 planeSize = new Vector3(1f, 0f, 1f);
 
     /// <summary>
+    /// The clip to play if the user is on the point;
+    /// </summary>
+    public AudioClip audioClip;
+
+    /// <summary>
     /// List of created arrows.
     /// </summary>
     private List<MoveArrow> arrows = new List<MoveArrow>();
@@ -94,6 +99,20 @@ public class MovablePoint : MonoBehaviour
 
             newArrow.endpoint = movablePoint;
             arrows.Add(newArrow);
+
+            //if we have a audio clip, play it when we create the arrows. Have it loop until we leave the point
+            if (audioClip != null && newArrow.GetComponent<AudioSource>() == null)
+            {
+                AudioSource audioSource = newArrow.gameObject.AddComponent<AudioSource>();
+                audioSource.clip = audioClip;
+                audioSource.loop = true;
+                audioSource.playOnAwake = true;
+                audioSource.spatialBlend = 1.0f; // Make the sound 3D
+                audioSource.minDistance = 1f;
+                audioSource.maxDistance = 20f;
+                audioSource.volume = 0.25f;
+                audioSource.Play();
+            }
         }
 
         onPlane = true;
