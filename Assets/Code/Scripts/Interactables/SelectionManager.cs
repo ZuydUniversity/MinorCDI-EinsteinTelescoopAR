@@ -18,7 +18,7 @@ public class SelectionManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        #if UNITY_EDITOR && !UNITY_ANDROID
+        #if UNITY_EDITOR
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
             Vector2 touchPosition = Mouse.current.position.ReadValue();
