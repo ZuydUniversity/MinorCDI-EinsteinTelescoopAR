@@ -20,19 +20,15 @@ public class SelectionManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        #if UNITY_EDITOR
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
             Vector2 touchPosition = Mouse.current.position.ReadValue();
             callTappedObject(touchPosition);
-        }
-        #else
-        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
+        } else if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
         {
             Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
             callTappedObject(touchPosition);
         }
-        #endif
     }
 
     /// <summary>
