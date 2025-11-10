@@ -18,7 +18,7 @@ public class FollowTutorialButton : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(tutorialScene, LoadSceneMode.Additive);
 
-        GameObject lift = GameObject.Find("Lift(Scripted+Textured)(Clone)");
+        GameObject lift = FindFirstObjectByType<LiftSceneLoader>()?.gameObject;
         if (lift != null)
         {
             lift.SetActive(false);

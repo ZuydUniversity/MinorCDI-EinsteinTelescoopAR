@@ -28,7 +28,7 @@ public class ProximityTrigger : MonoBehaviour
                 // Zodra de Elevator Modal actief is, lift weer activeren
                 if (!liftReactivated && modalPanel.name.Contains("Elevator"))
                 {
-                    GameObject lift = FindLiftInAllScenes("Lift(Scripted+Textured)(Clone)");
+                    GameObject lift = FindFirstObjectByType<LiftSceneLoader>(FindObjectsInactive.Include)?.gameObject;
                     if (lift != null)
                     {
                         lift.SetActive(true);
