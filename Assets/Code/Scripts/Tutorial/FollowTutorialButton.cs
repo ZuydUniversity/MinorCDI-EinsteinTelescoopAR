@@ -13,6 +13,11 @@ public class FollowTutorialButton : MonoBehaviour
     public string tutorialScene = "TutorialScene";
 
     /// <summary>
+    /// The popup to hide after the tuotrial is loaded.
+    /// </summary>
+    public GameObject followTutorialPopup;
+
+    /// <summary>
     /// Loads the tutorial on click.
     /// </summary>
     public void LoadTutorialOnClick() 
@@ -48,6 +53,6 @@ public class FollowTutorialButton : MonoBehaviour
         }
         #endif
 
-        // Call function that shows the indicator and moving point modals
+        followTutorialPopup.SetActive(false);
     }
 }
