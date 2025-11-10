@@ -34,5 +34,7 @@ public class FollowTutorialButton : MonoBehaviour
             Debug.LogWarning("Lift(Scripted+Textured)(Clone) not found in MainScene.");
         }
         #endif
+
+        // Call function that shows the indicator and moving point modals
     }
 }
