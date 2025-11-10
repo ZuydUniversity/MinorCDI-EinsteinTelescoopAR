@@ -46,9 +46,9 @@ public class DescriptionObject : MonoBehaviour, ITappable
 
 
     [Header("AutoScale")]
-    public float referenceScreenHeight = 1080f;
-    public float referenceFOV = 60f;
-    [Range(0f, 1f)] public float distanceEffect = 0.7f;
+    public float referenceScreenHeight = 1080f; //Reference height scaling
+    public float referenceFOV = 60f; // Reference FOV scaling
+    [Range(0f, 1f)] public float distanceEffect = 0.7f; // Influence of distance scaling
 
     private Transform descriptionCanvasTf;
     private float baseDistance ;
@@ -56,18 +56,14 @@ public class DescriptionObject : MonoBehaviour, ITappable
 
     /// DYNAMIC TEXTSIZE
     [Header("Dynamic Text Size")]
-    public int baseTitleFontSize = 32;        // kies jouw basisgroottes
-    public int baseDescriptionFontSize = 24;
-    public float fontScaleMultiplier = 50.0f;  // extra globale factor
+    public int baseTitleFontSize = 32;        //Font-size for Titel
+    public int baseDescriptionFontSize = 24;  // Font-size for Description
+    public float fontScaleMultiplier = 50.0f;  // Additional multiplier to strengthen scaling effect
     public int minFontSize = 12;
     public int maxFontSize = 96;
 
-
     private Text titleTextComponent;
     private Text descriptionTextComponent;
-
-
-
 
 
     /// <summary>
@@ -85,17 +81,15 @@ public class DescriptionObject : MonoBehaviour, ITappable
     {
         if (descriptionBoxInstance != null)
         {
+            //Rotate the box to face user/camera (Horizontal only).
             Vector3 lookDirection = mainCamera.transform.position - descriptionCanvasTf.transform.position;
             lookDirection.y = 0;
             if (lookDirection.sqrMagnitude > 0.001f)
             {
                 descriptionCanvasTf.transform.rotation = mainCamera.transform.rotation;
             }
-
-
+            // Apply dynamic scaling
             ApplyScaleNow();
-
-        
 
             // Checks if description box renders. Else it hides the description box
             Renderer render = gameObject.GetComponent<Renderer>();
@@ -125,14 +119,15 @@ public class DescriptionObject : MonoBehaviour, ITappable
     }
 
     /// <summary>
-    /// Shows description on object.
+    /// Spawns and shows description on object.
     /// </summary>
     private void ShowDescription() 
     {
+        //spawns the discription box free of the hover effect
         descriptionBoxInstance = Instantiate(descriptionBoxPrefab);
         descriptionBoxInstance.transform.position = transform.position + offset;
 
-
+        // Ensure a canvas exists in the prefab.
         var canvas = descriptionBoxInstance.GetComponentInChildren<Canvas>(true);
         if (canvas == null) {
             canvas = descriptionBoxInstance.AddComponent<Canvas>();
@@ -142,18 +137,19 @@ public class DescriptionObject : MonoBehaviour, ITappable
 
         descriptionCanvasTf = canvas.transform;
 
+        //Ensure the RectTransform has a valid size.
         var rt = canvas.GetComponent<RectTransform>();
         if (rt != null && (rt.sizeDelta.x <= 0f || rt.sizeDelta.y <= 0f))
         {
             rt.sizeDelta = new Vector2(1.6f, 0.88f);
         }
 
+        //Scaling behaviour.
         var scaler = canvas.GetComponent<CanvasScaler>() ?? canvas.gameObject.AddComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;
         scaler.dynamicPixelsPerUnit = dynamicPixelSize;
 
-
-        // Tekstrefs cachen
+        //Cache text components.
         var titleTf = descriptionBoxInstance.transform.Find(titleName);
         if (titleTf != null)
         {
@@ -165,8 +161,7 @@ public class DescriptionObject : MonoBehaviour, ITappable
             descriptionTextComponent = descTf.GetComponent<Text>();
         }
 
-
-
+        // Assign text.
         if (titleTextComponent != null)
         {
             titleTextComponent.text = title;
@@ -178,14 +173,10 @@ public class DescriptionObject : MonoBehaviour, ITappable
             PrepareTextForDynamicSizing(descriptionTextComponent);
         }
 
-
         baseDistance = Vector3.Distance(mainCamera.transform.position, descriptionCanvasTf.position);
         baseScale = descriptionCanvasTf.localScale;
 
         StartCoroutine(ApplyScaleNextFrame());
-
-
-
         StartCoroutine(SlideIn(descriptionBoxInstance.transform, 10, AnimationCurve.EaseInOut(0, 0, 1, 1)));
     }
 
@@ -202,20 +193,17 @@ public class DescriptionObject : MonoBehaviour, ITappable
         }
     }
 
-
+    /// <summary>
+    /// Adjust text components so font size can be controlled manually.
+    /// </summary>
+    /// <param name="t"></param>
     private static void PrepareTextForDynamicSizing(Text t)
     {
-        // BestFit uitzetten zodat we zelf fontSize kunnen sturen
         t.resizeTextForBestFit = false;
-        // (optioneel) overflow netjes houden
         t.horizontalOverflow = HorizontalWrapMode.Wrap;
         t.verticalOverflow = VerticalWrapMode.Truncate;
     }
 
-
-    /// <summary>
-    /// Fits text to textbox.
-    /// </summary>
     private static void FitText(Text textComponent)
     {
         RectTransform rect = textComponent.GetComponent<RectTransform>();
@@ -225,8 +213,6 @@ public class DescriptionObject : MonoBehaviour, ITappable
         }
     }
 
-
-    
     /// <summary>
     /// Slides in the description box slowly.
     /// </summary>
@@ -266,10 +252,13 @@ public class DescriptionObject : MonoBehaviour, ITappable
 
     private IEnumerator ApplyScaleNextFrame()
     {
-        yield return null; // 1 frame wachten voor layout/best fit
+        yield return null; // Wait 1 frame for layout/best fit.
         ApplyScaleNow();
     }
 
+    /// <summary>
+    /// Computes and applies dynamic scaling based on distance, screen resolution and FOV.
+    /// </summary>
     private void ApplyScaleNow()
     {
         if (descriptionCanvasTf == null || mainCamera == null) return;
@@ -293,6 +282,9 @@ public class DescriptionObject : MonoBehaviour, ITappable
         UpdateTextSizes(scaleFactor);
     }
 
+    /// <summary>
+    /// Dynamically scales font sizes for title and description.
+    /// </summary>
     private void UpdateTextSizes(float scaleFactor)
     {
         if (titleTextComponent != null)
