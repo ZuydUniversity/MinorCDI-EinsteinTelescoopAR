@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Localization.Components; 
+using UnityEngine.Localization;            
 
 public class DescriptionObject : MonoBehaviour, ITappable
 {
@@ -72,6 +74,24 @@ public class DescriptionObject : MonoBehaviour, ITappable
     void Start() 
     {
         mainCamera = Camera.main;
+
+        /// <summary>
+        /// Initializes the localization system for this object.
+        /// If a <see cref="LocalizeStringEvent"/> component is found,
+        /// it connects its update event to <see cref="SetDescription"/> 
+        /// so that localized text updates automatically when the language changes.
+        /// It also forces an immediate refresh to ensure the correct 
+        /// localized value is applied after the scene loads.
+        /// </summary>
+        var localizeEvent = GetComponent<LocalizeStringEvent>();
+        if (localizeEvent != null)
+        {
+            
+            localizeEvent.OnUpdateString.AddListener(SetDescription);
+
+            
+            localizeEvent.RefreshString();
+        }
     }
 
     /// <summary>
@@ -289,9 +309,11 @@ public class DescriptionObject : MonoBehaviour, ITappable
     {
         if (titleTextComponent != null)
         {
+            int titleMaxSize = titleTextComponent.resizeTextMaxSize > 0 ? titleTextComponent.resizeTextMaxSize : maxFontSize;
+            
             int fs = Mathf.Clamp(
                 Mathf.RoundToInt(baseTitleFontSize * scaleFactor * fontScaleMultiplier),
-                minFontSize, maxFontSize);
+                minFontSize, titleMaxSize);
             titleTextComponent.fontSize = fs;
         }
 
@@ -304,4 +326,45 @@ public class DescriptionObject : MonoBehaviour, ITappable
         }
     }
 
+    /// <summary>
+    /// Sets description of description box.
+    /// </summary>
+    /// <param name="newDescription">The new text for the description.</param>
+    public void SetDescription(string newDescription)
+    {
+        if (string.IsNullOrEmpty(newDescription))
+        {
+            Debug.Log($"[Localization] Lege string ontvangen van LocalizeStringEvent voor {name}");
+            return;
+        }
+
+        Debug.Log($"[Localization] Ontvangen tekst voor {name}: {newDescription}");
+        description = newDescription;
+
+        if (descriptionTextComponent != null)
+        {
+            descriptionTextComponent.text = newDescription;
+        }
+    }
+
+    /// <summary>
+    /// Sets title of description box.
+    /// </summary>
+    /// <param name="newTitle">The new title of the description box.</param>
+    public void SetTitle(string newTitle)
+    {
+        if (string.IsNullOrEmpty(newTitle))
+        {
+            Debug.Log($"[Localization] Lege string ontvangen van LocalizeStringEvent voor {name}");
+            return;
+        }
+
+        Debug.Log($"[Localization] Ontvangen tekst voor {name}: {newTitle}");
+        title = newTitle;
+
+        if (titleTextComponent != null)
+        {
+            titleTextComponent.text = newTitle;
+        }
+    }
 }
