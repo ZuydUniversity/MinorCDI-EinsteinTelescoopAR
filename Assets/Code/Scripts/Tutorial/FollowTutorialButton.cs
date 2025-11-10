@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 /// <summary>
 /// Used to determine if to load the tutorial scene.
@@ -12,11 +13,28 @@ public class FollowTutorialButton : MonoBehaviour
     public string tutorialScene = "TutorialScene";
 
     /// <summary>
+    /// The popup to hide after the tuotrial is loaded.
+    /// </summary>
+    public GameObject followTutorialPopup;
+
+    /// <summary>
+    /// Loads the tutorial on click.
+    /// </summary>
+    public void LoadTutorialOnClick() 
+    {
+        StartCoroutine(LoadTutorial());
+    }
+
+    /// <summary>
     /// Loads the tutorial scene and disables the Lift object in the MainScene.
     /// </summary>
-    public void LoadTutorial() 
+    private IEnumerator LoadTutorial() 
     {
-        SceneManager.LoadSceneAsync(tutorialScene, LoadSceneMode.Additive);
+        AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync(tutorialScene, LoadSceneMode.Additive);
+        while (!loadSceneOperation.isDone)
+        {
+            yield return null;
+        }
 
         GameObject lift = FindFirstObjectByType<LiftSceneLoader>()?.gameObject;
         if (lift != null)
@@ -35,6 +53,6 @@ public class FollowTutorialButton : MonoBehaviour
         }
         #endif
 
-        // Call function that shows the indicator and moving point modals
+        followTutorialPopup.SetActive(false);
     }
 }
