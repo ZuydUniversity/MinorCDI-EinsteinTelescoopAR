@@ -7,11 +7,6 @@ using UnityEngine.SceneManagement;
 public class LiftSceneLoader : MonoBehaviour
 {
     /// <summary>
-    /// The name of the default start scene that should be loaded.
-    /// </summary>
-    [SerializeField] private string defaultStartScene = "TutorialScene";
-
-    /// <summary>
     /// When the object this script is attached to is enabled
     /// it will add eventhandlers to the scene loaded event 
     /// in the scene manager.
@@ -19,7 +14,6 @@ public class LiftSceneLoader : MonoBehaviour
     private void OnEnable() 
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.LoadSceneAsync(defaultStartScene, LoadSceneMode.Additive);
     }
 
     /// <summary>

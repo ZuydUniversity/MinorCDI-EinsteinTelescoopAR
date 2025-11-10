@@ -1,6 +1,6 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
-using System.Collections;
 using TMPro;
 
 /// <summary>

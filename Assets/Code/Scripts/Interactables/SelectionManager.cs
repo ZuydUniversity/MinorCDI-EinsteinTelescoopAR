@@ -1,6 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// Detects if user tapped on screen and determines which
@@ -46,13 +48,30 @@ public class SelectionManager : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 2f);
         #endif
 
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (!isUIElement(screenPosition))
         {
-            ITappable tappable = hit.transform.GetComponent<ITappable>();
-            if (tappable != null) 
+            if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                tappable.OnTapped();
+                ITappable tappable = hit.transform.GetComponent<ITappable>();
+                if (tappable != null) 
+                {
+                    tappable.OnTapped();
+                }
             }
         }
+    }
+
+    /// <summary>
+    /// Checks if an UI element is hit.
+    /// </summary>
+    /// <param name="screenPosition" type="Vector2">The position on the screen.</param>
+    private bool isUIElement(Vector2 screenPosition)
+    {
+        PointerEventData pointerData = new PointerEventData(EventSystem.current);
+        pointerData.position = screenPosition;
+
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, raycastResults);
+        return raycastResults.Count != 0;
     }
 }
