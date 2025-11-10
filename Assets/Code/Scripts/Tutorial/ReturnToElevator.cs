@@ -32,7 +32,11 @@ public class ReturnToElevator : MonoBehaviour
     /// </summary>
     public void ResetToElevator()
     {
-        xrOrigin.transform.position = point.transform.position;
+        Vector3 offset = point.transform.position - Camera.main.transform.position;
+        offset.y = 0;
+
+        xrOrigin.transform.position += offset;
+
         SceneManager.UnloadSceneAsync(tutorialScene);
     }
 }
