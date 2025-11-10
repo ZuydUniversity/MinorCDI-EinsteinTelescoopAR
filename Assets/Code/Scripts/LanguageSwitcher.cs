@@ -19,15 +19,20 @@ public class LanguageSwitcher : MonoBehaviour
     /// <param name="languageCode">The language code</param>
     public void SetLanguage(string languageCode)
     {
+        // Only run if no other language change is ongoing
         if (!isChanging)
         {
             StartCoroutine(ChangeLanguageCoroutine(languageCode));
         }
     }
-
+    /// <summary>
+    /// Triggers when a dropdown value changes.
+    /// Maps Dropdown Index to language code and initiates the language update.
+    /// </summary>
     public void OnLanguageDropDownChanged(int index)
     {
         string languageCode;
+        // Map dropdown index to specific language codes.
         switch(index)
         {
             case 0:
@@ -67,6 +72,6 @@ public class LanguageSwitcher : MonoBehaviour
             }
         }
 
-        isChanging = false;
+        isChanging = false; // Unlock for future changes.
     }
 }
